@@ -25,6 +25,7 @@ class CustomKeywords:
         return self
     @keyword("Click Nav Buttons")
     def click_chat_bubble(self):
+        """Perform Click and close to each one of the navigator buttons"""
         self.home_page = HomePage(self.driver)
         self.home_page.test_buttons()
 
@@ -32,6 +33,7 @@ class CustomKeywords:
         time.sleep(float(seconds))
         return self
 
+    @keyword("Close Browser")
     def close_browser(self):
         self.driver.quit()
         return self

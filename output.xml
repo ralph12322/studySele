@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-04T12:11:10.808134" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-04T18:56:31.721832" rpa="false" schemaversion="5">
 <suite id="s1" name="HomepageTest" source="C:\Users\gjcsh\Desktop\studySele\tests\HomepageTest.robot">
 <test id="s1-t1" name="TestCase1" line="10">
 <kw name="Open Portfolio" owner="CustomKeywords">
 <arg>${URL}</arg>
 <doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-04T12:11:11.099730" elapsed="3.465358"/>
+<status status="PASS" start="2026-09-04T18:56:31.969567" elapsed="5.019420"/>
 </kw>
 <kw name="Click Nav Buttons" owner="CustomKeywords">
-<status status="PASS" start="2026-09-04T12:11:14.567087" elapsed="42.580200"/>
+<status status="PASS" start="2026-09-04T18:56:36.990996" elapsed="42.656449"/>
 </kw>
-<status status="PASS" start="2026-09-04T12:11:11.098224" elapsed="46.049063"/>
+<kw name="Close Browser" owner="CustomKeywords">
+<status status="PASS" start="2026-09-04T18:57:19.647445" elapsed="2.203529"/>
+</kw>
+<status status="PASS" start="2026-09-04T18:56:31.968568" elapsed="49.882406"/>
 </test>
-<status status="PASS" start="2026-09-04T12:11:10.810651" elapsed="46.337140"/>
+<status status="PASS" start="2026-09-04T18:56:31.723367" elapsed="50.128616"/>
 </suite>
 <statistics>
 <total>

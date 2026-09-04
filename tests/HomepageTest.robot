@@ -11,3 +11,4 @@ TestCase1
 
     Open Portfolio    ${URL}
     Click Nav Buttons
+    Close Browser
