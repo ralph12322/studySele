@@ -5,3 +5,7 @@ I am done studying Robot Framework, and being aware of the difference and simila
 Day 1: 
 
 Testing my own Portfolio: with basic selenium functionalities and libraries;
+
+Day 2: 
+
+Done with my First Test Case 
