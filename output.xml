@@ -1,30 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-04T18:56:31.721832" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-07T10:12:39.800944" rpa="false" schemaversion="5">
 <suite id="s1" name="HomepageTest" source="C:\Users\gjcsh\Desktop\studySele\tests\HomepageTest.robot">
-<test id="s1-t1" name="TestCase1" line="10">
-<kw name="Open Portfolio" owner="CustomKeywords">
+<test id="s1-t1" name="Open Portfolio and Verify Nav Buttons" line="11">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
 <arg>${URL}</arg>
 <doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-04T18:56:31.969567" elapsed="5.019420"/>
+<status status="PASS" start="2026-09-07T10:12:40.033367" elapsed="1.483014"/>
 </kw>
 <kw name="Click Nav Buttons" owner="CustomKeywords">
-<status status="PASS" start="2026-09-04T18:56:36.990996" elapsed="42.656449"/>
+<doc>Perform Click and close to each one of the navigator buttons</doc>
+<status status="PASS" start="2026-09-07T10:12:41.517765" elapsed="5.399805"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords">
-<status status="PASS" start="2026-09-04T18:57:19.647445" elapsed="2.203529"/>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-07T10:12:46.917570" elapsed="2.190167"/>
 </kw>
-<status status="PASS" start="2026-09-04T18:56:31.968568" elapsed="49.882406"/>
+<doc>Opens the portfolio site and clicks through nav buttons</doc>
+<status status="PASS" start="2026-09-07T10:12:40.033367" elapsed="9.074370"/>
 </test>
-<status status="PASS" start="2026-09-04T18:56:31.723367" elapsed="50.128616"/>
+<test id="s1-t2" name="Test Toggle Light and Dark Mode" line="15">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-07T10:12:49.107737" elapsed="1.278317"/>
+</kw>
+<kw name="Switch To Light Mode" owner="CustomKeywords">
+<doc>Toggles the site to light mode.</doc>
+<status status="PASS" start="2026-09-07T10:12:50.387561" elapsed="1.135773"/>
+</kw>
+<kw name="Switch To Dark Mode" owner="CustomKeywords">
+<doc>Toggles the site to dark mode.</doc>
+<status status="PASS" start="2026-09-07T10:12:51.523334" elapsed="1.072369"/>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-07T10:12:52.596705" elapsed="2.194555"/>
+</kw>
+<doc>Test the toggle Light and Dark Mode</doc>
+<status status="PASS" start="2026-09-07T10:12:49.107737" elapsed="5.683523"/>
+</test>
+<test id="s1-t3" name="Verify Resume Linking" line="20">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-07T10:12:54.791260" elapsed="1.298462"/>
+</kw>
+<kw name="Opens the Resume" owner="CustomKeywords">
+<doc>Open the Resume then verify if it is actually opened</doc>
+<status status="PASS" start="2026-09-07T10:12:56.089722" elapsed="3.277481"/>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-07T10:12:59.367203" elapsed="2.268168"/>
+</kw>
+<doc>Verifies that the resume button is working</doc>
+<status status="PASS" start="2026-09-07T10:12:54.791260" elapsed="6.844111"/>
+</test>
+<status status="PASS" start="2026-09-07T10:12:39.800944" elapsed="21.834427"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="3" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="HomepageTest" id="s1" pass="1" fail="0" skip="0">HomepageTest</stat>
+<stat name="HomepageTest" id="s1" pass="3" fail="0" skip="0">HomepageTest</stat>
 </suite>
 </statistics>
 <errors>

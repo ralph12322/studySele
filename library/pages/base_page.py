@@ -73,6 +73,36 @@ class BasePage:
             time.sleep(0.2)
         raise TimeoutException(f"No visible element found for {locator} after {timeout}s")
 
+    def wait_for_link(self, locator, timeout=DEFAULT_TIMEOUT):
+        """Wait for a specific link to be visible"""
+        try:
+            return WebDriverWait(self.driver, timeout).until(
+                EC.element_to_be_clickable(locator)
+            )
+        except TimeoutException:
+            raise TimeoutException(f"Link with locator '{locator}' was not clickable within {timeout}s")
+
+    def wait_for_new_tab(self, tab):
+        """Wait for a new browser tab to open. Returns True if it opened, False if it timed out."""
+        try:
+            WebDriverWait(self.driver, timeout=self.DEFAULT_TIMEOUT).until(
+                EC.number_of_windows_to_be(len(tab) + 1)
+            )
+            return True
+        except TimeoutException:
+            return False
+
+    def wait_until_url_contains(self, text):
+        """Wait until the URL contains the given text; fails with a clear message if not."""
+        try:
+            WebDriverWait(self.driver, timeout=self.DEFAULT_TIMEOUT).until(
+                EC.url_contains(text)
+            )
+        except TimeoutException:
+            raise TimeoutException(
+                f"URL did not contain '{text}' within {self.DEFAULT_TIMEOUT}s. "
+                f"Current URL: {self.driver.current_url}"
+            )
     # ---------- interaction helpers ----------
 
     def safe_click(self, locator, timeout=DEFAULT_TIMEOUT):

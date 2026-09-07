@@ -9,3 +9,11 @@ Testing my own Portfolio: with basic selenium functionalities and libraries;
 Day 2: 
 
 Done with my First Test Case 
+
+Day 3:
+
+Made a Test Suite with 3 Test Cases regarding Opening the Portfolio then Testing the Navigation Buttons;
+Testing the Toggle Light/Dark Mode;
+and Verifying if the Resume Link is Completely Working;
+
+And all Passed the Test Suite
