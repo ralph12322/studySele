@@ -22,6 +22,7 @@ class CustomKeywords:
 
     @property
     def home_page(self):
+        """Lazily initialize the Homepage Class"""
         if self._home_page is None:
             self._home_page = HomePage(self.driver)
         return self._home_page
