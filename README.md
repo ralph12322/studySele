@@ -21,3 +21,5 @@ And all Passed the Test Suite
 ## Day 4:
 
 Made a Field Checker; Makes Sure that every Data possess the Necessary Fields
+
+;;  Maybe i'll build something fist then i'll automate the testing myself, that's my next plan.
