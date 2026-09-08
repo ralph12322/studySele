@@ -1,23 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-08T09:41:53.091027" rpa="false" schemaversion="5">
-<suite id="s1" name="ApiTestSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\ApiTestSuite.robot">
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-08T12:46:47.864021" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\Users\gjcsh\Desktop\studySele\tests">
+<suite id="s1-s1" name="ApiTestSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\ApiTestSuite.robot">
 <kw name="Create Session" owner="RequestsLibrary" type="SETUP">
-<msg time="2026-09-08T09:41:53.513995" level="INFO">Creating Session using : alias=api, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2026-09-08T12:46:48.283580" level="INFO">Creating Session using : alias=api, url=https://jsonplaceholder.typicode.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>api</arg>
 <arg>${URL}</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-09-08T09:41:53.513995" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.282580" elapsed="0.002000"/>
 </kw>
-<test id="s1-t1" name="Verify Users Endpoint" line="26">
+<test id="s1-s1-t1" name="Verify Todo Endpoint" line="22">
 <kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-09-08T09:41:54.454636" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/users 
+<msg time="2026-09-08T12:46:48.366252" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/todos/1 
+ path_url=/todos/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-09-08T12:46:48.367261" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/todos/1 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 08 Sep 2026 04:46:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'etag': 'W/"53-hfEnumeNh6YirfjyjaujcOPPT+s"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=IQNaRifZPU2qanVBGn2%2BTUL8I79XuJjZUjAyXTYg7iE%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1787986369"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=IQNaRifZPU2qanVBGn2%2BTUL8I79XuJjZUjAyXTYg7iE%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1787986369"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1787986380', 'Age': '21213', 'cf-cache-status': 'HIT', 'Content-Encoding': 'gzip', 'CF-RAY': 'a37b4fce1d2cbc39-MNL', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+} 
+ </msg>
+<msg time="2026-09-08T12:46:48.367261" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-08T12:46:48.367261" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>${todo_path1}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.284580" elapsed="0.082681"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-08T12:46:48.368270" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.368270" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-09-08T12:46:48.369270" level="INFO">${res} = {'userId': 1, 'id': 1, 'title': 'delectus aut autem', 'completed': False}</msg>
+<var>${res}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.369270" elapsed="0.000000"/>
+</kw>
+<kw name="Should Not Be True" owner="BuiltIn">
+<arg>${res}[completed]</arg>
+<doc>Fails if the given condition is true.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.369270" elapsed="0.000997"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2026-09-08T12:46:48.371269" level="INFO">{'userId': 1, 'id': 1, 'title': 'delectus aut autem', 'completed': False}</msg>
+<arg>${response.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.370267" elapsed="0.001002"/>
+</kw>
+<doc>This just basically Verifies if the api endpoint is working nothing much</doc>
+<tag>api</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-09-08T12:46:48.284580" elapsed="0.086689"/>
+</test>
+<test id="s1-s1-t2" name="Verify Users Endpoint" line="32">
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2026-09-08T12:46:48.393333" level="INFO">GET Request : url=https://jsonplaceholder.typicode.com/users 
  path_url=/users 
  headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg time="2026-09-08T09:41:54.454636" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/users 
+<msg time="2026-09-08T12:46:48.393333" level="INFO">GET Response : url=https://jsonplaceholder.typicode.com/users 
  status=200, reason=OK 
- headers={'Date': 'Tue, 08 Sep 2026 01:41:56 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1847', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'Content-Encoding': 'gzip', 'etag': 'W/"160d-1eMSsxeJRfnVLRBmYJSbCiJZ1qQ"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=AaW7X%2F7QlIshsabaCuNuSCfwr0%2BBIOKLGD2sFXIFn2Q%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1788036382"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=AaW7X%2F7QlIshsabaCuNuSCfwr0%2BBIOKLGD2sFXIFn2Q%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1788036382"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1788036403', 'Accept-Ranges': 'bytes', 'cf-cache-status': 'REVALIDATED', 'CF-RAY': 'a37a40f00ea18b9a-MNL', 'alt-svc': 'h3=":443"; ma=86400'} 
+ headers={'Date': 'Tue, 08 Sep 2026 04:46:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1847', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'Cache-Control': 'max-age=43200', 'Content-Encoding': 'gzip', 'etag': 'W/"160d-1eMSsxeJRfnVLRBmYJSbCiJZ1qQ"', 'expires': '-1', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=AaW7X%2F7QlIshsabaCuNuSCfwr0%2BBIOKLGD2sFXIFn2Q%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1788036382"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=AaW7X%2F7QlIshsabaCuNuSCfwr0%2BBIOKLGD2sFXIFn2Q%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1788036382"', 'Server': 'cloudflare', 'vary': 'Origin, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1788036403', 'Age': '11093', 'Accept-Ranges': 'bytes', 'cf-cache-status': 'HIT', 'CF-RAY': 'a37b4fce3d51bc39-MNL', 'alt-svc': 'h3=":443"; ma=86400'} 
  body=[
   {
     "id": 1,
@@ -251,30 +310,30 @@
   }
 ] 
  </msg>
-<msg time="2026-09-08T09:41:54.454636" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+<msg time="2026-09-08T12:46:48.393333" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
   warnings.warn(</msg>
-<msg time="2026-09-08T09:41:54.454636" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<msg time="2026-09-08T12:46:48.395330" level="INFO">${response} = &lt;Response [200]&gt;</msg>
 <var>${response}</var>
 <arg>api</arg>
 <arg>${users_path}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-08T09:41:53.514993" elapsed="0.939643"/>
+<status status="PASS" start="2026-09-08T12:46:48.372268" elapsed="0.023062"/>
 </kw>
-<kw name="Should Be Equal As Strings" owner="BuiltIn">
-<msg time="2026-09-08T09:41:54.454636" level="INFO">Argument types are:
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-08T12:46:48.396336" level="INFO">Argument types are:
 &lt;class 'int'&gt;
 &lt;class 'str'&gt;</msg>
 <arg>${response.status_code}</arg>
 <arg>200</arg>
-<doc>Fails if objects are unequal after converting them to strings.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.000000"/>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.395330" elapsed="0.001006"/>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-09-08T09:41:54.454636" level="INFO">${res} = [{'id': 1, 'name': 'Leanne Graham', 'username': 'Bret', 'email': 'Sincere@april.biz', 'address': {'street': 'Kulas Light', 'suite': 'Apt. 556', 'city': 'Gwenborough', 'zipcode': '92998-3874', 'geo': {...</msg>
+<msg time="2026-09-08T12:46:48.398349" level="INFO">${res} = [{'id': 1, 'name': 'Leanne Graham', 'username': 'Bret', 'email': 'Sincere@april.biz', 'address': {'street': 'Kulas Light', 'suite': 'Apt. 556', 'city': 'Gwenborough', 'zipcode': '92998-3874', 'geo': {...</msg>
 <var>${res}</var>
 <arg>${response.json()}</arg>
 <doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.397342" elapsed="0.001007"/>
 </kw>
 <for flavor="IN">
 <iter>
@@ -285,10 +344,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.400351" elapsed="0.000997"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.400351" elapsed="0.000997"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -296,10 +355,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.468411" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.401348" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.013775"/>
+<status status="PASS" start="2026-09-08T12:46:48.401348" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -307,10 +366,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.468411" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.402350" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.468411" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.402350" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -318,10 +377,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.469452" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.402350" elapsed="0.000999"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.469452" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.402350" elapsed="0.000999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -329,10 +388,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.469452" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.403349" elapsed="0.001000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.469452" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.403349" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -340,10 +399,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.470450" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.404349" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.469452" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.404349" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -351,10 +410,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.470450" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.405348" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.470450" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.405348" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -362,14 +421,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.470450" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.405348" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.470450" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.405348" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.016812"/>
+<status status="PASS" start="2026-09-08T12:46:48.400351" elapsed="0.004997"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -378,10 +437,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.471448" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.406356" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.471448" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.406356" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -389,10 +448,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.471448" elapsed="0.001003"/>
+<status status="PASS" start="2026-09-08T12:46:48.406356" elapsed="0.001008"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.471448" elapsed="0.001003"/>
+<status status="PASS" start="2026-09-08T12:46:48.406356" elapsed="0.001008"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -400,10 +459,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.407364" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.407364" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -411,10 +470,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.407364" elapsed="0.001007"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.407364" elapsed="0.001007"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -422,14 +481,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.408371" elapsed="0.000000"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.408371" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.471448" elapsed="0.001003"/>
+<status status="PASS" start="2026-09-08T12:46:48.406356" elapsed="0.002015"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -438,10 +497,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.473990" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.409369" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.473990" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.409369" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -449,14 +508,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.473990" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.409369" elapsed="0.001002"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.473990" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.409369" elapsed="0.001002"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.472451" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.408371" elapsed="0.002000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -465,10 +524,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.475027" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.410371" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.473990" elapsed="0.001037"/>
+<status status="PASS" start="2026-09-08T12:46:48.410371" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -476,10 +535,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.475027" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.411370" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.475027" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.411370" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -487,17 +546,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.475027" elapsed="0.001038"/>
+<status status="PASS" start="2026-09-08T12:46:48.411370" elapsed="0.000000"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.475027" elapsed="0.001038"/>
+<status status="PASS" start="2026-09-08T12:46:48.411370" elapsed="0.001002"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.473990" elapsed="0.002075"/>
+<status status="PASS" start="2026-09-08T12:46:48.410371" elapsed="0.002001"/>
 </for>
 <var name="${user}">{'id': 1, 'name': 'Leanne Graham', 'username': 'Bret', 'email': 'Sincere@april.biz', 'address': {'street': 'Kulas Light', 'suite': 'Apt. 556', 'city': 'Gwenborough', 'zipcode': '92998-3874', 'geo': {'...</var>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.021429"/>
+<status status="PASS" start="2026-09-08T12:46:48.400351" elapsed="0.012021"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -507,10 +566,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.476065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.412372" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.476065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.412372" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -518,10 +577,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.477065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.412372" elapsed="0.000997"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.476065" elapsed="0.001000"/>
+<status status="PASS" start="2026-09-08T12:46:48.412372" elapsed="0.000997"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -529,10 +588,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.477065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.413369" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.477065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.413369" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -540,10 +599,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.477065" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.413369" elapsed="0.000000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.477065" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.413369" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -551,10 +610,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.478064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.414876" elapsed="0.000000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.478064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.413369" elapsed="0.001507"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -562,10 +621,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.478064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.414876" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.478064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.414876" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -573,10 +632,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.478064" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.416398" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.478064" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.414876" elapsed="0.001522"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -584,14 +643,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.479063" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.416398" elapsed="0.002017"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.479063" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.416398" elapsed="0.002017"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.476065" elapsed="0.002998"/>
+<status status="PASS" start="2026-09-08T12:46:48.412372" elapsed="0.006043"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -600,10 +659,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.479063" elapsed="0.001002"/>
+<status status="PASS" start="2026-09-08T12:46:48.419412" elapsed="0.001001"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.479063" elapsed="0.001002"/>
+<status status="PASS" start="2026-09-08T12:46:48.419412" elapsed="0.001001"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -611,10 +670,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.480065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.420413" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.480065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.420413" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -622,10 +681,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.480065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.421414" elapsed="0.000999"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.480065" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.420413" elapsed="0.002000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -633,10 +692,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.481064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.422413" elapsed="0.001001"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.480065" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.422413" elapsed="0.001001"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -644,14 +703,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.481064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.423414" elapsed="0.001001"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.481064" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.423414" elapsed="0.001001"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.479063" elapsed="0.002001"/>
+<status status="PASS" start="2026-09-08T12:46:48.418415" elapsed="0.006000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -660,10 +719,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.481064" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.425421" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.481064" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.425421" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -671,14 +730,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.482063" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.425421" elapsed="0.001002"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.482063" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.425421" elapsed="0.001002"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.481064" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.424415" elapsed="0.002008"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -687,10 +746,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.482063" elapsed="0.000979"/>
+<status status="PASS" start="2026-09-08T12:46:48.426423" elapsed="0.000507"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.482063" elapsed="0.000979"/>
+<status status="PASS" start="2026-09-08T12:46:48.426423" elapsed="0.000507"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -698,10 +757,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.426930" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.426930" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -709,17 +768,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.426930" elapsed="0.001005"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.426930" elapsed="0.001005"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.482063" elapsed="0.000979"/>
+<status status="PASS" start="2026-09-08T12:46:48.426423" elapsed="0.001512"/>
 </for>
 <var name="${user}">{'id': 2, 'name': 'Ervin Howell', 'username': 'Antonette', 'email': 'Shanna@melissa.tv', 'address': {'street': 'Victor Plains', 'suite': 'Suite 879', 'city': 'Wisokyburgh', 'zipcode': '90566-7771', 'g...</var>
-<status status="PASS" start="2026-09-08T09:41:54.476065" elapsed="0.006977"/>
+<status status="PASS" start="2026-09-08T12:46:48.412372" elapsed="0.015563"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -729,10 +788,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.001537"/>
+<status status="PASS" start="2026-09-08T12:46:48.427935" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.001537"/>
+<status status="PASS" start="2026-09-08T12:46:48.427935" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -740,10 +799,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.484579" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.427935" elapsed="0.001007"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.484579" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.427935" elapsed="0.001007"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -751,10 +810,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.484579" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.428942" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.484579" elapsed="0.001037"/>
+<status status="PASS" start="2026-09-08T12:46:48.428942" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -762,10 +821,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.485616" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.428942" elapsed="0.000999"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.485616" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.428942" elapsed="0.000999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -773,10 +832,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.485616" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.429941" elapsed="0.000000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.485616" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.429941" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -784,10 +843,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.486585" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.429941" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.485616" elapsed="0.000969"/>
+<status status="PASS" start="2026-09-08T12:46:48.429941" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -795,10 +854,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.486585" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.430941" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.486585" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.430941" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -806,14 +865,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.486585" elapsed="0.001006"/>
+<status status="PASS" start="2026-09-08T12:46:48.430941" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.486585" elapsed="0.001006"/>
+<status status="PASS" start="2026-09-08T12:46:48.430941" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.004549"/>
+<status status="PASS" start="2026-09-08T12:46:48.427935" elapsed="0.003006"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -822,10 +881,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.487591" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.431943" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.487591" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.430941" elapsed="0.001002"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -833,10 +892,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.487591" elapsed="0.001006"/>
+<status status="PASS" start="2026-09-08T12:46:48.431943" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.487591" elapsed="0.001006"/>
+<status status="PASS" start="2026-09-08T12:46:48.431943" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -844,10 +903,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.488597" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.432943" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.488597" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.432943" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -855,10 +914,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.488597" elapsed="0.000993"/>
+<status status="PASS" start="2026-09-08T12:46:48.432943" elapsed="0.000999"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.488597" elapsed="0.000993"/>
+<status status="PASS" start="2026-09-08T12:46:48.432943" elapsed="0.002505"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -866,14 +925,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.489590" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.435448" elapsed="0.001006"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.489590" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.435448" elapsed="0.001006"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.487591" elapsed="0.001999"/>
+<status status="PASS" start="2026-09-08T12:46:48.430941" elapsed="0.005513"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -882,10 +941,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.489590" elapsed="0.001001"/>
+<status status="PASS" start="2026-09-08T12:46:48.436454" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.489590" elapsed="0.001001"/>
+<status status="PASS" start="2026-09-08T12:46:48.436454" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -893,14 +952,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.490591" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.436454" elapsed="0.001008"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.490591" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.436454" elapsed="0.001008"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.489590" elapsed="0.001001"/>
+<status status="PASS" start="2026-09-08T12:46:48.436454" elapsed="0.001008"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -909,10 +968,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.490591" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.437462" elapsed="0.001005"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.490591" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.437462" elapsed="0.001005"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -920,10 +979,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.491590" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.438467" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.491590" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.438467" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -931,17 +990,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.492450" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.438467" elapsed="0.002001"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.492450" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.438467" elapsed="0.002001"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.490591" elapsed="0.001859"/>
+<status status="PASS" start="2026-09-08T12:46:48.437462" elapsed="0.003006"/>
 </for>
 <var name="${user}">{'id': 3, 'name': 'Clementine Bauch', 'username': 'Samantha', 'email': 'Nathan@yesenia.net', 'address': {'street': 'Douglas Extension', 'suite': 'Suite 847', 'city': 'McKenziehaven', 'zipcode': '59590...</var>
-<status status="PASS" start="2026-09-08T09:41:54.483042" elapsed="0.009408"/>
+<status status="PASS" start="2026-09-08T12:46:48.427935" elapsed="0.012533"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -951,10 +1010,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.493958" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.440468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.493958" elapsed="0.001040"/>
+<status status="PASS" start="2026-09-08T12:46:48.440468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -962,10 +1021,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.441468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.441468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -973,10 +1032,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.441468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.441468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -984,10 +1043,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.441468" elapsed="0.001000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.441468" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -995,10 +1054,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.442468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.442468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1006,10 +1065,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.442468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.442468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1017,10 +1076,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.443466" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.443466" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1028,14 +1087,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.443466" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.443466" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.493958" elapsed="0.001040"/>
+<status status="PASS" start="2026-09-08T12:46:48.440468" elapsed="0.002998"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1044,10 +1103,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.443466" elapsed="0.001002"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1055,10 +1114,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1066,10 +1125,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1077,10 +1136,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.001505"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.444468" elapsed="0.001505"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1088,14 +1147,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.005082"/>
+<status status="PASS" start="2026-09-08T12:46:48.445973" elapsed="0.000000"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.005082"/>
+<status status="PASS" start="2026-09-08T12:46:48.445973" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.494998" elapsed="0.005082"/>
+<status status="PASS" start="2026-09-08T12:46:48.443466" elapsed="0.002507"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1104,10 +1163,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.445973" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.445973" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1115,14 +1174,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.445973" elapsed="0.001006"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1131,10 +1190,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.001660"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.001660"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1142,10 +1201,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.501740" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.501740" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1153,17 +1212,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.501740" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.001505"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.501740" elapsed="0.001008"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.001505"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.500080" elapsed="0.002668"/>
+<status status="PASS" start="2026-09-08T12:46:48.446979" elapsed="0.001505"/>
 </for>
 <var name="${user}">{'id': 4, 'name': 'Patricia Lebsack', 'username': 'Karianne', 'email': 'Julianne.OConner@kory.org', 'address': {'street': 'Hoeger Mall', 'suite': 'Apt. 692', 'city': 'South Elvis', 'zipcode': '53919-4...</var>
-<status status="PASS" start="2026-09-08T09:41:54.493958" elapsed="0.008790"/>
+<status status="PASS" start="2026-09-08T12:46:48.440468" elapsed="0.008016"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -1173,10 +1232,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.502748" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.448484" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.502748" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.448484" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1184,10 +1243,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.502748" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.448484" elapsed="0.001005"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.502748" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.448484" elapsed="0.001005"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1195,10 +1254,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.503746" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.449489" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.503746" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.449489" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1206,10 +1265,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.503746" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.450494" elapsed="0.000000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.503746" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.449489" elapsed="0.001005"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1217,10 +1276,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.504759" elapsed="0.000410"/>
+<status status="PASS" start="2026-09-08T12:46:48.450494" elapsed="0.000996"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.504759" elapsed="0.000410"/>
+<status status="PASS" start="2026-09-08T12:46:48.450494" elapsed="0.000996"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1228,10 +1287,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.451490" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.451490" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1239,10 +1298,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.451490" elapsed="0.001001"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.451490" elapsed="0.001001"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1250,14 +1309,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.452491" elapsed="0.001002"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.452491" elapsed="0.001002"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.502748" elapsed="0.002421"/>
+<status status="PASS" start="2026-09-08T12:46:48.448484" elapsed="0.005009"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1266,10 +1325,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.002007"/>
+<status status="PASS" start="2026-09-08T12:46:48.453493" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.002007"/>
+<status status="PASS" start="2026-09-08T12:46:48.453493" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1277,10 +1336,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.453493" elapsed="0.000997"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1288,10 +1347,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1299,10 +1358,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.000000"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1310,14 +1369,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.001504"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.454490" elapsed="0.001504"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.505169" elapsed="0.002007"/>
+<status status="PASS" start="2026-09-08T12:46:48.453493" elapsed="0.002501"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1326,10 +1385,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.003220"/>
+<status status="PASS" start="2026-09-08T12:46:48.455994" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.003220"/>
+<status status="PASS" start="2026-09-08T12:46:48.455994" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1337,14 +1396,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.455994" elapsed="0.001017"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.455994" elapsed="0.001017"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.507176" elapsed="0.003220"/>
+<status status="PASS" start="2026-09-08T12:46:48.455994" elapsed="0.001017"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1353,10 +1412,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.457011" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.457011" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1364,10 +1423,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.458007" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.458007" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1375,17 +1434,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.458007" elapsed="0.000000"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.458007" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.457011" elapsed="0.000996"/>
 </for>
 <var name="${user}">{'id': 5, 'name': 'Chelsey Dietrich', 'username': 'Kamren', 'email': 'Lucio_Hettinger@annie.ca', 'address': {'street': 'Skiles Walks', 'suite': 'Suite 351', 'city': 'Roscoeview', 'zipcode': '33263', '...</var>
-<status status="PASS" start="2026-09-08T09:41:54.502748" elapsed="0.007648"/>
+<status status="PASS" start="2026-09-08T12:46:48.448484" elapsed="0.009523"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -1395,10 +1454,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1406,10 +1465,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1417,10 +1476,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.000997"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.000997"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1428,10 +1487,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459999" elapsed="0.000000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459999" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1439,10 +1498,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459999" elapsed="0.000000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459999" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1450,10 +1509,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.460999" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.460999" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1461,10 +1520,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.460999" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.460999" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1472,14 +1531,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462000" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.460999" elapsed="0.001001"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.459002" elapsed="0.002998"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1488,10 +1547,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462000" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462000" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1499,10 +1558,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462000" elapsed="0.000999"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462000" elapsed="0.000999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1510,10 +1569,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462999" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462999" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1521,10 +1580,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462999" elapsed="0.000000"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462999" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1532,14 +1591,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.462000" elapsed="0.002001"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1548,10 +1607,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1559,14 +1618,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.000000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1575,10 +1634,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.519476" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.465507" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.001147"/>
+<status status="PASS" start="2026-09-08T12:46:48.465507" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1586,10 +1645,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.519476" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.465507" elapsed="0.000503"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.519476" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.465507" elapsed="0.000503"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1597,17 +1656,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.520474" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.466010" elapsed="0.000000"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.520474" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.466010" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.518329" elapsed="0.002145"/>
+<status status="PASS" start="2026-09-08T12:46:48.464001" elapsed="0.002009"/>
 </for>
 <var name="${user}">{'id': 6, 'name': 'Mrs. Dennis Schulist', 'username': 'Leopoldo_Corkery', 'email': 'Karley_Dach@jasper.info', 'address': {'street': 'Norberto Crossing', 'suite': 'Apt. 950', 'city': 'South Christy', '...</var>
-<status status="PASS" start="2026-09-08T09:41:54.510396" elapsed="0.010078"/>
+<status status="PASS" start="2026-09-08T12:46:48.458007" elapsed="0.008003"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -1617,10 +1676,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.520474" elapsed="0.000997"/>
+<status status="PASS" start="2026-09-08T12:46:48.467018" elapsed="0.000999"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.520474" elapsed="0.000997"/>
+<status status="PASS" start="2026-09-08T12:46:48.467018" elapsed="0.000999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1628,10 +1687,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.521471" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.468017" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.521471" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.468017" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1639,10 +1698,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.521471" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.469017" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.521471" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.469017" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1650,10 +1709,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.469017" elapsed="0.000000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.521471" elapsed="0.001001"/>
+<status status="PASS" start="2026-09-08T12:46:48.469017" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1661,10 +1720,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.469017" elapsed="0.000998"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.469017" elapsed="0.000998"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1672,10 +1731,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.470015" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.470015" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1683,10 +1742,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.470015" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.522472" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.470015" elapsed="0.000999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1694,14 +1753,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.524011" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.471014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.524011" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.471014" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.520474" elapsed="0.003537"/>
+<status status="PASS" start="2026-09-08T12:46:48.467018" elapsed="0.003996"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1710,10 +1769,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.524011" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.471014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.524011" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.471014" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1721,10 +1780,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.525047" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.472014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.524011" elapsed="0.001036"/>
+<status status="PASS" start="2026-09-08T12:46:48.471014" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1732,10 +1791,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.525047" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.472014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.525047" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.472014" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1743,10 +1802,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.525047" elapsed="0.001038"/>
+<status status="PASS" start="2026-09-08T12:46:48.472014" elapsed="0.001000"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.525047" elapsed="0.001038"/>
+<status status="PASS" start="2026-09-08T12:46:48.472014" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1754,14 +1813,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.526085" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.473014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.526085" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.473014" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.524011" elapsed="0.002074"/>
+<status status="PASS" start="2026-09-08T12:46:48.471014" elapsed="0.002000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1770,10 +1829,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.526085" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.473014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.526085" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.473014" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1781,14 +1840,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.526085" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.473014" elapsed="0.001000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1797,10 +1856,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1808,10 +1867,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.001005"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.001005"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1819,17 +1878,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.528088" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.475519" elapsed="0.000000"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.528088" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.001505"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.527083" elapsed="0.001005"/>
+<status status="PASS" start="2026-09-08T12:46:48.474014" elapsed="0.001505"/>
 </for>
 <var name="${user}">{'id': 7, 'name': 'Kurtis Weissnat', 'username': 'Elwyn.Skiles', 'email': 'Telly.Hoeger@billy.biz', 'address': {'street': 'Rex Trail', 'suite': 'Suite 280', 'city': 'Howemouth', 'zipcode': '58804-1099...</var>
-<status status="PASS" start="2026-09-08T09:41:54.520474" elapsed="0.007614"/>
+<status status="PASS" start="2026-09-08T12:46:48.467018" elapsed="0.008501"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -1839,10 +1898,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.476024" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.528088" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.476024" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1850,10 +1909,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.476024" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.476024" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1861,10 +1920,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.477030" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.476024" elapsed="0.001006"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1872,10 +1931,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.477030" elapsed="0.000000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.529086" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.477030" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1883,10 +1942,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.530623" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.478029" elapsed="0.000000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.530623" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.478029" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1894,10 +1953,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.530623" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.478029" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.530623" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.478029" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1905,10 +1964,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.530623" elapsed="0.001040"/>
+<status status="PASS" start="2026-09-08T12:46:48.478029" elapsed="0.001005"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.530623" elapsed="0.001040"/>
+<status status="PASS" start="2026-09-08T12:46:48.478029" elapsed="0.001005"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1916,14 +1975,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.531663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.479034" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.531663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.479034" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.528088" elapsed="0.003575"/>
+<status status="PASS" start="2026-09-08T12:46:48.476024" elapsed="0.003010"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1932,10 +1991,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.531663" elapsed="0.001000"/>
+<status status="PASS" start="2026-09-08T12:46:48.479034" elapsed="0.000999"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.531663" elapsed="0.001000"/>
+<status status="PASS" start="2026-09-08T12:46:48.479034" elapsed="0.000999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1943,10 +2002,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1954,10 +2013,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1965,10 +2024,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.000000"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -1976,14 +2035,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.001505"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.532663" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.480033" elapsed="0.001505"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.531663" elapsed="0.002539"/>
+<status status="PASS" start="2026-09-08T12:46:48.479034" elapsed="0.002504"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -1992,10 +2051,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.534202" elapsed="0.000538"/>
+<status status="PASS" start="2026-09-08T12:46:48.481538" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.534202" elapsed="0.000538"/>
+<status status="PASS" start="2026-09-08T12:46:48.481538" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2003,14 +2062,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.534740" elapsed="0.000530"/>
+<status status="PASS" start="2026-09-08T12:46:48.481538" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.534740" elapsed="0.000530"/>
+<status status="PASS" start="2026-09-08T12:46:48.481538" elapsed="0.001008"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.534202" elapsed="0.001068"/>
+<status status="PASS" start="2026-09-08T12:46:48.481538" elapsed="0.001008"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2019,10 +2078,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.535270" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.482546" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.535270" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.482546" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2030,10 +2089,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.535270" elapsed="0.001072"/>
+<status status="PASS" start="2026-09-08T12:46:48.484545" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.535270" elapsed="0.001072"/>
+<status status="PASS" start="2026-09-08T12:46:48.482546" elapsed="0.001999"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2041,17 +2100,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.536342" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.484545" elapsed="0.000000"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.536342" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.484545" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.535270" elapsed="0.001072"/>
+<status status="PASS" start="2026-09-08T12:46:48.482546" elapsed="0.001999"/>
 </for>
 <var name="${user}">{'id': 8, 'name': 'Nicholas Runolfsdottir V', 'username': 'Maxime_Nienow', 'email': 'Sherwood@rosamond.me', 'address': {'street': 'Ellsworth Summit', 'suite': 'Suite 729', 'city': 'Aliyaview', 'zipcod...</var>
-<status status="PASS" start="2026-09-08T09:41:54.528088" elapsed="0.008254"/>
+<status status="PASS" start="2026-09-08T12:46:48.475519" elapsed="0.009026"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -2061,10 +2120,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.536342" elapsed="0.000996"/>
+<status status="PASS" start="2026-09-08T12:46:48.486053" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.536342" elapsed="0.000996"/>
+<status status="PASS" start="2026-09-08T12:46:48.486053" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2072,10 +2131,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.537338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.486053" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.537338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.486053" elapsed="0.001004"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2083,10 +2142,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.537338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.487057" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.537338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.487057" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2094,10 +2153,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.538338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.487057" elapsed="0.000000"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.537338" elapsed="0.001000"/>
+<status status="PASS" start="2026-09-08T12:46:48.487057" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2105,10 +2164,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.538338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.488057" elapsed="0.000000"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.538338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.487057" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2116,10 +2175,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.538338" elapsed="0.001001"/>
+<status status="PASS" start="2026-09-08T12:46:48.488057" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.538338" elapsed="0.001001"/>
+<status status="PASS" start="2026-09-08T12:46:48.488057" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2127,10 +2186,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.539339" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.488057" elapsed="0.001002"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.539339" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.488057" elapsed="0.001002"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2138,14 +2197,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.539339" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.489059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.539339" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.489059" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.536342" elapsed="0.002997"/>
+<status status="PASS" start="2026-09-08T12:46:48.486053" elapsed="0.003006"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2154,10 +2213,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.540342" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.489059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.539339" elapsed="0.001003"/>
+<status status="PASS" start="2026-09-08T12:46:48.489059" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2165,10 +2224,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.540342" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.490059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.540342" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.490059" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2176,10 +2235,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.540342" elapsed="0.000996"/>
+<status status="PASS" start="2026-09-08T12:46:48.490059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.540342" elapsed="0.000996"/>
+<status status="PASS" start="2026-09-08T12:46:48.490059" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2187,10 +2246,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.541338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.490059" elapsed="0.001000"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.541338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.490059" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2198,14 +2257,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.541338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.491059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.541338" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.491059" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.539339" elapsed="0.001999"/>
+<status status="PASS" start="2026-09-08T12:46:48.489059" elapsed="0.002000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2214,10 +2273,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.491059" elapsed="0.001000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.541338" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.491059" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2225,14 +2284,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.492059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.492059" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.541338" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.491059" elapsed="0.001000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2241,10 +2300,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.492059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.492059" elapsed="0.001000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2252,10 +2311,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.493059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.493059" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2263,17 +2322,17 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.543876" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.493059" elapsed="0.000000"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.543876" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.493059" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.542337" elapsed="0.001539"/>
+<status status="PASS" start="2026-09-08T12:46:48.492059" elapsed="0.001000"/>
 </for>
 <var name="${user}">{'id': 9, 'name': 'Glenna Reichert', 'username': 'Delphine', 'email': 'Chaim_McDermott@dana.io', 'address': {'street': 'Dayna Park', 'suite': 'Suite 449', 'city': 'Bartholomebury', 'zipcode': '76495-3...</var>
-<status status="PASS" start="2026-09-08T09:41:54.536342" elapsed="0.007534"/>
+<status status="PASS" start="2026-09-08T12:46:48.486053" elapsed="0.007006"/>
 </iter>
 <iter>
 <for flavor="IN">
@@ -2283,10 +2342,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.543876" elapsed="0.001039"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.000000"/>
 </kw>
 <var name="${field}">id</var>
-<status status="PASS" start="2026-09-08T09:41:54.543876" elapsed="0.001039"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2294,10 +2353,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.544915" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.544915" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2305,10 +2364,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.544915" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.000000"/>
 </kw>
 <var name="${field}">username</var>
-<status status="PASS" start="2026-09-08T09:41:54.544915" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2316,10 +2375,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.544915" elapsed="0.001012"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.001506"/>
 </kw>
 <var name="${field}">email</var>
-<status status="PASS" start="2026-09-08T09:41:54.544915" elapsed="0.001012"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.001506"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2327,10 +2386,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.545927" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.495566" elapsed="0.000504"/>
 </kw>
 <var name="${field}">address</var>
-<status status="PASS" start="2026-09-08T09:41:54.545927" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.495566" elapsed="0.000504"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2338,10 +2397,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.545927" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.496070" elapsed="0.000000"/>
 </kw>
 <var name="${field}">phone</var>
-<status status="PASS" start="2026-09-08T09:41:54.545927" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.496070" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2349,10 +2408,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.546953" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.496070" elapsed="0.000000"/>
 </kw>
 <var name="${field}">website</var>
-<status status="PASS" start="2026-09-08T09:41:54.545927" elapsed="0.001026"/>
+<status status="PASS" start="2026-09-08T12:46:48.496070" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2360,14 +2419,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.546953" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.496070" elapsed="0.001004"/>
 </kw>
 <var name="${field}">company</var>
-<status status="PASS" start="2026-09-08T09:41:54.546953" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.496070" elapsed="0.001004"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_USER_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.543876" elapsed="0.003077"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.003014"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2376,10 +2435,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.546953" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.497074" elapsed="0.000000"/>
 </kw>
 <var name="${field}">street</var>
-<status status="PASS" start="2026-09-08T09:41:54.546953" elapsed="0.000998"/>
+<status status="PASS" start="2026-09-08T12:46:48.497074" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2387,10 +2446,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.547951" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.497074" elapsed="0.001002"/>
 </kw>
 <var name="${field}">suite</var>
-<status status="PASS" start="2026-09-08T09:41:54.547951" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.497074" elapsed="0.001002"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2398,10 +2457,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.547951" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.498076" elapsed="0.000000"/>
 </kw>
 <var name="${field}">city</var>
-<status status="PASS" start="2026-09-08T09:41:54.547951" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.498076" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2409,10 +2468,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.548950" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.498076" elapsed="0.000000"/>
 </kw>
 <var name="${field}">zipcode</var>
-<status status="PASS" start="2026-09-08T09:41:54.547951" elapsed="0.000999"/>
+<status status="PASS" start="2026-09-08T12:46:48.498076" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2420,14 +2479,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] address is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.548950" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.499074" elapsed="0.000000"/>
 </kw>
 <var name="${field}">geo</var>
-<status status="PASS" start="2026-09-08T09:41:54.548950" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.499074" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_ADDRESS_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.546953" elapsed="0.001997"/>
+<status status="PASS" start="2026-09-08T12:46:48.497074" elapsed="0.002000"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2436,10 +2495,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.549921" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.500076" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lat</var>
-<status status="PASS" start="2026-09-08T09:41:54.549921" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.499074" elapsed="0.001002"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2447,14 +2506,14 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] geo is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.549921" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.501076" elapsed="0.000000"/>
 </kw>
 <var name="${field}">lng</var>
-<status status="PASS" start="2026-09-08T09:41:54.549921" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.501076" elapsed="0.000000"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_GEO_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.549921" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.499074" elapsed="0.002002"/>
 </for>
 <for flavor="IN">
 <iter>
@@ -2463,10 +2522,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.550920" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.502074" elapsed="0.000000"/>
 </kw>
 <var name="${field}">name</var>
-<status status="PASS" start="2026-09-08T09:41:54.550920" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.501076" elapsed="0.000998"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2474,10 +2533,10 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.550920" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.502074" elapsed="0.000000"/>
 </kw>
 <var name="${field}">catchPhrase</var>
-<status status="PASS" start="2026-09-08T09:41:54.550920" elapsed="0.000000"/>
+<status status="PASS" start="2026-09-08T12:46:48.502074" elapsed="0.000000"/>
 </iter>
 <iter>
 <kw name="Dictionary Should Contain Key" owner="Collections">
@@ -2485,39 +2544,173 @@
 <arg>${field}</arg>
 <arg>msg=User ${user}[id] company is missing field '${field}'</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="PASS" start="2026-09-08T09:41:54.550920" elapsed="0.001000"/>
+<status status="PASS" start="2026-09-08T12:46:48.502074" elapsed="0.000998"/>
 </kw>
 <var name="${field}">bs</var>
-<status status="PASS" start="2026-09-08T09:41:54.550920" elapsed="0.001000"/>
+<status status="PASS" start="2026-09-08T12:46:48.502074" elapsed="0.000998"/>
 </iter>
 <var>${field}</var>
 <value>@{EXPECTED_COMPANY_FIELDS}</value>
-<status status="PASS" start="2026-09-08T09:41:54.549921" elapsed="0.001999"/>
+<status status="PASS" start="2026-09-08T12:46:48.501076" elapsed="0.001996"/>
 </for>
 <var name="${user}">{'id': 10, 'name': 'Clementina DuBuque', 'username': 'Moriah.Stanton', 'email': 'Rey.Padberg@karina.biz', 'address': {'street': 'Kattie Turnpike', 'suite': 'Suite 198', 'city': 'Lebsackbury', 'zipcode...</var>
-<status status="PASS" start="2026-09-08T09:41:54.543876" elapsed="0.008044"/>
+<status status="PASS" start="2026-09-08T12:46:48.494060" elapsed="0.009012"/>
 </iter>
 <var>${user}</var>
 <value>@{res}</value>
-<status status="PASS" start="2026-09-08T09:41:54.454636" elapsed="0.097284"/>
+<status status="PASS" start="2026-09-08T12:46:48.398349" elapsed="0.104723"/>
 </for>
 <doc>Verifies every user in the response contains all expected top-level and nested fields.</doc>
 <tag>api</tag>
 <tag>smoke</tag>
-<status status="PASS" start="2026-09-08T09:41:53.513995" elapsed="1.037925"/>
+<status status="PASS" start="2026-09-08T12:46:48.371269" elapsed="0.131803"/>
 </test>
-<status status="PASS" start="2026-09-08T09:41:53.092992" elapsed="1.459928"/>
+<test id="s1-s1-t3" name="Verify Post Api" line="62">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-08T12:46:49.487174" level="INFO">POST Request : url=https://jsonplaceholder.typicode.com/posts 
+ path_url=/posts 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '88', 'Content-Type': 'application/json'} 
+ body=b'{"userId": "1", "id": "1", "title": "Sample Title", "body": "Sample body for this post"}' 
+ </msg>
+<msg time="2026-09-08T12:46:49.487174" level="INFO">POST Response : url=https://jsonplaceholder.typicode.com/posts 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 08 Sep 2026 04:46:51 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '98', 'Connection': 'keep-alive', 'access-control-allow-credentials': 'true', 'access-control-expose-headers': 'Location', 'Cache-Control': 'no-cache', 'etag': 'W/"62-nG//7HEygryVYaNqkh9BEwn16XE"', 'expires': '-1', 'location': 'https://jsonplaceholder.typicode.com/posts/101', 'nel': '{"report_to":"heroku-nel","response_headers":["Via"],"max_age":3600,"success_fraction":0.01,"failure_fraction":0.1}', 'pragma': 'no-cache', 'report-to': '{"group":"heroku-nel","endpoints":[{"url":"https://nel.heroku.com/reports?s=%2BVK7ztlOGnDDV%2Fz53%2BAjVyK%2FQ1K3hBw5AtnjZZBYtZk%3D\\u0026sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d\\u0026ts=1788842811"}],"max_age":3600}', 'reporting-endpoints': 'heroku-nel="https://nel.heroku.com/reports?s=%2BVK7ztlOGnDDV%2Fz53%2BAjVyK%2FQ1K3hBw5AtnjZZBYtZk%3D&amp;sid=e11707d5-02a7-43ef-b45e-2cf4d2036f7d&amp;ts=1788842811"', 'Server': 'cloudflare', 'vary': 'Origin, X-HTTP-Method-Override, Accept-Encoding', 'via': '2.0 heroku-router', 'x-content-type-options': 'nosniff', 'x-powered-by': 'Express', 'x-ratelimit-limit': '1000', 'x-ratelimit-remaining': '999', 'x-ratelimit-reset': '1788842822', 'cf-cache-status': 'DYNAMIC', 'CF-RAY': 'a37b4fcf0e00bc39-MNL', 'alt-svc': 'h3=":443"; ma=86400'} 
+ body={
+  "userId": "1",
+  "id": 101,
+  "title": "Sample Title",
+  "body": "Sample body for this post"
+} 
+ </msg>
+<msg time="2026-09-08T12:46:49.488174" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'jsonplaceholder.typicode.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-08T12:46:49.488174" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>${post_path}</arg>
+<arg>json=${SAMPLE}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-08T12:46:48.504076" elapsed="0.984098"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-08T12:46:49.490181" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>201</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-08T12:46:49.489182" elapsed="0.000999"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-09-08T12:46:49.491181" level="INFO">${res} = {'userId': '1', 'id': 101, 'title': 'Sample Title', 'body': 'Sample body for this post'}</msg>
+<var>${res}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-09-08T12:46:49.490181" elapsed="0.001000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${res}</arg>
+<arg>id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-09-08T12:46:49.492181" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<arg>${res}[userId]</arg>
+<arg>1</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-08T12:46:49.492181" elapsed="0.001007"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${res}[title]</arg>
+<arg>Sample Title</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-09-08T12:46:49.494185" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${res}[body]</arg>
+<arg>Sample body for this post</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2026-09-08T12:46:49.495185" elapsed="0.000000"/>
+</kw>
+<doc>Verifies POST /posts creates a resource and returns the expected fields.</doc>
+<tag>api</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-09-08T12:46:48.503072" elapsed="0.992113"/>
+</test>
+<status status="PASS" start="2026-09-08T12:46:47.908753" elapsed="1.588447"/>
+</suite>
+<suite id="s1-s2" name="PortfolioTestSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\PortfolioTestSuite.robot">
+<test id="s1-s2-t1" name="Open Portfolio and Verify Nav Buttons" line="11">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-08T12:46:50.139415" elapsed="5.778620"/>
+</kw>
+<kw name="Click Nav Buttons" owner="CustomKeywords">
+<doc>Perform Click and close to each one of the navigator buttons</doc>
+<status status="PASS" start="2026-09-08T12:46:55.918035" elapsed="3.665487"/>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-08T12:46:59.584523" elapsed="2.229304"/>
+</kw>
+<doc>Opens the portfolio site and clicks through nav buttons</doc>
+<status status="PASS" start="2026-09-08T12:46:50.139415" elapsed="11.674412"/>
+</test>
+<test id="s1-s2-t2" name="Test Toggle Light and Dark Mode" line="15">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-08T12:47:01.815316" elapsed="2.576685"/>
+</kw>
+<kw name="Switch To Light Mode" owner="CustomKeywords">
+<doc>Toggles the site to light mode.</doc>
+<status status="PASS" start="2026-09-08T12:47:04.393003" elapsed="0.416372"/>
+</kw>
+<kw name="Switch To Dark Mode" owner="CustomKeywords">
+<doc>Toggles the site to dark mode.</doc>
+<status status="PASS" start="2026-09-08T12:47:04.811374" elapsed="0.326953"/>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-08T12:47:05.139327" elapsed="2.375845"/>
+</kw>
+<doc>Test the toggle Light and Dark Mode</doc>
+<status status="PASS" start="2026-09-08T12:47:01.814805" elapsed="5.701401"/>
+</test>
+<test id="s1-s2-t3" name="Verify Resume Linking" line="20">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-08T12:47:07.520249" elapsed="1.307783"/>
+</kw>
+<kw name="Opens the Resume" owner="CustomKeywords">
+<doc>Open the Resume then verify if it is actually opened</doc>
+<status status="PASS" start="2026-09-08T12:47:08.828032" elapsed="3.518723"/>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-08T12:47:12.346755" elapsed="2.152407"/>
+</kw>
+<doc>Verifies that the resume button is working</doc>
+<status status="PASS" start="2026-09-08T12:47:07.518227" elapsed="6.982935"/>
+</test>
+<status status="PASS" start="2026-09-08T12:46:49.498202" elapsed="25.003961"/>
+</suite>
+<status status="PASS" start="2026-09-08T12:46:47.868038" elapsed="26.635124"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">api</stat>
-<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="3" fail="0" skip="0">api</stat>
+<stat pass="3" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="ApiTestSuite" id="s1" pass="1" fail="0" skip="0">ApiTestSuite</stat>
+<stat name="Tests" id="s1" pass="6" fail="0" skip="0">Tests</stat>
+<stat name="ApiTestSuite" id="s1-s1" pass="3" fail="0" skip="0">Tests.ApiTestSuite</stat>
+<stat name="PortfolioTestSuite" id="s1-s2" pass="3" fail="0" skip="0">Tests.PortfolioTestSuite</stat>
 </suite>
 </statistics>
 <errors>
