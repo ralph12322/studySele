@@ -24,4 +24,9 @@ And all Passed the Test Suite
 
 Made a Field Checker; Makes Sure that every Data possess the Necessary Fields
 
-;;  Maybe i'll build something fist then i'll automate the testing myself, that's my next plan.
+;;  Maybe i'll build something first then i'll automate the testing myself, that's my next plan.
+
+# Day 5: I Failed my Assessment Exam as a QA 
+
+It is really heartbreaking for me, I am hoping to get the job since someone is helping me out even though i'm new to the position.
+
