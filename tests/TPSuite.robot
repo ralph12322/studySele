@@ -1,6 +1,7 @@
 *** Settings ***
 Library     ../library/CustomKeywords.py
 Test Setup      Open Portfolio  ${URL}
+Test Teardown    Close Browser
 
 *** Keywords ***
 

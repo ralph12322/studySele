@@ -1,92 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-17T15:51:23.104185" rpa="false" schemaversion="5">
-<suite id="s1" name="TPSuite" source="C:\Users\Raffy Santos\studySele\tests\TPSuite.robot">
-<test id="s1-t1" name="Open site" line="12">
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-17T19:01:01.591510" rpa="false" schemaversion="5">
+<suite id="s1" name="TPSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\TPSuite.robot">
+<test id="s1-t1" name="Open site" line="13">
 <kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
 <arg>${URL}</arg>
 <doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-17T15:51:23.498096" elapsed="3.018070"/>
+<status status="PASS" start="2026-09-17T19:01:01.845027" elapsed="2.702453"/>
 </kw>
 <kw name="Redirect" owner="CustomKeywords">
-<msg time="2026-09-17T15:51:26.580983" level="FAIL">MoveTargetOutOfBoundsException: Message: move target out of bounds
-  (Session info: chrome=152.0.7977.83)
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff6dc74e035+5745]
-	chromedriver!(No symbol) [0x7ff6dc676a90]
-	chromedriver!(No symbol) [0x7ff6dc4a5b66]
-	chromedriver!(No symbol) [0x7ff6dc55b789]
-	chromedriver!(No symbol) [0x7ff6dc5295ca]
-	chromedriver!(No symbol) [0x7ff6dc54e502]
-	chromedriver!(No symbol) [0x7ff6dc4f2e4b]
-	chromedriver!(No symbol) [0x7ff6dc4f3d83]
-	chromedriver!GetHandleVerifier [0x7ff6dcb62f8b+41a69b]
-	chromedriver!GetHandleVerifier [0x7ff6dcb90132+447842]
-	chromedriver!GetHandleVerifier [0x7ff6dcb83e7e+43b58e]
-	chromedriver!GetHandleVerifier [0x7ff6dc843f5e+fb66e]
-	chromedriver!(No symbol) [0x7ff6dc68419c]
-	chromedriver!(No symbol) [0x7ff6dc67fdd4]
-	chromedriver!(No symbol) [0x7ff6dc67ff64]
-	chromedriver!(No symbol) [0x7ff6dc66a91c]
-	KERNEL32!BaseThreadInitThunk [0x7ff8d8feccb7+17]
-	ntdll!RtlUserThreadStart [0x7ff8d9c8ad6c+2c]
-</msg>
 <doc>just go to sign page</doc>
-<status status="FAIL" start="2026-09-17T15:51:26.517722" elapsed="0.072801">MoveTargetOutOfBoundsException: Message: move target out of bounds
-  (Session info: chrome=152.0.7977.83)
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff6dc74e035+5745]
-	chromedriver!(No symbol) [0x7ff6dc676a90]
-	chromedriver!(No symbol) [0x7ff6dc4a5b66]
-	chromedriver!(No symbol) [0x7ff6dc55b789]
-	chromedriver!(No symbol) [0x7ff6dc5295ca]
-	chromedriver!(No symbol) [0x7ff6dc54e502]
-	chromedriver!(No symbol) [0x7ff6dc4f2e4b]
-	chromedriver!(No symbol) [0x7ff6dc4f3d83]
-	chromedriver!GetHandleVerifier [0x7ff6dcb62f8b+41a69b]
-	chromedriver!GetHandleVerifier [0x7ff6dcb90132+447842]
-	chromedriver!GetHandleVerifier [0x7ff6dcb83e7e+43b58e]
-	chromedriver!GetHandleVerifier [0x7ff6dc843f5e+fb66e]
-	chromedriver!(No symbol) [0x7ff6dc68419c]
-	chromedriver!(No symbol) [0x7ff6dc67fdd4]
-	chromedriver!(No symbol) [0x7ff6dc67ff64]
-	chromedriver!(No symbol) [0x7ff6dc66a91c]
-	KERNEL32!BaseThreadInitThunk [0x7ff8d8feccb7+17]
-	ntdll!RtlUserThreadStart [0x7ff8d9c8ad6c+2c]
-</status>
+<status status="PASS" start="2026-09-17T19:01:04.547480" elapsed="1.200197"/>
 </kw>
-<status status="FAIL" start="2026-09-17T15:51:23.497112" elapsed="3.094681">MoveTargetOutOfBoundsException: Message: move target out of bounds
-  (Session info: chrome=152.0.7977.83)
-Stacktrace:
-	chromedriver!GetHandleVerifier [0x7ff6dc74e035+5745]
-	chromedriver!(No symbol) [0x7ff6dc676a90]
-	chromedriver!(No symbol) [0x7ff6dc4a5b66]
-	chromedriver!(No symbol) [0x7ff6dc55b789]
-	chromedriver!(No symbol) [0x7ff6dc5295ca]
-	chromedriver!(No symbol) [0x7ff6dc54e502]
-	chromedriver!(No symbol) [0x7ff6dc4f2e4b]
-	chromedriver!(No symbol) [0x7ff6dc4f3d83]
-	chromedriver!GetHandleVerifier [0x7ff6dcb62f8b+41a69b]
-	chromedriver!GetHandleVerifier [0x7ff6dcb90132+447842]
-	chromedriver!GetHandleVerifier [0x7ff6dcb83e7e+43b58e]
-	chromedriver!GetHandleVerifier [0x7ff6dc843f5e+fb66e]
-	chromedriver!(No symbol) [0x7ff6dc68419c]
-	chromedriver!(No symbol) [0x7ff6dc67fdd4]
-	chromedriver!(No symbol) [0x7ff6dc67ff64]
-	chromedriver!(No symbol) [0x7ff6dc66a91c]
-	KERNEL32!BaseThreadInitThunk [0x7ff8d8feccb7+17]
-	ntdll!RtlUserThreadStart [0x7ff8d9c8ad6c+2c]
-</status>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-17T19:01:05.747677" elapsed="2.138334"/>
+</kw>
+<status status="PASS" start="2026-09-17T19:01:01.844027" elapsed="6.041984"/>
 </test>
-<status status="FAIL" start="2026-09-17T15:51:23.106132" elapsed="3.486965"/>
+<status status="PASS" start="2026-09-17T19:01:01.599030" elapsed="6.286981"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="TPSuite" id="s1" pass="0" fail="1" skip="0">TPSuite</stat>
+<stat name="TPSuite" id="s1" pass="1" fail="0" skip="0">TPSuite</stat>
 </suite>
 </statistics>
 <errors>

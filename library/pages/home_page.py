@@ -23,7 +23,7 @@ class HomePage(BasePage):
                i+=1 
             else:
                 return
-            
+        
         return self
 
     def toggle_to_light_mode(self):
@@ -57,7 +57,7 @@ class HomePage(BasePage):
 
     def redirect(self):
         """Hover over nav trigger, then click Sign In/Up link"""
-        nav_trigger = self.driver.find_element(By.XPATH, "//nav")  # or whatever wraps the hidden links
+        nav_trigger = self.driver.find_element(By.XPATH, "//header")  # or whatever wraps the hidden links
         ActionChains(self.driver).move_to_element(nav_trigger).perform()
 
         button = self.wait_for_clickable(self.sign)

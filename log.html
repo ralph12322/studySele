@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.5 (Python 3.14.3 on win32)" name="Generator">
+<meta content="Robot Framework 7.4.2 (Python 3.11.9 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -574,22 +574,6 @@ th.stats-col-graph:hover {
 .metadata td {
     vertical-align: top;
 }
-.metadata .tags {
-    display: flex;
-    flex-wrap: wrap;
-}
-.metadata .tags .label {
-    font-size: 1em;
-    margin: 0 7px 2px 0;
-    padding: 1px 5px;
-    letter-spacing: normal;
-}
-/* https://stackoverflow.com/questions/75238633 */
-@supports (-moz-appearance: none) {
-    .metadata .tags .label {
-        padding-top: 3px;
-    }
-}
 .keyword-metadata {
     font-size: 0.9em;
 }
@@ -1135,7 +1119,6 @@ window.model = (function () {
         test.fullName = data.parent.fullName + '.' + test.name;
         test.formatParentName = function () { return util.formatParentName(test); };
         test.timeout = data.timeout;
-        test.metadata = data.metadata;
         test.populateKeywords = createIterablePopulator('Keyword');
         test.childrenNames = ['keyword'];
         test.isChildrenLoaded = data.isChildrenLoaded;
@@ -1584,7 +1567,7 @@ window.testdata = function () {
             timeout: strings.get(element[3]),
             args: strings.get(element[5]),
             assign: strings.get(element[6]),
-            tags: tags(element[7], strings),
+            tags: strings.get(element[7]),
             doc: function () {
                 var doc = strings.get(element[4]);
                 this.doc = function () { return doc; };
@@ -1619,7 +1602,7 @@ window.testdata = function () {
         return util.map(taglist, strings.get);
     }
     function createTest(parent, element, strings, index) {
-        var status = element[5];
+        var status = element[4];
         var test = model.Test({
             parent: parent,
             id: 't' + (index + 1),
@@ -1630,7 +1613,6 @@ window.testdata = function () {
                 return doc;
             },
             timeout: strings.get(element[1]),
-            metadata: parseMetadata(element[4], strings),
             status: parseStatus(status),
             message: function () {
                 var msg = status.length == 4 ? strings.get(status[3]) : '';
@@ -1639,9 +1621,9 @@ window.testdata = function () {
             },
             times: model.Times(times(status)),
             tags: tags(element[3], strings),
-            isChildrenLoaded: typeof(element[6]) !== 'number'
+            isChildrenLoaded: typeof(element[5]) !== 'number'
         });
-        lazyPopulateKeywordsFromFile(test, element[6], strings);
+        lazyPopulateKeywordsFromFile(test, element[5], strings);
         return test;
     }
     function createSuite(parent, element, strings, index) {
@@ -2091,31 +2073,31 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[0,0,3487],[],[[4,0,0,[],[],[0,391,3095,5],[[1,6,7,0,8,9,0,[],[1,392,3018],[]],[0,10,7,0,11,0,0,[],[0,3412,73],[[3475,5,5]]]]]],[],[1,0,1,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,6287],[],[[4,0,0,[],[1,245,6042],[[1,5,6,0,7,8,0,0,[1,246,2702],[]],[0,9,6,0,10,0,0,0,[1,2948,1200],[]],[2,11,6,0,12,0,0,0,[1,4149,2138],[]]]]],[],[1,1,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*TPSuite","*C:\\Users\\Raffy Santos\\studySele\\tests\\TPSuite.robot","*tests/TPSuite.robot","*Open site","eNqV001rwjAYwPHz+iniTSlIm/cWdhFkG5sK6nYZHvLyRIu1HWkU9+3X6dhgp3jI7feHh+TJrD3BWvkthMUxLNykPTa2m54NfISqbUo0g65TWyjRoYcoXCRqj/1xSF9wgtBw1aueo6pxbYnMzrcHuM8ZHmdjUQgxlmSUrIIy++CVgTK5uxLrqxP4wQOER9XYGt7AV64Cj96zs3COWyMoZISlTFC2+VcN5y3qPg+6rUd/nguuiiyKUsU051GUMS1kEUdxwYyKoxRYhuNmdRiojqTESrKJv2LNsZM6pbnihb6lK7Kc4JRSISm+pZMEBKSUaCbhhk5S4hikrn80iNsFSfPCRK6Ns5bGUscjab+L+fcAz9PlfPpC8GCiOljvPCj71FRhvTs2+x8urXRgjBZpLvqiCbauB8tQv3bgr0X/f3z41YWRynKTYrNJvgCeKz9o","*Open Portfolio","*CustomKeywords","*<p>Navigates to the given URL using the shared driver.\x3c/p>","*${URL}","*Redirect","*<p>just go to sign page\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*TPSuite","*C:\\Users\\gjcsh\\Desktop\\studySele\\tests\\TPSuite.robot","*tests/TPSuite.robot","*Open site","*Open Portfolio","*CustomKeywords","*<p>Navigates to the given URL using the shared driver.\x3c/p>","*${URL}","*Redirect","*<p>just go to sign page\x3c/p>","*Close Browser","*<p>Close the driver browser\x3c/p>"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:03","fail":1,"label":"All Tests","pass":0,"skip":0}],[],[{"elapsed":"00:00:03","fail":1,"id":"s1","label":"TPSuite","name":"TPSuite","pass":0,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:06","fail":0,"label":"All Tests","pass":1,"skip":0}],[],[{"elapsed":"00:00:06","fail":0,"id":"s1","label":"TPSuite","name":"TPSuite","pass":1,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1789631483106;
+window.output["baseMillis"] = 1789642861599;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 3498;
+window.output["generated"] = 6314;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
 </script>
 <script type="text/javascript">
-window.settings = {"defaultLevel":"INFO","minLevel":"FAIL","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
+window.settings = {"defaultLevel":"INFO","minLevel":"NONE","reportURL":"report.html","rpa":false,"splitLogBase":"log","title":""};
 </script>
 <title></title>
 </head>
@@ -2373,16 +2355,10 @@ function addExecutionLog(main) {
           <td class="doc">{{html doc()}}</td>
         </tr>
         {{/if}}
-        {{each metadata}}
-        <tr>
-          <th>{{html $value[0]}}:</th>
-          <td class="doc">{{html $value[1]}}</td>
-        </tr>
-        {{/each}}
         {{if tags.length}}
         <tr>
           <th>Tags:</th>
-          <td><div class="tags">{{each tags}}<span class="label">{{html $value}}</span>{{/each}}</div></td>
+          <td>{{html tags.join(', ')}}</td>
         </tr>
         {{/if}}
         {{if timeout}}
@@ -2435,10 +2411,10 @@ function addExecutionLog(main) {
           <td class="doc">{{html doc()}}</td>
         </tr>
         {{/if}}
-        {{if tags.length}}
+        {{if tags}}
         <tr>
           <th>Tags:</th>
-          <td><div class="tags">{{each tags}}<span class="label">{{html $value}}</span>{{/each}}</div></td>
+          <td>{{html tags}}</td>
         </tr>
         {{/if}}
         {{if timeout}}
