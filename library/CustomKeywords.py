@@ -62,3 +62,8 @@ class CustomKeywords:
         """Close the driver browser"""
         quit_driver()
         return self
+
+    @keyword("Redirect")
+    def goto_sign(self):
+        """ just go to sign page"""
+        self.home_page.redirect()

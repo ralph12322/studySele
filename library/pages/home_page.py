@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
 import time
+from selenium.webdriver.common.action_chains import ActionChains
 
 class HomePage(BasePage):
     navButtons = (By.CLASS_NAME, "nav-pill-btn")
@@ -8,6 +9,7 @@ class HomePage(BasePage):
     toggleDark = (By.CSS_SELECTOR, "button[aria-label='Switch to light mode']")
     toggleLight = (By.CSS_SELECTOR, "button[aria-label='Switch to dark mode']")
     linkText = (By.PARTIAL_LINK_TEXT, "Resume")
+    sign = (By.XPATH, "//a[@href='/sign' and text()='Log In']")
 
     def test_navigation_buttons(self):
         """Clicks all the Navigation Buttons and Closes"""
@@ -52,4 +54,11 @@ class HomePage(BasePage):
 
         self.wait_until_url_contains("resume.pdf")
 
-    
+
+    def redirect(self):
+        """Hover over nav trigger, then click Sign In/Up link"""
+        nav_trigger = self.driver.find_element(By.XPATH, "//nav")  # or whatever wraps the hidden links
+        ActionChains(self.driver).move_to_element(nav_trigger).perform()
+
+        button = self.wait_for_clickable(self.sign)
+        button.click()
