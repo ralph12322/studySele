@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from driver_manager import get_driver, quit_driver
 from pages.home_page import HomePage
+from pages.sign_page import SignPage
 from robot.api.deco import keyword
 import time
 
@@ -12,6 +13,7 @@ class CustomKeywords:
     def __init__(self):
         self._driver = None
         self._home_page = None
+        self._sign_page = None
 
     @property
     def driver(self):
@@ -26,6 +28,15 @@ class CustomKeywords:
         if self._home_page is None:
             self._home_page = HomePage(self.driver)
         return self._home_page
+
+
+    @property
+    def sign_page(self):
+        """Lazily for Signpage Class"""
+        if self._sign_page is None:
+            self._sign_page = SignPage(self.driver)
+        return self._sign_page
+
     
     @keyword("Open Portfolio")
     def open_portfolio(self, url):
@@ -57,13 +68,38 @@ class CustomKeywords:
         self.home_page.open_resume()
         time.sleep(2)
 
+
+
+
+
+    #for Team Payaman Website:
+    @keyword("Perform Valid Login")
+    def perform_valid_login(self, mail, pword):
+        self.sign_page.valid_login(mail, pword)
+        time.sleep(2)
+
+    @keyword("Perform Invalid Login")
+    def perform_invalid_login(self, mail, pword):
+        self.sign_page.invalid_login(mail, pword)
+        time.sleep(2)
+
+    @keyword("Perform Valid Signup")
+    def perform_valid_signup(self, name, mail, pword):
+        self.sign_page.valid_signup(name, mail, pword)
+        time.sleep(2)
+
+    @keyword("Perform Invalid Signup")
+    def perform_invalid_signup(self, name, mail, pword):
+        self.sign_page.invalid_signup(name, mail, pword)
+        time.sleep(2)
+            
+
+
+
+
     @keyword("Close Browser")
     def close_browser(self):
         """Close the driver browser"""
         quit_driver()
         return self
 
-    @keyword("Redirect")
-    def goto_sign(self):
-        """ just go to sign page"""
-        self.home_page.redirect()

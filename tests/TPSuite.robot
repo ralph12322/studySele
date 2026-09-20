@@ -7,8 +7,20 @@ Test Teardown    Close Browser
 
 
 *** Variables ***
-${URL}  https://teampayaman.vercel.app/
+${URL}  https://teampayaman.vercel.app/sign
+${validMail}    ralphgeosantos.dev@gmail.com    
+${validPass}    qwer
+
 
 *** Test Cases ***
-Open site
-    Redirect
+Login is Valid
+    Perform Valid Login    ${validMail}    ${validPass}
+
+Login is Invalid
+    Perform Invalid Login    sampleinvalid@gmail.com    12345
+
+Signup is Valid
+    Perform Valid Signup    sample name    samplevalid@gmail.com    qwer
+
+Signup is Invalid
+    Perform Invalid Signup    ""    ""    ""

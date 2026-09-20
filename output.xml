@@ -1,32 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-17T19:01:01.591510" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-20T10:51:33.673522" rpa="false" schemaversion="5">
 <suite id="s1" name="TPSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\TPSuite.robot">
-<test id="s1-t1" name="Open site" line="13">
+<test id="s1-t1" name="Login is Valid" line="16">
 <kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
 <arg>${URL}</arg>
 <doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-17T19:01:01.845027" elapsed="2.702453"/>
+<status status="PASS" start="2026-09-20T10:51:33.898808" elapsed="1.657700"/>
 </kw>
-<kw name="Redirect" owner="CustomKeywords">
-<doc>just go to sign page</doc>
-<status status="PASS" start="2026-09-17T19:01:04.547480" elapsed="1.200197"/>
+<kw name="Perform Valid Login" owner="CustomKeywords">
+<arg>${validMail}</arg>
+<arg>${validPass}</arg>
+<status status="PASS" start="2026-09-20T10:51:35.556508" elapsed="3.353493"/>
 </kw>
 <kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
 <doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-17T19:01:05.747677" elapsed="2.138334"/>
+<status status="PASS" start="2026-09-20T10:51:38.911918" elapsed="2.283871"/>
 </kw>
-<status status="PASS" start="2026-09-17T19:01:01.844027" elapsed="6.041984"/>
+<status status="PASS" start="2026-09-20T10:51:33.889569" elapsed="7.306220"/>
 </test>
-<status status="PASS" start="2026-09-17T19:01:01.599030" elapsed="6.286981"/>
+<test id="s1-t2" name="Login is Invalid" line="19">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-20T10:51:41.195789" elapsed="1.601040"/>
+</kw>
+<kw name="Perform Invalid Login" owner="CustomKeywords">
+<arg>sampleinvalid@gmail.com</arg>
+<arg>12345</arg>
+<status status="PASS" start="2026-09-20T10:51:42.796829" elapsed="2.728797"/>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-20T10:51:45.525626" elapsed="2.105705"/>
+</kw>
+<status status="PASS" start="2026-09-20T10:51:41.195789" elapsed="6.436600"/>
+</test>
+<test id="s1-t3" name="Signup is Valid" line="22">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-20T10:51:47.634119" elapsed="1.532920"/>
+</kw>
+<kw name="Perform Valid Signup" owner="CustomKeywords">
+<msg time="2026-09-20T10:51:59.765355" level="FAIL">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
+</msg>
+<arg>sample name</arg>
+<arg>samplevalid@gmail.com</arg>
+<arg>qwer</arg>
+<status status="FAIL" start="2026-09-20T10:51:49.167526" elapsed="10.606704">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
+</status>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-20T10:51:59.774230" elapsed="2.217421"/>
+</kw>
+<status status="FAIL" start="2026-09-20T10:51:47.634119" elapsed="14.358733">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
+</status>
+</test>
+<test id="s1-t4" name="Signup is Invalid" line="25">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-20T10:52:01.996326" elapsed="1.665290"/>
+</kw>
+<kw name="Perform Invalid Signup" owner="CustomKeywords">
+<msg time="2026-09-20T10:52:14.348390" level="FAIL">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
+</msg>
+<arg>""</arg>
+<arg>""</arg>
+<arg>""</arg>
+<status status="FAIL" start="2026-09-20T10:52:03.661616" elapsed="10.686774">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
+</status>
+</kw>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-20T10:52:14.348390" elapsed="2.181160"/>
+</kw>
+<status status="FAIL" start="2026-09-20T10:52:01.994154" elapsed="14.535734">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
+</status>
+</test>
+<status status="FAIL" start="2026-09-20T10:51:33.673522" elapsed="42.857428"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="2" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="TPSuite" id="s1" pass="1" fail="0" skip="0">TPSuite</stat>
+<stat name="TPSuite" id="s1" pass="2" fail="2" skip="0">TPSuite</stat>
 </suite>
 </statistics>
 <errors>

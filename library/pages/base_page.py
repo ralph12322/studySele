@@ -103,6 +103,18 @@ class BasePage:
                 f"URL did not contain '{text}' within {self.DEFAULT_TIMEOUT}s. "
                 f"Current URL: {self.driver.current_url}"
             )
+
+    def wait_until_url(self, text):
+            """Wait until the URL contains the given text; fails with a clear message if not."""
+            try:
+                WebDriverWait(self.driver, timeout=self.DEFAULT_TIMEOUT).until(
+                    EC.url_to_be(text)
+                )
+            except TimeoutException:
+                raise TimeoutException(
+                    f"URL did not match '{text}' within {self.DEFAULT_TIMEOUT}s. "
+                    f"Current URL: {self.driver.current_url}"
+                )
     # ---------- interaction helpers ----------
 
     def safe_click(self, locator, timeout=DEFAULT_TIMEOUT):
