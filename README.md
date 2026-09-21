@@ -30,3 +30,7 @@ Made a Field Checker; Makes Sure that every Data possess the Necessary Fields
 
 It is really heartbreaking for me, I am hoping to get the job since someone is helping me out even though i'm new to the position.
 
+
+# Day 6: Have almost the MVP of the site, polished the sign page and some minor details. sign page almost ready for testing. 
+
+Tomorrow  i will polish everything in Sign module, i put frontend validation and backend validation, so i have to test both api and the frontend validations.
