@@ -1,94 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-20T10:51:33.673522" rpa="false" schemaversion="5">
-<suite id="s1" name="TPSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\TPSuite.robot">
-<test id="s1-t1" name="Login is Valid" line="16">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-23T18:01:33.900569" rpa="false" schemaversion="5">
+<suite id="s1" name="TPApiSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\TPApiSuite.robot">
+<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
+<msg time="2026-09-23T18:01:34.253028" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
 <arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:51:33.898808" elapsed="1.657700"/>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-23T18:01:34.253028" elapsed="0.000000"/>
 </kw>
-<kw name="Perform Valid Login" owner="CustomKeywords">
-<arg>${validMail}</arg>
-<arg>${validPass}</arg>
-<status status="PASS" start="2026-09-20T10:51:35.556508" elapsed="3.353493"/>
+<test id="s1-t1" name="Positive Login Test" line="16">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-23T18:01:34.972941" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
+ body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "qwer12322"}' 
+ </msg>
+<msg time="2026-09-23T18:01:34.972941" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
+ status=200, reason=OK 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Wed, 23 Sep 2026 10:01:35 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTAxNTc2OTUsImV4cCI6MTc5MDc2MjQ5NX0.twul1_ZxD0VtFrJJy4YtlQxpVwlcISAXIVB3K9ApfI4; Path=/; Expires=Wed, 30 Sep 2026 10:01:35 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::rkr6p-1790157695244-b6ae117fb802', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"Login successful"} 
+ </msg>
+<msg time="2026-09-23T18:01:34.972941" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'teampayaman.vercel.app'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-23T18:01:34.972941" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>${SIGNIN_PATH}</arg>
+<arg>json=${POSITIVE_CREDENTIALS}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-23T18:01:34.253028" elapsed="0.726955"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:51:38.911918" elapsed="2.283871"/>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-23T18:01:34.981019" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-23T18:01:34.979983" elapsed="0.001036"/>
 </kw>
-<status status="PASS" start="2026-09-20T10:51:33.889569" elapsed="7.306220"/>
+<status status="PASS" start="2026-09-23T18:01:34.253028" elapsed="0.727991"/>
 </test>
-<test id="s1-t2" name="Login is Invalid" line="19">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:51:41.195789" elapsed="1.601040"/>
+<test id="s1-t2" name="Negative Login Test" line="20">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-23T18:01:35.472825" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
+ path_url=/api/auth/login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTAxNTc2OTUsImV4cCI6MTc5MDc2MjQ5NX0.twul1_ZxD0VtFrJJy4YtlQxpVwlcISAXIVB3K9ApfI4', 'Content-Length': '59', 'Content-Type': 'application/json'} 
+ body=b'{"email": "invalidmail@gmail.com", "password": "qwer12322"}' 
+ </msg>
+<msg time="2026-09-23T18:01:35.472825" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
+ status=401, reason=Unauthorized 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 23 Sep 2026 10:01:36 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::jxnj7-1790157695811-560fa35da33d', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Invalid email or password"} 
+ </msg>
+<msg time="2026-09-23T18:01:35.472825" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'teampayaman.vercel.app'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
+  warnings.warn(</msg>
+<msg time="2026-09-23T18:01:35.472825" level="INFO">${response} = &lt;Response [401]&gt;</msg>
+<var>${response}</var>
+<arg>api</arg>
+<arg>${SIGNIN_PATH}</arg>
+<arg>json=${NEGATIVE_CREDENTIALS}</arg>
+<arg>expected_status=401</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-23T18:01:34.982526" elapsed="0.490299"/>
 </kw>
-<kw name="Perform Invalid Login" owner="CustomKeywords">
-<arg>sampleinvalid@gmail.com</arg>
-<arg>12345</arg>
-<status status="PASS" start="2026-09-20T10:51:42.796829" elapsed="2.728797"/>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-09-23T18:01:35.472825" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response.status_code}</arg>
+<arg>401</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-09-23T18:01:35.472825" elapsed="0.000000"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:51:45.525626" elapsed="2.105705"/>
-</kw>
-<status status="PASS" start="2026-09-20T10:51:41.195789" elapsed="6.436600"/>
+<status status="PASS" start="2026-09-23T18:01:34.981019" elapsed="0.491806"/>
 </test>
-<test id="s1-t3" name="Signup is Valid" line="22">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:51:47.634119" elapsed="1.532920"/>
-</kw>
-<kw name="Perform Valid Signup" owner="CustomKeywords">
-<msg time="2026-09-20T10:51:59.765355" level="FAIL">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
-</msg>
-<arg>sample name</arg>
-<arg>samplevalid@gmail.com</arg>
-<arg>qwer</arg>
-<status status="FAIL" start="2026-09-20T10:51:49.167526" elapsed="10.606704">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
-</status>
-</kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:51:59.774230" elapsed="2.217421"/>
-</kw>
-<status status="FAIL" start="2026-09-20T10:51:47.634119" elapsed="14.358733">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
-</status>
-</test>
-<test id="s1-t4" name="Signup is Invalid" line="25">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:52:01.996326" elapsed="1.665290"/>
-</kw>
-<kw name="Perform Invalid Signup" owner="CustomKeywords">
-<msg time="2026-09-20T10:52:14.348390" level="FAIL">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
-</msg>
-<arg>""</arg>
-<arg>""</arg>
-<arg>""</arg>
-<status status="FAIL" start="2026-09-20T10:52:03.661616" elapsed="10.686774">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
-</status>
-</kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:52:14.348390" elapsed="2.181160"/>
-</kw>
-<status status="FAIL" start="2026-09-20T10:52:01.994154" elapsed="14.535734">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
-</status>
-</test>
-<status status="FAIL" start="2026-09-20T10:51:33.673522" elapsed="42.857428"/>
+<status status="PASS" start="2026-09-23T18:01:33.902623" elapsed="1.570202"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="2" skip="0">All Tests</stat>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="TPSuite" id="s1" pass="2" fail="2" skip="0">TPSuite</stat>
+<stat name="TPApiSuite" id="s1" pass="2" fail="0" skip="0">TPApiSuite</stat>
 </suite>
 </statistics>
 <errors>
