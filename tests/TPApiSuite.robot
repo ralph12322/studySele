@@ -1,3 +1,5 @@
+*** Settings ***
+
 Documentation     Created a Signup TestSuite for the Team Payaman Cumminity Site
 ...               that i am Building, made sure that every negative and positive cases are covered
 ...               by this Test Suite.

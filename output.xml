@@ -1,1515 +1,828 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
-<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-24T15:36:58.289013" rpa="false" schemaversion="5">
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-24T15:50:10.582301" rpa="false" schemaversion="5">
 <suite id="s1" name="TPApiSuite" source="C:\Users\Raffy Santos\studySele\tests\TPApiSuite.robot">
-<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
-<msg time="2026-09-24T15:36:58.446186" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>api</arg>
-<arg>${BASE_URL}</arg>
-<arg>disable_warnings=1</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-09-24T15:36:58.445801" elapsed="0.000793"/>
-</kw>
-<test id="s1-t1" name="Signup With Valid Data Returns 201" line="19">
+<test id="s1-t1" name="Signup With Valid Data Returns 201" line="18">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:36:58.448194" level="INFO">${local} = fkz4qku8cvwf</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.627045" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:36:58.447926" elapsed="0.000300"/>
+<status status="FAIL" start="2026-09-24T15:50:10.627002" elapsed="0.000108">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:36:58.448285" elapsed="0.000041"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.627353" elapsed="0.000027"/>
 </return>
-<msg time="2026-09-24T15:36:58.448446" level="INFO">${email} = robot.fkz4qku8cvwf@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:36:58.447620" elapsed="0.000848"/>
+<status status="FAIL" start="2026-09-24T15:50:10.625923" elapsed="0.001736">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:36:59.365933" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.fkz4qku8cvwf@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:36:59.366042" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:36:59 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmZrejRxa3U4Y3Z3ZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.KwO28e9XrTwywQL6pBukQpr3Djn2DSn-zkkQQutCzNY; Path=/; Expires=Thu, 01 Oct 2026 07:36:59 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::j7gqj-1790235418619-1a7869efd194', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:36:59.366196" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:36:58.449389" elapsed="0.916868"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:36:59.366323" elapsed="0.000047"/>
-</return>
-<msg time="2026-09-24T15:36:59.366498" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:36:58.448914" elapsed="0.917606"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.628349" elapsed="0.000029"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>201</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:36:59.366864" elapsed="0.000274"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.628805" elapsed="0.000029"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[message]</arg>
 <arg>User created successfully</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:36:59.367536" elapsed="0.000563"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.629323" elapsed="0.000030"/>
 </kw>
 <tag>happy-path</tag>
 <tag>smoke</tag>
-<status status="PASS" start="2026-09-24T15:36:58.446824" elapsed="0.921546"/>
+<status status="FAIL" start="2026-09-24T15:50:10.624952" elapsed="0.004713">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t2" name="Signup Sets HttpOnly Auth Cookie" line="26">
+<test id="s1-t2" name="Signup Sets HttpOnly Auth Cookie" line="25">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:36:59.370161" level="INFO">${local} = vylw34e915gf</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.632631" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:36:59.369883" elapsed="0.000310"/>
+<status status="FAIL" start="2026-09-24T15:50:10.632550" elapsed="0.000172">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:36:59.370251" elapsed="0.000037"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.632849" elapsed="0.000041"/>
 </return>
-<msg time="2026-09-24T15:36:59.370405" level="INFO">${email} = robot.vylw34e915gf@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:36:59.369470" elapsed="0.000957"/>
+<status status="FAIL" start="2026-09-24T15:50:10.631118" elapsed="0.002024">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:00.134765" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmZrejRxa3U4Y3Z3ZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.KwO28e9XrTwywQL6pBukQpr3Djn2DSn-zkkQQutCzNY', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.vylw34e915gf@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:00.134973" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:36:59 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnZ5bHczNGU5MTVnZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.1iVNLQpQ0ZvGChOSKrLn5ABmPdowbiH6I4sksO2oQdk; Path=/; Expires=Thu, 01 Oct 2026 07:36:59 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::r7xtm-1790235419394-241936d7ed4a', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:00.135235" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:36:59.371304" elapsed="0.763993"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:00.135445" elapsed="0.000084"/>
-</return>
-<msg time="2026-09-24T15:37:00.135797" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:36:59.370846" elapsed="0.765008"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.633824" elapsed="0.000066"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>201</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.136527" elapsed="0.000430"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.634449" elapsed="0.000053"/>
 </kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-09-24T15:37:00.138254" level="INFO">${set_cookie} = authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnZ5bHczNGU5MTVnZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsI...</msg>
+<kw name="Get From Dictionary">
 <var>${set_cookie}</var>
 <arg>${resp.headers}</arg>
 <arg>Set-Cookie</arg>
-<doc>Returns a value from the given `dictionary` based on the given `key`.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.137592" elapsed="0.000738"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.634964" elapsed="0.000067"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${set_cookie}</arg>
 <arg>${COOKIE_NAME}=</arg>
 <doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.138947" elapsed="0.001225"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.635577" elapsed="0.000082"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${set_cookie}</arg>
 <arg>HttpOnly</arg>
 <doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.140790" elapsed="0.000767"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.636029" elapsed="0.000033"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${set_cookie}</arg>
 <arg>Path=/</arg>
 <doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.142143" elapsed="0.000870"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.636345" elapsed="0.000093"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${set_cookie}</arg>
 <arg>Max-Age=604800</arg>
 <doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.143779" elapsed="0.001090"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.636734" elapsed="0.000063"/>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${set_cookie}</arg>
 <arg>SameSite=lax</arg>
 <arg>ignore_case=True</arg>
 <doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.145667" elapsed="0.001243"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.637072" elapsed="0.000062"/>
 </kw>
 <tag>happy-path</tag>
 <tag>security</tag>
-<status status="PASS" start="2026-09-24T15:36:59.368954" elapsed="0.779131"/>
+<status status="FAIL" start="2026-09-24T15:50:10.630266" elapsed="0.007402">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t3" name="Signup Response Does Not Leak Password Or Token" line="38">
+<test id="s1-t3" name="Signup Response Does Not Leak Password Or Token" line="37">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:00.152517" level="INFO">${local} = ev1ci7d2f8t6</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.643013" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.152043" elapsed="0.000591"/>
+<status status="FAIL" start="2026-09-24T15:50:10.642925" elapsed="0.000169">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:00.152817" elapsed="0.000123"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.643220" elapsed="0.000042"/>
 </return>
-<msg time="2026-09-24T15:37:00.153411" level="INFO">${email} = robot.ev1ci7d2f8t6@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:00.151284" elapsed="0.002250"/>
+<status status="FAIL" start="2026-09-24T15:50:10.640703" elapsed="0.002707">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:00.915552" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnZ5bHczNGU5MTVnZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.1iVNLQpQ0ZvGChOSKrLn5ABmPdowbiH6I4sksO2oQdk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.ev1ci7d2f8t6@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:00.915732" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:00 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFjYjQ3NTI5NWMwOTI3YTMxZiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmV2MWNpN2QyZjh0NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjAsImV4cCI6MTc5MDg0MDIyMH0.1jFu9l-OvueQa0uYlkW5ZhaymzWpTcABZtM8-e0Cb8A; Path=/; Expires=Thu, 01 Oct 2026 07:37:00 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::f8lzg-1790235420178-1aa2ba1bafb7', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:00.915981" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.155938" elapsed="0.760104"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:00.916191" elapsed="0.000084"/>
-</return>
-<msg time="2026-09-24T15:37:00.916541" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:00.154327" elapsed="0.762271"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.643992" elapsed="0.000103"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>201</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.917708" elapsed="0.000487"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.644491" elapsed="0.000039"/>
 </kw>
 <kw name="Should Not Contain" owner="BuiltIn">
 <arg>${resp.text}</arg>
 <arg>${VALID_PASSWORD}</arg>
 <doc>Fails if the `container` contains the `item`.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.918704" elapsed="0.000973"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.644873" elapsed="0.000054"/>
 </kw>
 <kw name="Should Not Contain" owner="BuiltIn">
 <arg>${resp.text.lower()}</arg>
 <arg>password</arg>
 <doc>Fails if the `container` contains the `item`.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.920150" elapsed="0.000817"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.645231" elapsed="0.000039"/>
 </kw>
 <kw name="Should Not Contain" owner="BuiltIn">
 <arg>${resp.text.lower()}</arg>
 <arg>token</arg>
 <doc>Fails if the `container` contains the `item`.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.921402" elapsed="0.000785"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.645587" elapsed="0.000038"/>
 </kw>
 <tag>security</tag>
-<status status="PASS" start="2026-09-24T15:37:00.149645" elapsed="0.772994"/>
+<status status="FAIL" start="2026-09-24T15:50:10.639550" elapsed="0.006419">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t4" name="Signup Trims And Lowercases Email" line="47">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:00.926590" level="INFO">${local} = qe3f88s6</msg>
+<test id="s1-t4" name="Signup Trims And Lowercases Email" line="46">
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.648211" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>8</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.925997" elapsed="0.000675"/>
+<status status="FAIL" start="2026-09-24T15:50:10.648167" elapsed="0.000093">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-09-24T15:37:00.929529" level="INFO">${padded} =  QE3F88S6@gmail.com </msg>
 <var>${padded}</var>
 <arg>${SPACE}${local.upper()}@gmail.com${SPACE}</arg>
 <doc>Returns the given values which can then be assigned to a variable.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.927516" elapsed="0.002159"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.648577" elapsed="0.000032"/>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:01.675851" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFjYjQ3NTI5NWMwOTI3YTMxZiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmV2MWNpN2QyZjh0NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjAsImV4cCI6MTc5MDg0MDIyMH0.1jFu9l-OvueQa0uYlkW5ZhaymzWpTcABZtM8-e0Cb8A', 'Content-Length': '81', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": " QE3F88S6@gmail.com ", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:01.676104" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:01 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g; Path=/; Expires=Thu, 01 Oct 2026 07:37:01 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::srs9s-1790235420952-fcf9ba119043', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:01.676363" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:00.931738" elapsed="0.744688"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:01.676575" elapsed="0.000087"/>
-</return>
-<msg time="2026-09-24T15:37:01.676946" level="INFO">${resp1} = &lt;Response [201]&gt;</msg>
 <var>${resp1}</var>
 <arg>name=Test User</arg>
 <arg>email=${padded}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:00.930595" elapsed="0.746410"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.648906" elapsed="0.000030"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>201</arg>
 <arg>${resp1}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:01.677561" elapsed="0.000502"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.649171" elapsed="0.000065"/>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:02.164548" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '79', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "qe3f88s6@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:02.164730" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::hgnxj-1790235421700-51fe0ac4723d', 'Transfer-Encoding': 'chunked'} 
- body={"error":"User already exists"} 
- </msg>
-<msg time="2026-09-24T15:37:02.164992" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:01.679539" elapsed="0.485514"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:02.165202" elapsed="0.000083"/>
-</return>
-<msg time="2026-09-24T15:37:02.165548" level="INFO">${resp2} = &lt;Response [400]&gt;</msg>
 <var>${resp2}</var>
 <arg>name=Test User</arg>
 <arg>email=${local}@gmail.com</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:01.678673" elapsed="0.486932"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.649536" elapsed="0.000031"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp2}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.166284" elapsed="0.000452"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.649845" elapsed="0.000052"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp2.json()}[error]</arg>
 <arg>User already exists</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.167292" elapsed="0.000963"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.650195" elapsed="0.000043"/>
 </kw>
 <doc>Second signup with the normalized form must be rejected as duplicate.
 Only the local part is uppercased because the route's gmail check is case-sensitive.</doc>
 <tag>happy-path</tag>
 <tag>normalization</tag>
-<status status="PASS" start="2026-09-24T15:37:00.923644" elapsed="1.245003"/>
+<status status="FAIL" start="2026-09-24T15:50:10.646646" elapsed="0.004196">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t5" name="Signup Without Name Returns 400" line="60">
+<test id="s1-t5" name="Signup Without Name Returns 400" line="59">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:02.172140" level="INFO">${local} = 6ht5zn382zev</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.654755" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.171651" elapsed="0.000567"/>
+<status status="FAIL" start="2026-09-24T15:50:10.654696" elapsed="0.000155">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:02.172357" elapsed="0.000096"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.654973" elapsed="0.000022"/>
 </return>
-<msg time="2026-09-24T15:37:02.172760" level="INFO">${email} = robot.6ht5zn382zev@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:02.170941" elapsed="0.001884"/>
+<status status="FAIL" start="2026-09-24T15:50:10.653344" elapsed="0.001786">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:02.510635" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '68', 'Content-Type': 'application/json'} 
- body=b'{"email": "robot.6ht5zn382zev@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:02.510728" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::vh6z7-1790235422197-c39713c8637e', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Missing name, email, or password"} 
- </msg>
-<msg time="2026-09-24T15:37:02.510841" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.174563" elapsed="0.336302"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:02.510935" elapsed="0.000040"/>
-</return>
-<msg time="2026-09-24T15:37:02.511122" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:02.173546" elapsed="0.337597"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.655675" elapsed="0.000049"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.511597" elapsed="0.000297"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.656128" elapsed="0.000081"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>Missing name, email, or password</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.512264" elapsed="0.000754"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.656806" elapsed="0.000096"/>
 </kw>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:02.169740" elapsed="0.343573"/>
+<status status="FAIL" start="2026-09-24T15:50:10.652696" elapsed="0.004535">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t6" name="Signup Without Email Returns 400" line="67">
+<test id="s1-t6" name="Signup Without Email Returns 400" line="66">
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:02.804084" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '48', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:02.804170" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::p2rj2-1790235422534-ec9734901780', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Missing name, email, or password"} 
- </msg>
-<msg time="2026-09-24T15:37:02.804277" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<kw name="POST On Session">
+<msg time="2026-09-24T15:50:10.659783" level="FAIL">No keyword with name 'POST On Session' found.</msg>
 <var>${resp}</var>
 <arg>api</arg>
 <arg>${SIGNUP_ENDPOINT}</arg>
 <arg>json=${body}</arg>
 <arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.514539" elapsed="0.289763"/>
+<status status="FAIL" start="2026-09-24T15:50:10.659747" elapsed="0.000077">No keyword with name 'POST On Session' found.</status>
 </kw>
 <return>
 <value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:02.804368" elapsed="0.000039"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.659890" elapsed="0.000018"/>
 </return>
-<msg time="2026-09-24T15:37:02.804523" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:02.514176" elapsed="0.290370"/>
+<status status="FAIL" start="2026-09-24T15:50:10.658649" elapsed="0.001335">No keyword with name 'POST On Session' found.</status>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.804895" elapsed="0.000320"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.660409" elapsed="0.000024"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>Missing name, email, or password</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.805977" elapsed="0.000439"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.660733" elapsed="0.000046"/>
 </kw>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:02.513715" elapsed="0.292935"/>
+<status status="FAIL" start="2026-09-24T15:50:10.657946" elapsed="0.003210">No keyword with name 'POST On Session' found.</status>
 </test>
-<test id="s1-t7" name="Signup With Empty Name Returns 400" line="73">
+<test id="s1-t7" name="Signup With Empty Name Returns 400" line="72">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:02.808253" level="INFO">${local} = aes8z5oink0k</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.663556" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.808047" elapsed="0.000237"/>
+<status status="FAIL" start="2026-09-24T15:50:10.663502" elapsed="0.000112">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:02.808340" elapsed="0.000043"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.663697" elapsed="0.000024"/>
 </return>
-<msg time="2026-09-24T15:37:02.808509" level="INFO">${email} = robot.aes8z5oink0k@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:02.807692" elapsed="0.000843"/>
+<status status="FAIL" start="2026-09-24T15:50:10.662474" elapsed="0.001355">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:03.127348" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '80', 'Content-Type': 'application/json'} 
- body=b'{"name": "", "email": "robot.aes8z5oink0k@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:03.127530" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235422828-9044ee496247', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Missing name, email, or password"} 
- </msg>
-<msg time="2026-09-24T15:37:03.127767" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:02.809252" elapsed="0.318575"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:03.127989" elapsed="0.000083"/>
-</return>
-<msg time="2026-09-24T15:37:03.128345" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=${EMPTY}</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:02.808828" elapsed="0.319574"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.664478" elapsed="0.000078"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.128935" elapsed="0.000388"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.665081" elapsed="0.000055"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>Missing name, email, or password</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.129802" elapsed="0.000904"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.665733" elapsed="0.000088"/>
 </kw>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:02.807198" elapsed="0.323967"/>
+<status status="FAIL" start="2026-09-24T15:50:10.661832" elapsed="0.004725">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t8" name="Signup Without Password Returns 400" line="80">
+<test id="s1-t8" name="Signup Without Password Returns 400" line="79">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:03.134264" level="INFO">${local} = 88h979xwc4yz</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.669692" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.133828" elapsed="0.000509"/>
+<status status="FAIL" start="2026-09-24T15:50:10.669629" elapsed="0.000132">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:03.134465" elapsed="0.000079"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.669871" elapsed="0.000029"/>
 </return>
-<msg time="2026-09-24T15:37:03.134822" level="INFO">${email} = robot.88h979xwc4yz@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:03.133180" elapsed="0.001702"/>
+<status status="FAIL" start="2026-09-24T15:50:10.668439" elapsed="0.001582">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:03.432105" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '62', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.88h979xwc4yz@gmail.com"}' 
- </msg>
-<msg time="2026-09-24T15:37:03.432329" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=500, reason=Internal Server Error 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::vwhr7-1790235423158-732f9356a726', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Something went wrong. Please try again."} 
- </msg>
-<msg time="2026-09-24T15:37:03.432583" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.136327" elapsed="0.296316"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:03.432805" elapsed="0.000082"/>
-</return>
-<msg time="2026-09-24T15:37:03.433151" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
-<status status="PASS" start="2026-09-24T15:37:03.135383" elapsed="0.297827"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.670510" elapsed="0.000036"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:03.434819" level="FAIL">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 500 != 400</msg>
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="FAIL" start="2026-09-24T15:37:03.434152" elapsed="0.004690">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 500 != 400</status>
+<status status="NOT RUN" start="2026-09-24T15:50:10.670879" elapsed="0.000037"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>Missing name, email, or password</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="NOT RUN" start="2026-09-24T15:37:03.439617" elapsed="0.000077"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.671217" elapsed="0.000035"/>
 </kw>
 <tag>known-issue</tag>
 <tag>validation</tag>
-<status status="FAIL" start="2026-09-24T15:37:03.132178" elapsed="0.308247">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 500 != 400</status>
+<status status="FAIL" start="2026-09-24T15:50:10.667477" elapsed="0.004140">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t9" name="Signup With Non Gmail Email Returns 400" line="88">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:03.444046" level="INFO">${local} = oejklec8</msg>
+<test id="s1-t9" name="Signup With Non Gmail Email Returns 400" line="87">
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.673669" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>8</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.443431" elapsed="0.000731"/>
+<status status="FAIL" start="2026-09-24T15:50:10.673611" elapsed="0.000117">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:03.752436" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '79', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "oejklec8@yahoo.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:03.752774" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235423468-dd982c90a7be', 'Transfer-Encoding': 'chunked'} 
- body={"error":"should be a valid email"} 
- </msg>
-<msg time="2026-09-24T15:37:03.753126" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.446711" elapsed="0.306501"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:03.753428" elapsed="0.000113"/>
-</return>
-<msg time="2026-09-24T15:37:03.753917" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${local}@yahoo.com</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:03.445063" elapsed="0.308939"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.674103" elapsed="0.000040"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.754764" elapsed="0.000537"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.674415" elapsed="0.000027"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>should be a valid email</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.756161" elapsed="0.001434"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.674708" elapsed="0.000030"/>
 </kw>
 <tag>email</tag>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:03.442199" elapsed="0.315999"/>
+<status status="FAIL" start="2026-09-24T15:50:10.672376" elapsed="0.002568">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t10" name="Signup With Email Missing At Sign Returns 400" line="95">
+<test id="s1-t10" name="Signup With Email Missing At Sign Returns 400" line="94">
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:04.059827" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '71', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "notanemail", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:04.060013" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::p2rj2-1790235423783-ce790b6af726', 'Transfer-Encoding': 'chunked'} 
- body={"error":"should be a valid email"} 
- </msg>
-<msg time="2026-09-24T15:37:04.060269" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<kw name="POST On Session">
+<msg time="2026-09-24T15:50:10.676811" level="FAIL">No keyword with name 'POST On Session' found.</msg>
 <var>${resp}</var>
 <arg>api</arg>
 <arg>${SIGNUP_ENDPOINT}</arg>
 <arg>json=${body}</arg>
 <arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:03.762092" elapsed="0.298241"/>
+<status status="FAIL" start="2026-09-24T15:50:10.676782" elapsed="0.000070">No keyword with name 'POST On Session' found.</status>
 </kw>
 <return>
 <value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:04.060485" elapsed="0.000085"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.676920" elapsed="0.000016"/>
 </return>
-<msg time="2026-09-24T15:37:04.060843" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=notanemail</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:03.760897" elapsed="0.300003"/>
+<status status="FAIL" start="2026-09-24T15:50:10.675831" elapsed="0.001183">No keyword with name 'POST On Session' found.</status>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:04.061577" elapsed="0.000415"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.677344" elapsed="0.000038"/>
 </kw>
 <tag>email</tag>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:03.759419" elapsed="0.303071"/>
+<status status="FAIL" start="2026-09-24T15:50:10.675374" elapsed="0.002465">No keyword with name 'POST On Session' found.</status>
 </test>
-<test id="s1-t11" name="Signup With Gmail Domain As Substring Returns 400" line="100">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:04.065423" level="INFO">${local} = qtpdb26c</msg>
+<test id="s1-t11" name="Signup With Gmail Domain As Substring Returns 400" line="99">
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.680561" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>8</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:04.064910" elapsed="0.000586"/>
+<status status="FAIL" start="2026-09-24T15:50:10.680505" elapsed="0.000108">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:04.818416" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '79', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "qtpdb26c@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:04.818600" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:04 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk; Path=/; Expires=Thu, 01 Oct 2026 07:37:04 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235424089-a42ceae55d15', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:04.818846" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:04.067226" elapsed="0.751742"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:04.819137" elapsed="0.000099"/>
-</return>
-<msg time="2026-09-24T15:37:04.819553" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${local}@gmail.com</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:04.066052" elapsed="0.753553"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.680944" elapsed="0.000030"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:04.820693" level="FAIL">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 201 != 400</msg>
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="FAIL" start="2026-09-24T15:37:04.820245" elapsed="0.001687">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 201 != 400</status>
+<status status="NOT RUN" start="2026-09-24T15:50:10.681184" elapsed="0.000023"/>
 </kw>
 <doc>KNOWN WEAKNESS: email.includes("@gmail.com") also matches
 "x@gmail.com.attacker.com". Use a strict regex or endsWith instead.</doc>
 <tag>email</tag>
 <tag>known-issue</tag>
 <tag>validation</tag>
-<status status="FAIL" start="2026-09-24T15:37:04.063467" elapsed="0.758821">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 201 != 400</status>
+<status status="FAIL" start="2026-09-24T15:50:10.678957" elapsed="0.002459">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t12" name="Password Rule Is Enforced" line="109">
+<test id="s1-t12" name="Password Rule Is Enforced" line="108">
 <kw name="Signup Rejects Weak Password">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:04.825343" level="INFO">${local} = rk4dl59z7bhq</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.685251" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:04.825020" elapsed="0.000393"/>
+<status status="FAIL" start="2026-09-24T15:50:10.685181" elapsed="0.000134">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:04.825518" elapsed="0.000077"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.685434" elapsed="0.000029"/>
 </return>
-<msg time="2026-09-24T15:37:04.825882" level="INFO">${email} = robot.rk4dl59z7bhq@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:04.824358" elapsed="0.001569"/>
+<status status="FAIL" start="2026-09-24T15:50:10.682823" elapsed="0.002787">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:05.128778" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '85', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.rk4dl59z7bhq@gmail.com", "password": "Ab1!xyz"}' 
- </msg>
-<msg time="2026-09-24T15:37:05.128867" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:04 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235424846-7b24944f5d8a', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Password must be at least 8 characters long."} 
- </msg>
-<msg time="2026-09-24T15:37:05.128983" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:04.826879" elapsed="0.302129"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:05.129078" elapsed="0.000041"/>
-</return>
-<msg time="2026-09-24T15:37:05.129259" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${password}</arg>
-<status status="PASS" start="2026-09-24T15:37:04.826298" elapsed="0.302984"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.686046" elapsed="0.000050"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.129419" elapsed="0.000148"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.686306" elapsed="0.000029"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>${expected_error}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.129698" elapsed="0.000394"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.686485" elapsed="0.000034"/>
 </kw>
 <arg>Ab1!xyz</arg>
 <arg>Password must be at least 8 characters long.</arg>
-<status status="PASS" start="2026-09-24T15:37:04.823778" elapsed="0.306369"/>
+<status status="FAIL" start="2026-09-24T15:50:10.682264" elapsed="0.004385">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Rejects Weak Password">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:05.131221" level="INFO">${local} = 5iabvyj49ndw</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.689191" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.131064" elapsed="0.000181"/>
+<status status="FAIL" start="2026-09-24T15:50:10.689154" elapsed="0.000085">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:05.131309" elapsed="0.000031"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.689305" elapsed="0.000017"/>
 </return>
-<msg time="2026-09-24T15:37:05.131478" level="INFO">${email} = robot.5iabvyj49ndw@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:05.130855" elapsed="0.000674"/>
+<status status="FAIL" start="2026-09-24T15:50:10.687898" elapsed="0.001506">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:05.427075" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.5iabvyj49ndw@gmail.com", "password": "lowercase1!"}' 
- </msg>
-<msg time="2026-09-24T15:37:05.427156" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:05 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::z8ncr-1790235425151-70bb346f4bbc', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Password must contain at least one uppercase letter."} 
- </msg>
-<msg time="2026-09-24T15:37:05.427262" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.131999" elapsed="0.295287"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:05.427348" elapsed="0.000036"/>
-</return>
-<msg time="2026-09-24T15:37:05.427496" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${password}</arg>
-<status status="PASS" start="2026-09-24T15:37:05.131669" elapsed="0.295848"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.689544" elapsed="0.000026"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.427652" elapsed="0.000258"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.689663" elapsed="0.000016"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>${expected_error}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.428072" elapsed="0.000542"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.689804" elapsed="0.000019"/>
 </kw>
 <arg>lowercase1!</arg>
 <arg>Password must contain at least one uppercase letter.</arg>
-<status status="PASS" start="2026-09-24T15:37:05.130565" elapsed="0.298174"/>
+<status status="FAIL" start="2026-09-24T15:50:10.687316" elapsed="0.002583">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Rejects Weak Password">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:05.429748" level="INFO">${local} = mourmhlco78k</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.691501" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.429596" elapsed="0.000178"/>
+<status status="FAIL" start="2026-09-24T15:50:10.691471" elapsed="0.000070">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:05.429818" elapsed="0.000030"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.691604" elapsed="0.000020"/>
 </return>
-<msg time="2026-09-24T15:37:05.429949" level="INFO">${email} = robot.mourmhlco78k@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:05.429388" elapsed="0.000581"/>
+<status status="FAIL" start="2026-09-24T15:50:10.690605" elapsed="0.001100">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:05.723512" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.mourmhlco78k@gmail.com", "password": "UPPERCASE1!"}' 
- </msg>
-<msg time="2026-09-24T15:37:05.723626" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:05 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::r7xtm-1790235425449-d4f069f9e7bc', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Password must contain at least one lowercase letter."} 
- </msg>
-<msg time="2026-09-24T15:37:05.723810" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.430452" elapsed="0.293381"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:05.723938" elapsed="0.000072"/>
-</return>
-<msg time="2026-09-24T15:37:05.724200" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${password}</arg>
-<status status="PASS" start="2026-09-24T15:37:05.430071" elapsed="0.294152"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.691843" elapsed="0.000021"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.724355" elapsed="0.000158"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.691955" elapsed="0.000016"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>${expected_error}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.724641" elapsed="0.000454"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.692093" elapsed="0.000018"/>
 </kw>
 <arg>UPPERCASE1!</arg>
 <arg>Password must contain at least one lowercase letter.</arg>
-<status status="PASS" start="2026-09-24T15:37:05.429062" elapsed="0.296092"/>
+<status status="FAIL" start="2026-09-24T15:50:10.690255" elapsed="0.001935">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Rejects Weak Password">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:05.726357" level="INFO">${local} = 8i7bkh726zno</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.694086" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.726199" elapsed="0.000185"/>
+<status status="FAIL" start="2026-09-24T15:50:10.694034" elapsed="0.000243">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:05.726436" elapsed="0.000033"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.694356" elapsed="0.000022"/>
 </return>
-<msg time="2026-09-24T15:37:05.726566" level="INFO">${email} = robot.8i7bkh726zno@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:05.725984" elapsed="0.000604"/>
+<status status="FAIL" start="2026-09-24T15:50:10.692878" elapsed="0.001601">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:06.031857" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.8i7bkh726zno@gmail.com", "password": "NoNumbers!!"}' 
- </msg>
-<msg time="2026-09-24T15:37:06.032028" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:05 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::dmqb4-1790235425746-157325bd50ea', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Password must contain at least one number."} 
- </msg>
-<msg time="2026-09-24T15:37:06.032220" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:05.727051" elapsed="0.305214"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:06.032373" elapsed="0.000063"/>
-</return>
-<msg time="2026-09-24T15:37:06.032645" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${password}</arg>
-<status status="PASS" start="2026-09-24T15:37:05.726736" elapsed="0.305953"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.694665" elapsed="0.000026"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.032931" elapsed="0.000278"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.694858" elapsed="0.000021"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>${expected_error}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.033453" elapsed="0.000710"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.695014" elapsed="0.000023"/>
 </kw>
 <arg>NoNumbers!!</arg>
 <arg>Password must contain at least one number.</arg>
-<status status="PASS" start="2026-09-24T15:37:05.725616" elapsed="0.308663"/>
+<status status="FAIL" start="2026-09-24T15:50:10.692554" elapsed="0.002581">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Rejects Weak Password">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:06.035953" level="INFO">${local} = 96y2c10390t3</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.696812" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.035674" elapsed="0.000327"/>
+<status status="FAIL" start="2026-09-24T15:50:10.696772" elapsed="0.000088">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:06.036085" elapsed="0.000052"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.696934" elapsed="0.000018"/>
 </return>
-<msg time="2026-09-24T15:37:06.036333" level="INFO">${email} = robot.96y2c10390t3@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:06.035281" elapsed="0.001090"/>
+<status status="FAIL" start="2026-09-24T15:50:10.695872" elapsed="0.001180">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:06.344955" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '90', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.96y2c10390t3@gmail.com", "password": "NoSpecial123"}' 
- </msg>
-<msg time="2026-09-24T15:37:06.345054" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:06 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235426056-91bd954e5b6f', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Password must contain at least one special character."} 
- </msg>
-<msg time="2026-09-24T15:37:06.345214" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.037140" elapsed="0.308105"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:06.345322" elapsed="0.000048"/>
-</return>
-<msg time="2026-09-24T15:37:06.345535" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${password}</arg>
-<status status="PASS" start="2026-09-24T15:37:06.036584" elapsed="0.308981"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.697264" elapsed="0.000060"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.345714" elapsed="0.000171"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.697441" elapsed="0.000020"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>${expected_error}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.346031" elapsed="0.000468"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.697590" elapsed="0.000024"/>
 </kw>
 <arg>NoSpecial123</arg>
 <arg>Password must contain at least one special character.</arg>
-<status status="PASS" start="2026-09-24T15:37:06.034754" elapsed="0.311813"/>
+<status status="FAIL" start="2026-09-24T15:50:10.695503" elapsed="0.002221">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <tag>password</tag>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:04.822847" elapsed="1.524072"/>
+<status status="FAIL" start="2026-09-24T15:50:10.681860" elapsed="0.016355">Several failures occurred:
+
+1) No keyword with name 'Generate Random String' found.
+
+2) No keyword with name 'Generate Random String' found.
+
+3) No keyword with name 'Generate Random String' found.
+
+4) No keyword with name 'Generate Random String' found.
+
+5) No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t13" name="Password Of Exactly Eight Characters Is Accepted" line="119">
+<test id="s1-t13" name="Password Of Exactly Eight Characters Is Accepted" line="118">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:06.348495" level="INFO">${local} = 8nbyqppu45m8</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.701919" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.348305" elapsed="0.000221"/>
+<status status="FAIL" start="2026-09-24T15:50:10.701815" elapsed="0.000169">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:06.348584" elapsed="0.000035"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.702060" elapsed="0.000018"/>
 </return>
-<msg time="2026-09-24T15:37:06.348726" level="INFO">${email} = robot.8nbyqppu45m8@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:06.347982" elapsed="0.000768"/>
+<status status="FAIL" start="2026-09-24T15:50:10.700184" elapsed="0.001992">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:07.112608" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '86', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.8nbyqppu45m8@gmail.com", "password": "Abcde1!x"}' 
- </msg>
-<msg time="2026-09-24T15:37:07.112690" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:06 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIyYjQ3NTI5NWMwOTI3YTMyMiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LjhuYnlxcHB1NDVtOEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjYsImV4cCI6MTc5MDg0MDIyNn0.7lX2_ZtME3CmxOG2SAwzPc51btugL04MPGEeatjZ98w; Path=/; Expires=Thu, 01 Oct 2026 07:37:06 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235426368-fcc803abaf63', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:07.112813" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:06.349462" elapsed="0.763374"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:07.112897" elapsed="0.000036"/>
-</return>
-<msg time="2026-09-24T15:37:07.113036" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
 <var>${resp}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=Abcde1!x</arg>
-<status status="PASS" start="2026-09-24T15:37:06.349105" elapsed="0.763952"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.702700" elapsed="0.000039"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>201</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:07.113408" elapsed="0.000295"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.703026" elapsed="0.000035"/>
 </kw>
 <tag>boundary</tag>
 <tag>password</tag>
 <tag>validation</tag>
-<status status="PASS" start="2026-09-24T15:37:06.347441" elapsed="0.766549"/>
+<status status="FAIL" start="2026-09-24T15:50:10.699385" elapsed="0.004018">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t14" name="Duplicate Signup Returns 400" line="126">
+<test id="s1-t14" name="Duplicate Signup Returns 400" line="125">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:07.115426" level="INFO">${local} = f22d6rhy4zwh</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.705385" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:07.115253" elapsed="0.000198"/>
+<status status="FAIL" start="2026-09-24T15:50:10.705354" elapsed="0.000073">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:07.115495" elapsed="0.000027"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.705489" elapsed="0.000020"/>
 </return>
-<msg time="2026-09-24T15:37:07.115623" level="INFO">${email} = robot.f22d6rhy4zwh@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:07.115004" elapsed="0.000640"/>
+<status status="FAIL" start="2026-09-24T15:50:10.704478" elapsed="0.001112">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:07.857182" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIyYjQ3NTI5NWMwOTI3YTMyMiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LjhuYnlxcHB1NDVtOEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjYsImV4cCI6MTc5MDg0MDIyNn0.7lX2_ZtME3CmxOG2SAwzPc51btugL04MPGEeatjZ98w', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.f22d6rhy4zwh@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:07.857368" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:07 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIzYjQ3NTI5NWMwOTI3YTMyMyIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmYyMmQ2cmh5NHp3aEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjcsImV4cCI6MTc5MDg0MDIyN30.MoC4ct3wfBd9Q02Nw-qunjYi_HgWBdAoSkss_Xv0sIc; Path=/; Expires=Thu, 01 Oct 2026 07:37:07 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235427135-dbf68c5dcb40', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:07.857633" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:07.116586" elapsed="0.741110"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:07.857846" elapsed="0.000086"/>
-</return>
-<msg time="2026-09-24T15:37:07.858205" level="INFO">${first} = &lt;Response [201]&gt;</msg>
 <var>${first}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:07.116244" elapsed="0.742019"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.705800" elapsed="0.000022"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>201</arg>
 <arg>${first}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:07.858935" elapsed="0.000421"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.706013" elapsed="0.000028"/>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:08.353011" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIzYjQ3NTI5NWMwOTI3YTMyMyIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmYyMmQ2cmh5NHp3aEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjcsImV4cCI6MTc5MDg0MDIyN30.MoC4ct3wfBd9Q02Nw-qunjYi_HgWBdAoSkss_Xv0sIc', 'Content-Length': '90', 'Content-Type': 'application/json'} 
- body=b'{"name": "Other User", "email": "robot.f22d6rhy4zwh@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:08.353197" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:08 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235427881-b04ed97f2920', 'Transfer-Encoding': 'chunked'} 
- body={"error":"User already exists"} 
- </msg>
-<msg time="2026-09-24T15:37:08.353442" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:07.860745" elapsed="0.492757"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:08.353666" elapsed="0.000087"/>
-</return>
-<msg time="2026-09-24T15:37:08.354094" level="INFO">${second} = &lt;Response [400]&gt;</msg>
 <var>${second}</var>
 <arg>name=Other User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:07.859894" elapsed="0.494318"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.706231" elapsed="0.000023"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${second}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:08.355110" elapsed="0.000571"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.706395" elapsed="0.000017"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${second.json()}[error]</arg>
 <arg>User already exists</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:08.356405" elapsed="0.001044"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.706610" elapsed="0.000023"/>
 </kw>
 <tag>duplicate</tag>
-<status status="PASS" start="2026-09-24T15:37:07.114471" elapsed="1.243493"/>
+<status status="FAIL" start="2026-09-24T15:50:10.703945" elapsed="0.002863">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t15" name="Duplicate Signup Does Not Set A Cookie" line="135">
+<test id="s1-t15" name="Duplicate Signup Does Not Set A Cookie" line="134">
 <kw name="Unique Email">
-<kw name="Generate Random String" owner="String">
-<msg time="2026-09-24T15:37:08.361628" level="INFO">${local} = yj2gh6fpcwmb</msg>
+<kw name="Generate Random String">
+<msg time="2026-09-24T15:50:10.709037" level="FAIL">No keyword with name 'Generate Random String' found.</msg>
 <var>${local}</var>
 <arg>12</arg>
 <arg>[LOWER][NUMBERS]</arg>
-<doc>Generates a string with a desired `length` from the given `chars`.</doc>
-<status status="PASS" start="2026-09-24T15:37:08.360775" elapsed="0.000977"/>
+<status status="FAIL" start="2026-09-24T15:50:10.708980" elapsed="0.000115">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <return>
 <value>robot.${local}@gmail.com</value>
-<status status="PASS" start="2026-09-24T15:37:08.361952" elapsed="0.000104"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.709179" elapsed="0.000019"/>
 </return>
-<msg time="2026-09-24T15:37:08.362377" level="INFO">${email} = robot.yj2gh6fpcwmb@gmail.com</msg>
 <var>${email}</var>
-<status status="PASS" start="2026-09-24T15:37:08.359975" elapsed="0.002470"/>
+<status status="FAIL" start="2026-09-24T15:50:10.707813" elapsed="0.001495">No keyword with name 'Generate Random String' found.</status>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:09.110204" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIzYjQ3NTI5NWMwOTI3YTMyMyIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmYyMmQ2cmh5NHp3aEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjcsImV4cCI6MTc5MDg0MDIyN30.MoC4ct3wfBd9Q02Nw-qunjYi_HgWBdAoSkss_Xv0sIc', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.yj2gh6fpcwmb@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:09.110386" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=201, reason=Created 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:08 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzI0YjQ3NTI5NWMwOTI3YTMyNCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnlqMmdoNmZwY3dtYkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjgsImV4cCI6MTc5MDg0MDIyOH0.4zv1Rr-v0O-bve3OVJbcvHJUsyTYR0K95nbQ0kMJcjU; Path=/; Expires=Thu, 01 Oct 2026 07:37:08 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235428384-ac65713b9066', 'Transfer-Encoding': 'chunked'} 
- body={"message":"User created successfully"} 
- </msg>
-<msg time="2026-09-24T15:37:09.110639" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:08.363942" elapsed="0.746758"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:09.110852" elapsed="0.000083"/>
-</return>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:08.363074" elapsed="0.748067"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.709684" elapsed="0.000037"/>
 </kw>
 <kw name="Signup Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:09.605160" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzI0YjQ3NTI5NWMwOTI3YTMyNCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnlqMmdoNmZwY3dtYkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjgsImV4cCI6MTc5MDg0MDIyOH0.4zv1Rr-v0O-bve3OVJbcvHJUsyTYR0K95nbQ0kMJcjU', 'Content-Length': '89', 'Content-Type': 'application/json'} 
- body=b'{"name": "Test User", "email": "robot.yj2gh6fpcwmb@gmail.com", "password": "Str0ng!Pass"}' 
- </msg>
-<msg time="2026-09-24T15:37:09.605386" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:09 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::wxd92-1790235429133-8e645a0af97a', 'Transfer-Encoding': 'chunked'} 
- body={"error":"User already exists"} 
- </msg>
-<msg time="2026-09-24T15:37:09.605633" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>api</arg>
-<arg>${SIGNUP_ENDPOINT}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.112701" elapsed="0.493004"/>
-</kw>
-<return>
-<value>${resp}</value>
-<status status="PASS" start="2026-09-24T15:37:09.605860" elapsed="0.000086"/>
-</return>
-<msg time="2026-09-24T15:37:09.606237" level="INFO">${second} = &lt;Response [400]&gt;</msg>
 <var>${second}</var>
 <arg>name=Test User</arg>
 <arg>email=${email}</arg>
 <arg>password=${VALID_PASSWORD}</arg>
-<status status="PASS" start="2026-09-24T15:37:09.111839" elapsed="0.494456"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.710126" elapsed="0.000041"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>400</arg>
 <arg>${second}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.606975" elapsed="0.000439"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.710477" elapsed="0.000038"/>
 </kw>
-<kw name="Dictionary Should Not Contain Key" owner="Collections">
+<kw name="Dictionary Should Not Contain Key">
 <arg>${second.headers}</arg>
 <arg>Set-Cookie</arg>
-<doc>Fails if `key` is found from `dictionary`.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.607851" elapsed="0.000554"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.710756" elapsed="0.000036"/>
 </kw>
 <tag>duplicate</tag>
 <tag>security</tag>
-<status status="PASS" start="2026-09-24T15:37:08.358926" elapsed="1.249859"/>
+<status status="FAIL" start="2026-09-24T15:50:10.707207" elapsed="0.003958">No keyword with name 'Generate Random String' found.</status>
 </test>
-<test id="s1-t16" name="Signup With Invalid JSON Returns 500" line="144">
+<test id="s1-t16" name="Signup With Invalid JSON Returns 500" line="143">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-09-24T15:37:09.612264" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<msg time="2026-09-24T15:50:10.713572" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
 <var>${headers}</var>
 <arg>Content-Type=application/json</arg>
 <doc>Creates and returns a dictionary based on the given `items`.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.611239" elapsed="0.001104"/>
+<status status="PASS" start="2026-09-24T15:50:10.712802" elapsed="0.000833"/>
 </kw>
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-24T15:37:09.922578" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
- path_url=/api/auth/signup 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzI0YjQ3NTI5NWMwOTI3YTMyNCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnlqMmdoNmZwY3dtYkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjgsImV4cCI6MTc5MDg0MDIyOH0.4zv1Rr-v0O-bve3OVJbcvHJUsyTYR0K95nbQ0kMJcjU', 'Content-Length': '15'} 
- body={not valid json 
- </msg>
-<msg time="2026-09-24T15:37:09.922758" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
- status=500, reason=Internal Server Error 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:09 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::6c5xq-1790235429634-704726953922', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Something went wrong. Please try again."} 
- </msg>
-<msg time="2026-09-24T15:37:09.923002" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<kw name="POST On Session">
+<msg time="2026-09-24T15:50:10.714582" level="FAIL">No keyword with name 'POST On Session' found.</msg>
 <var>${resp}</var>
 <arg>api</arg>
 <arg>${SIGNUP_ENDPOINT}</arg>
 <arg>data={not valid json</arg>
 <arg>headers=${headers}</arg>
 <arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.612838" elapsed="0.310224"/>
+<status status="FAIL" start="2026-09-24T15:50:10.714545" elapsed="0.000080">No keyword with name 'POST On Session' found.</status>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
+<kw name="Status Should Be">
 <arg>500</arg>
 <arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.923766" elapsed="0.000480"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.714893" elapsed="0.000032"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
 <arg>${resp.json()}[error]</arg>
 <arg>Something went wrong. Please try again.</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-24T15:37:09.924764" elapsed="0.000986"/>
+<status status="NOT RUN" start="2026-09-24T15:50:10.715177" elapsed="0.000029"/>
 </kw>
 <doc>request.json() throws inside the try block, so the route returns its generic 500.
 Consider returning 400 for malformed JSON instead.</doc>
 <tag>robustness</tag>
-<status status="PASS" start="2026-09-24T15:37:09.609775" elapsed="0.316360"/>
+<status status="FAIL" start="2026-09-24T15:50:10.711868" elapsed="0.003580">No keyword with name 'POST On Session' found.</status>
 </test>
-<kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
-<msg time="2026-09-24T15:37:09.928134" level="INFO">Deleting All Sessions</msg>
-<doc>Removes all the session objects </doc>
-<status status="PASS" start="2026-09-24T15:37:09.927903" elapsed="0.000442"/>
-</kw>
-<doc>Created a Signup TestSuite for the Team Payaman Cumminity Site
-that i am Building, made sure that every negative and positive cases are covered
-by this Test Suite.</doc>
-<status status="FAIL" start="2026-09-24T15:36:58.291405" elapsed="11.637035"/>
+<status status="FAIL" start="2026-09-24T15:50:10.584649" elapsed="0.132584"/>
 </suite>
 <statistics>
 <total>
-<stat pass="14" fail="2" skip="0">All Tests</stat>
-=======
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-23T18:01:33.900569" rpa="false" schemaversion="5">
-<suite id="s1" name="TPApiSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\TPApiSuite.robot">
-<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
-<msg time="2026-09-23T18:01:34.253028" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>api</arg>
-<arg>${URL}</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-09-23T18:01:34.253028" elapsed="0.000000"/>
-</kw>
-<test id="s1-t1" name="Positive Login Test" line="16">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-23T18:01:34.972941" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
- body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "qwer12322"}' 
- </msg>
-<msg time="2026-09-23T18:01:34.972941" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=200, reason=OK 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Wed, 23 Sep 2026 10:01:35 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTAxNTc2OTUsImV4cCI6MTc5MDc2MjQ5NX0.twul1_ZxD0VtFrJJy4YtlQxpVwlcISAXIVB3K9ApfI4; Path=/; Expires=Wed, 30 Sep 2026 10:01:35 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::rkr6p-1790157695244-b6ae117fb802', 'Transfer-Encoding': 'chunked'} 
- body={"message":"Login successful"} 
- </msg>
-<msg time="2026-09-23T18:01:34.972941" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'teampayaman.vercel.app'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-09-23T18:01:34.972941" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<var>${response}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${POSITIVE_CREDENTIALS}</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-23T18:01:34.253028" elapsed="0.726955"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-09-23T18:01:34.981019" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>200</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-09-23T18:01:34.979983" elapsed="0.001036"/>
-</kw>
-<status status="PASS" start="2026-09-23T18:01:34.253028" elapsed="0.727991"/>
-</test>
-<test id="s1-t2" name="Negative Login Test" line="20">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-23T18:01:35.472825" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTAxNTc2OTUsImV4cCI6MTc5MDc2MjQ5NX0.twul1_ZxD0VtFrJJy4YtlQxpVwlcISAXIVB3K9ApfI4', 'Content-Length': '59', 'Content-Type': 'application/json'} 
- body=b'{"email": "invalidmail@gmail.com", "password": "qwer12322"}' 
- </msg>
-<msg time="2026-09-23T18:01:35.472825" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=401, reason=Unauthorized 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 23 Sep 2026 10:01:36 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::jxnj7-1790157695811-560fa35da33d', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Invalid email or password"} 
- </msg>
-<msg time="2026-09-23T18:01:35.472825" level="INFO">C:\Users\gjcsh\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\urllib3\connectionpool.py:1110: InsecureRequestWarning: Unverified HTTPS request is being made to host 'teampayaman.vercel.app'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#tls-warnings
-  warnings.warn(</msg>
-<msg time="2026-09-23T18:01:35.472825" level="INFO">${response} = &lt;Response [401]&gt;</msg>
-<var>${response}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${NEGATIVE_CREDENTIALS}</arg>
-<arg>expected_status=401</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-23T18:01:34.982526" elapsed="0.490299"/>
-</kw>
-<kw name="Should Be Equal As Integers" owner="BuiltIn">
-<msg time="2026-09-23T18:01:35.472825" level="INFO">Argument types are:
-&lt;class 'int'&gt;
-&lt;class 'str'&gt;</msg>
-<arg>${response.status_code}</arg>
-<arg>401</arg>
-<doc>Fails if objects are unequal after converting them to integers.</doc>
-<status status="PASS" start="2026-09-23T18:01:35.472825" elapsed="0.000000"/>
-</kw>
-<status status="PASS" start="2026-09-23T18:01:34.981019" elapsed="0.491806"/>
-</test>
-<status status="PASS" start="2026-09-23T18:01:33.902623" elapsed="1.570202"/>
-</suite>
-<statistics>
-<total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
->>>>>>> 095461b1c7d4fe92af85a09d3e0eec9c627f4cd3
+<stat pass="0" fail="16" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">boundary</stat>
-<stat pass="2" fail="0" skip="0">duplicate</stat>
-<stat pass="2" fail="1" skip="0">email</stat>
-<stat pass="3" fail="0" skip="0">happy-path</stat>
+<stat pass="0" fail="1" skip="0">boundary</stat>
+<stat pass="0" fail="2" skip="0">duplicate</stat>
+<stat pass="0" fail="3" skip="0">email</stat>
+<stat pass="0" fail="3" skip="0">happy-path</stat>
 <stat pass="0" fail="2" skip="0">known-issue</stat>
-<stat pass="1" fail="0" skip="0">normalization</stat>
-<stat pass="2" fail="0" skip="0">password</stat>
-<stat pass="1" fail="0" skip="0">robustness</stat>
-<stat pass="3" fail="0" skip="0">security</stat>
-<stat pass="1" fail="0" skip="0">smoke</stat>
-<stat pass="7" fail="2" skip="0">validation</stat>
+<stat pass="0" fail="1" skip="0">normalization</stat>
+<stat pass="0" fail="2" skip="0">password</stat>
+<stat pass="0" fail="1" skip="0">robustness</stat>
+<stat pass="0" fail="3" skip="0">security</stat>
+<stat pass="0" fail="1" skip="0">smoke</stat>
+<stat pass="0" fail="9" skip="0">validation</stat>
 </tag>
 <suite>
-<<<<<<< HEAD
-<stat name="TPApiSuite" id="s1" pass="14" fail="2" skip="0">TPApiSuite</stat>
-=======
-<stat name="TPApiSuite" id="s1" pass="2" fail="0" skip="0">TPApiSuite</stat>
->>>>>>> 095461b1c7d4fe92af85a09d3e0eec9c627f4cd3
+<stat name="TPApiSuite" id="s1" pass="0" fail="16" skip="0">TPApiSuite</stat>
 </suite>
 </statistics>
 <errors>
