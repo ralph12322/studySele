@@ -9,7 +9,7 @@ Test Teardown    Close Browser
 *** Variables ***
 ${URL}  https://teampayaman.vercel.app/sign
 ${validMail}    ralphgeosantos.dev@gmail.com    
-${validPass}    qwer
+${validPass}    qwer12322
 
 
 *** Test Cases ***

@@ -1,94 +1,1427 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.2 (Python 3.11.9 on win32)" generated="2026-09-20T10:51:33.673522" rpa="false" schemaversion="5">
-<suite id="s1" name="TPSuite" source="C:\Users\gjcsh\Desktop\studySele\tests\TPSuite.robot">
-<test id="s1-t1" name="Login is Valid" line="16">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:51:33.898808" elapsed="1.657700"/>
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-24T15:36:58.289013" rpa="false" schemaversion="5">
+<suite id="s1" name="TPApiSuite" source="C:\Users\Raffy Santos\studySele\tests\TPApiSuite.robot">
+<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
+<msg time="2026-09-24T15:36:58.446186" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>api</arg>
+<arg>${BASE_URL}</arg>
+<arg>disable_warnings=1</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2026-09-24T15:36:58.445801" elapsed="0.000793"/>
 </kw>
-<kw name="Perform Valid Login" owner="CustomKeywords">
-<arg>${validMail}</arg>
-<arg>${validPass}</arg>
-<status status="PASS" start="2026-09-20T10:51:35.556508" elapsed="3.353493"/>
+<test id="s1-t1" name="Signup With Valid Data Returns 201" line="19">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:36:58.448194" level="INFO">${local} = fkz4qku8cvwf</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:36:58.447926" elapsed="0.000300"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:51:38.911918" elapsed="2.283871"/>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:36:58.448285" elapsed="0.000041"/>
+</return>
+<msg time="2026-09-24T15:36:58.448446" level="INFO">${email} = robot.fkz4qku8cvwf@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:36:58.447620" elapsed="0.000848"/>
 </kw>
-<status status="PASS" start="2026-09-20T10:51:33.889569" elapsed="7.306220"/>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:36:59.365933" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.fkz4qku8cvwf@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:36:59.366042" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:36:59 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmZrejRxa3U4Y3Z3ZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.KwO28e9XrTwywQL6pBukQpr3Djn2DSn-zkkQQutCzNY; Path=/; Expires=Thu, 01 Oct 2026 07:36:59 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::j7gqj-1790235418619-1a7869efd194', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:36:59.366196" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:36:58.449389" elapsed="0.916868"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:36:59.366323" elapsed="0.000047"/>
+</return>
+<msg time="2026-09-24T15:36:59.366498" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:36:58.448914" elapsed="0.917606"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:36:59.366864" elapsed="0.000274"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[message]</arg>
+<arg>User created successfully</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:36:59.367536" elapsed="0.000563"/>
+</kw>
+<tag>happy-path</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-09-24T15:36:58.446824" elapsed="0.921546"/>
 </test>
-<test id="s1-t2" name="Login is Invalid" line="19">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:51:41.195789" elapsed="1.601040"/>
+<test id="s1-t2" name="Signup Sets HttpOnly Auth Cookie" line="26">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:36:59.370161" level="INFO">${local} = vylw34e915gf</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:36:59.369883" elapsed="0.000310"/>
 </kw>
-<kw name="Perform Invalid Login" owner="CustomKeywords">
-<arg>sampleinvalid@gmail.com</arg>
-<arg>12345</arg>
-<status status="PASS" start="2026-09-20T10:51:42.796829" elapsed="2.728797"/>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:36:59.370251" elapsed="0.000037"/>
+</return>
+<msg time="2026-09-24T15:36:59.370405" level="INFO">${email} = robot.vylw34e915gf@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:36:59.369470" elapsed="0.000957"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:51:45.525626" elapsed="2.105705"/>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:00.134765" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmZrejRxa3U4Y3Z3ZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.KwO28e9XrTwywQL6pBukQpr3Djn2DSn-zkkQQutCzNY', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.vylw34e915gf@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:00.134973" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:36:59 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnZ5bHczNGU5MTVnZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.1iVNLQpQ0ZvGChOSKrLn5ABmPdowbiH6I4sksO2oQdk; Path=/; Expires=Thu, 01 Oct 2026 07:36:59 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::r7xtm-1790235419394-241936d7ed4a', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:00.135235" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:36:59.371304" elapsed="0.763993"/>
 </kw>
-<status status="PASS" start="2026-09-20T10:51:41.195789" elapsed="6.436600"/>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:00.135445" elapsed="0.000084"/>
+</return>
+<msg time="2026-09-24T15:37:00.135797" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:36:59.370846" elapsed="0.765008"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.136527" elapsed="0.000430"/>
+</kw>
+<kw name="Get From Dictionary" owner="Collections">
+<msg time="2026-09-24T15:37:00.138254" level="INFO">${set_cookie} = authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnZ5bHczNGU5MTVnZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsI...</msg>
+<var>${set_cookie}</var>
+<arg>${resp.headers}</arg>
+<arg>Set-Cookie</arg>
+<doc>Returns a value from the given `dictionary` based on the given `key`.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.137592" elapsed="0.000738"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${set_cookie}</arg>
+<arg>${COOKIE_NAME}=</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.138947" elapsed="0.001225"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${set_cookie}</arg>
+<arg>HttpOnly</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.140790" elapsed="0.000767"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${set_cookie}</arg>
+<arg>Path=/</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.142143" elapsed="0.000870"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${set_cookie}</arg>
+<arg>Max-Age=604800</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.143779" elapsed="0.001090"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${set_cookie}</arg>
+<arg>SameSite=lax</arg>
+<arg>ignore_case=True</arg>
+<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.145667" elapsed="0.001243"/>
+</kw>
+<tag>happy-path</tag>
+<tag>security</tag>
+<status status="PASS" start="2026-09-24T15:36:59.368954" elapsed="0.779131"/>
 </test>
-<test id="s1-t3" name="Signup is Valid" line="22">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:51:47.634119" elapsed="1.532920"/>
+<test id="s1-t3" name="Signup Response Does Not Leak Password Or Token" line="38">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:00.152517" level="INFO">${local} = ev1ci7d2f8t6</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.152043" elapsed="0.000591"/>
 </kw>
-<kw name="Perform Valid Signup" owner="CustomKeywords">
-<msg time="2026-09-20T10:51:59.765355" level="FAIL">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
-</msg>
-<arg>sample name</arg>
-<arg>samplevalid@gmail.com</arg>
-<arg>qwer</arg>
-<status status="FAIL" start="2026-09-20T10:51:49.167526" elapsed="10.606704">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
-</status>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:00.152817" elapsed="0.000123"/>
+</return>
+<msg time="2026-09-24T15:37:00.153411" level="INFO">${email} = robot.ev1ci7d2f8t6@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:00.151284" elapsed="0.002250"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:51:59.774230" elapsed="2.217421"/>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:00.915552" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFiYjQ3NTI5NWMwOTI3YTMxZSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnZ5bHczNGU5MTVnZkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MTksImV4cCI6MTc5MDg0MDIxOX0.1iVNLQpQ0ZvGChOSKrLn5ABmPdowbiH6I4sksO2oQdk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.ev1ci7d2f8t6@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:00.915732" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:00 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFjYjQ3NTI5NWMwOTI3YTMxZiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmV2MWNpN2QyZjh0NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjAsImV4cCI6MTc5MDg0MDIyMH0.1jFu9l-OvueQa0uYlkW5ZhaymzWpTcABZtM8-e0Cb8A; Path=/; Expires=Thu, 01 Oct 2026 07:37:00 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::f8lzg-1790235420178-1aa2ba1bafb7', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:00.915981" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.155938" elapsed="0.760104"/>
 </kw>
-<status status="FAIL" start="2026-09-20T10:51:47.634119" elapsed="14.358733">TimeoutException: Message: URL did not match 'https://teampayaman.vercel.app/' within 10s. Current URL: https://teampayaman.vercel.app/sign
-</status>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:00.916191" elapsed="0.000084"/>
+</return>
+<msg time="2026-09-24T15:37:00.916541" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:00.154327" elapsed="0.762271"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.917708" elapsed="0.000487"/>
+</kw>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${resp.text}</arg>
+<arg>${VALID_PASSWORD}</arg>
+<doc>Fails if the `container` contains the `item`.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.918704" elapsed="0.000973"/>
+</kw>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${resp.text.lower()}</arg>
+<arg>password</arg>
+<doc>Fails if the `container` contains the `item`.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.920150" elapsed="0.000817"/>
+</kw>
+<kw name="Should Not Contain" owner="BuiltIn">
+<arg>${resp.text.lower()}</arg>
+<arg>token</arg>
+<doc>Fails if the `container` contains the `item`.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.921402" elapsed="0.000785"/>
+</kw>
+<tag>security</tag>
+<status status="PASS" start="2026-09-24T15:37:00.149645" elapsed="0.772994"/>
 </test>
-<test id="s1-t4" name="Signup is Invalid" line="25">
-<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
-<arg>${URL}</arg>
-<doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-20T10:52:01.996326" elapsed="1.665290"/>
+<test id="s1-t4" name="Signup Trims And Lowercases Email" line="47">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:00.926590" level="INFO">${local} = qe3f88s6</msg>
+<var>${local}</var>
+<arg>8</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.925997" elapsed="0.000675"/>
 </kw>
-<kw name="Perform Invalid Signup" owner="CustomKeywords">
-<msg time="2026-09-20T10:52:14.348390" level="FAIL">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
-</msg>
-<arg>""</arg>
-<arg>""</arg>
-<arg>""</arg>
-<status status="FAIL" start="2026-09-20T10:52:03.661616" elapsed="10.686774">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
-</status>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-09-24T15:37:00.929529" level="INFO">${padded} =  QE3F88S6@gmail.com </msg>
+<var>${padded}</var>
+<arg>${SPACE}${local.upper()}@gmail.com${SPACE}</arg>
+<doc>Returns the given values which can then be assigned to a variable.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.927516" elapsed="0.002159"/>
 </kw>
-<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
-<doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-20T10:52:14.348390" elapsed="2.181160"/>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:01.675851" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFjYjQ3NTI5NWMwOTI3YTMxZiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmV2MWNpN2QyZjh0NkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjAsImV4cCI6MTc5MDg0MDIyMH0.1jFu9l-OvueQa0uYlkW5ZhaymzWpTcABZtM8-e0Cb8A', 'Content-Length': '81', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": " QE3F88S6@gmail.com ", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:01.676104" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:01 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g; Path=/; Expires=Thu, 01 Oct 2026 07:37:01 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::srs9s-1790235420952-fcf9ba119043', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:01.676363" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:00.931738" elapsed="0.744688"/>
 </kw>
-<status status="FAIL" start="2026-09-20T10:52:01.994154" elapsed="14.535734">TimeoutException: Message: Element ('css selector', "p[role='alert']") was not visible after 10s
-</status>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:01.676575" elapsed="0.000087"/>
+</return>
+<msg time="2026-09-24T15:37:01.676946" level="INFO">${resp1} = &lt;Response [201]&gt;</msg>
+<var>${resp1}</var>
+<arg>name=Test User</arg>
+<arg>email=${padded}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:00.930595" elapsed="0.746410"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp1}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:01.677561" elapsed="0.000502"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:02.164548" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '79', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "qe3f88s6@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:02.164730" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::hgnxj-1790235421700-51fe0ac4723d', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"User already exists"} 
+ </msg>
+<msg time="2026-09-24T15:37:02.164992" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:01.679539" elapsed="0.485514"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:02.165202" elapsed="0.000083"/>
+</return>
+<msg time="2026-09-24T15:37:02.165548" level="INFO">${resp2} = &lt;Response [400]&gt;</msg>
+<var>${resp2}</var>
+<arg>name=Test User</arg>
+<arg>email=${local}@gmail.com</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:01.678673" elapsed="0.486932"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp2}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.166284" elapsed="0.000452"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp2.json()}[error]</arg>
+<arg>User already exists</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.167292" elapsed="0.000963"/>
+</kw>
+<doc>Second signup with the normalized form must be rejected as duplicate.
+Only the local part is uppercased because the route's gmail check is case-sensitive.</doc>
+<tag>happy-path</tag>
+<tag>normalization</tag>
+<status status="PASS" start="2026-09-24T15:37:00.923644" elapsed="1.245003"/>
 </test>
-<status status="FAIL" start="2026-09-20T10:51:33.673522" elapsed="42.857428"/>
+<test id="s1-t5" name="Signup Without Name Returns 400" line="60">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:02.172140" level="INFO">${local} = 6ht5zn382zev</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.171651" elapsed="0.000567"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:02.172357" elapsed="0.000096"/>
+</return>
+<msg time="2026-09-24T15:37:02.172760" level="INFO">${email} = robot.6ht5zn382zev@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:02.170941" elapsed="0.001884"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:02.510635" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '68', 'Content-Type': 'application/json'} 
+ body=b'{"email": "robot.6ht5zn382zev@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:02.510728" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::vh6z7-1790235422197-c39713c8637e', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Missing name, email, or password"} 
+ </msg>
+<msg time="2026-09-24T15:37:02.510841" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.174563" elapsed="0.336302"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:02.510935" elapsed="0.000040"/>
+</return>
+<msg time="2026-09-24T15:37:02.511122" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:02.173546" elapsed="0.337597"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.511597" elapsed="0.000297"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>Missing name, email, or password</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.512264" elapsed="0.000754"/>
+</kw>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:02.169740" elapsed="0.343573"/>
+</test>
+<test id="s1-t6" name="Signup Without Email Returns 400" line="67">
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:02.804084" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '48', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:02.804170" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::p2rj2-1790235422534-ec9734901780', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Missing name, email, or password"} 
+ </msg>
+<msg time="2026-09-24T15:37:02.804277" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.514539" elapsed="0.289763"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:02.804368" elapsed="0.000039"/>
+</return>
+<msg time="2026-09-24T15:37:02.804523" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:02.514176" elapsed="0.290370"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.804895" elapsed="0.000320"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>Missing name, email, or password</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.805977" elapsed="0.000439"/>
+</kw>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:02.513715" elapsed="0.292935"/>
+</test>
+<test id="s1-t7" name="Signup With Empty Name Returns 400" line="73">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:02.808253" level="INFO">${local} = aes8z5oink0k</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.808047" elapsed="0.000237"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:02.808340" elapsed="0.000043"/>
+</return>
+<msg time="2026-09-24T15:37:02.808509" level="INFO">${email} = robot.aes8z5oink0k@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:02.807692" elapsed="0.000843"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:03.127348" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '80', 'Content-Type': 'application/json'} 
+ body=b'{"name": "", "email": "robot.aes8z5oink0k@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:03.127530" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:02 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235422828-9044ee496247', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Missing name, email, or password"} 
+ </msg>
+<msg time="2026-09-24T15:37:03.127767" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:02.809252" elapsed="0.318575"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:03.127989" elapsed="0.000083"/>
+</return>
+<msg time="2026-09-24T15:37:03.128345" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=${EMPTY}</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:02.808828" elapsed="0.319574"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.128935" elapsed="0.000388"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>Missing name, email, or password</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.129802" elapsed="0.000904"/>
+</kw>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:02.807198" elapsed="0.323967"/>
+</test>
+<test id="s1-t8" name="Signup Without Password Returns 400" line="80">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:03.134264" level="INFO">${local} = 88h979xwc4yz</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.133828" elapsed="0.000509"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:03.134465" elapsed="0.000079"/>
+</return>
+<msg time="2026-09-24T15:37:03.134822" level="INFO">${email} = robot.88h979xwc4yz@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:03.133180" elapsed="0.001702"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:03.432105" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '62', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.88h979xwc4yz@gmail.com"}' 
+ </msg>
+<msg time="2026-09-24T15:37:03.432329" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=500, reason=Internal Server Error 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::vwhr7-1790235423158-732f9356a726', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Something went wrong. Please try again."} 
+ </msg>
+<msg time="2026-09-24T15:37:03.432583" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.136327" elapsed="0.296316"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:03.432805" elapsed="0.000082"/>
+</return>
+<msg time="2026-09-24T15:37:03.433151" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<status status="PASS" start="2026-09-24T15:37:03.135383" elapsed="0.297827"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:03.434819" level="FAIL">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 500 != 400</msg>
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="FAIL" start="2026-09-24T15:37:03.434152" elapsed="0.004690">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 500 != 400</status>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>Missing name, email, or password</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" start="2026-09-24T15:37:03.439617" elapsed="0.000077"/>
+</kw>
+<tag>known-issue</tag>
+<tag>validation</tag>
+<status status="FAIL" start="2026-09-24T15:37:03.132178" elapsed="0.308247">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 500 != 400</status>
+</test>
+<test id="s1-t9" name="Signup With Non Gmail Email Returns 400" line="88">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:03.444046" level="INFO">${local} = oejklec8</msg>
+<var>${local}</var>
+<arg>8</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.443431" elapsed="0.000731"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:03.752436" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '79', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "oejklec8@yahoo.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:03.752774" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235423468-dd982c90a7be', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"should be a valid email"} 
+ </msg>
+<msg time="2026-09-24T15:37:03.753126" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.446711" elapsed="0.306501"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:03.753428" elapsed="0.000113"/>
+</return>
+<msg time="2026-09-24T15:37:03.753917" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${local}@yahoo.com</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:03.445063" elapsed="0.308939"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.754764" elapsed="0.000537"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>should be a valid email</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.756161" elapsed="0.001434"/>
+</kw>
+<tag>email</tag>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:03.442199" elapsed="0.315999"/>
+</test>
+<test id="s1-t10" name="Signup With Email Missing At Sign Returns 400" line="95">
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:04.059827" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '71', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "notanemail", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:04.060013" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::p2rj2-1790235423783-ce790b6af726', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"should be a valid email"} 
+ </msg>
+<msg time="2026-09-24T15:37:04.060269" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:03.762092" elapsed="0.298241"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:04.060485" elapsed="0.000085"/>
+</return>
+<msg time="2026-09-24T15:37:04.060843" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=notanemail</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:03.760897" elapsed="0.300003"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:04.061577" elapsed="0.000415"/>
+</kw>
+<tag>email</tag>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:03.759419" elapsed="0.303071"/>
+</test>
+<test id="s1-t11" name="Signup With Gmail Domain As Substring Returns 400" line="100">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:04.065423" level="INFO">${local} = qtpdb26c</msg>
+<var>${local}</var>
+<arg>8</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:04.064910" elapsed="0.000586"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:04.818416" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzFkYjQ3NTI5NWMwOTI3YTMyMCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InFlM2Y4OHM2QGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyMSwiZXhwIjoxNzkwODQwMjIxfQ.xRWpSjTJyPSql8tuWEYNaqGmYoE07BSQBiBoOqvdW3g', 'Content-Length': '79', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "qtpdb26c@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:04.818600" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:04 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk; Path=/; Expires=Thu, 01 Oct 2026 07:37:04 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235424089-a42ceae55d15', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:04.818846" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:04.067226" elapsed="0.751742"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:04.819137" elapsed="0.000099"/>
+</return>
+<msg time="2026-09-24T15:37:04.819553" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${local}@gmail.com</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:04.066052" elapsed="0.753553"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:04.820693" level="FAIL">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 201 != 400</msg>
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="FAIL" start="2026-09-24T15:37:04.820245" elapsed="0.001687">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 201 != 400</status>
+</kw>
+<doc>KNOWN WEAKNESS: email.includes("@gmail.com") also matches
+"x@gmail.com.attacker.com". Use a strict regex or endsWith instead.</doc>
+<tag>email</tag>
+<tag>known-issue</tag>
+<tag>validation</tag>
+<status status="FAIL" start="2026-09-24T15:37:04.063467" elapsed="0.758821">Url: https://teampayaman.vercel.app/api/auth/signup Expected status: 201 != 400</status>
+</test>
+<test id="s1-t12" name="Password Rule Is Enforced" line="109">
+<kw name="Signup Rejects Weak Password">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:04.825343" level="INFO">${local} = rk4dl59z7bhq</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:04.825020" elapsed="0.000393"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:04.825518" elapsed="0.000077"/>
+</return>
+<msg time="2026-09-24T15:37:04.825882" level="INFO">${email} = robot.rk4dl59z7bhq@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:04.824358" elapsed="0.001569"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:05.128778" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '85', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.rk4dl59z7bhq@gmail.com", "password": "Ab1!xyz"}' 
+ </msg>
+<msg time="2026-09-24T15:37:05.128867" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:04 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::pdm8s-1790235424846-7b24944f5d8a', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Password must be at least 8 characters long."} 
+ </msg>
+<msg time="2026-09-24T15:37:05.128983" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:04.826879" elapsed="0.302129"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:05.129078" elapsed="0.000041"/>
+</return>
+<msg time="2026-09-24T15:37:05.129259" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<status status="PASS" start="2026-09-24T15:37:04.826298" elapsed="0.302984"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.129419" elapsed="0.000148"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>${expected_error}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.129698" elapsed="0.000394"/>
+</kw>
+<arg>Ab1!xyz</arg>
+<arg>Password must be at least 8 characters long.</arg>
+<status status="PASS" start="2026-09-24T15:37:04.823778" elapsed="0.306369"/>
+</kw>
+<kw name="Signup Rejects Weak Password">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:05.131221" level="INFO">${local} = 5iabvyj49ndw</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.131064" elapsed="0.000181"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:05.131309" elapsed="0.000031"/>
+</return>
+<msg time="2026-09-24T15:37:05.131478" level="INFO">${email} = robot.5iabvyj49ndw@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:05.130855" elapsed="0.000674"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:05.427075" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.5iabvyj49ndw@gmail.com", "password": "lowercase1!"}' 
+ </msg>
+<msg time="2026-09-24T15:37:05.427156" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:05 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::z8ncr-1790235425151-70bb346f4bbc', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Password must contain at least one uppercase letter."} 
+ </msg>
+<msg time="2026-09-24T15:37:05.427262" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.131999" elapsed="0.295287"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:05.427348" elapsed="0.000036"/>
+</return>
+<msg time="2026-09-24T15:37:05.427496" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<status status="PASS" start="2026-09-24T15:37:05.131669" elapsed="0.295848"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.427652" elapsed="0.000258"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>${expected_error}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.428072" elapsed="0.000542"/>
+</kw>
+<arg>lowercase1!</arg>
+<arg>Password must contain at least one uppercase letter.</arg>
+<status status="PASS" start="2026-09-24T15:37:05.130565" elapsed="0.298174"/>
+</kw>
+<kw name="Signup Rejects Weak Password">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:05.429748" level="INFO">${local} = mourmhlco78k</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.429596" elapsed="0.000178"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:05.429818" elapsed="0.000030"/>
+</return>
+<msg time="2026-09-24T15:37:05.429949" level="INFO">${email} = robot.mourmhlco78k@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:05.429388" elapsed="0.000581"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:05.723512" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.mourmhlco78k@gmail.com", "password": "UPPERCASE1!"}' 
+ </msg>
+<msg time="2026-09-24T15:37:05.723626" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:05 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::r7xtm-1790235425449-d4f069f9e7bc', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Password must contain at least one lowercase letter."} 
+ </msg>
+<msg time="2026-09-24T15:37:05.723810" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.430452" elapsed="0.293381"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:05.723938" elapsed="0.000072"/>
+</return>
+<msg time="2026-09-24T15:37:05.724200" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<status status="PASS" start="2026-09-24T15:37:05.430071" elapsed="0.294152"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.724355" elapsed="0.000158"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>${expected_error}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.724641" elapsed="0.000454"/>
+</kw>
+<arg>UPPERCASE1!</arg>
+<arg>Password must contain at least one lowercase letter.</arg>
+<status status="PASS" start="2026-09-24T15:37:05.429062" elapsed="0.296092"/>
+</kw>
+<kw name="Signup Rejects Weak Password">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:05.726357" level="INFO">${local} = 8i7bkh726zno</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.726199" elapsed="0.000185"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:05.726436" elapsed="0.000033"/>
+</return>
+<msg time="2026-09-24T15:37:05.726566" level="INFO">${email} = robot.8i7bkh726zno@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:05.725984" elapsed="0.000604"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:06.031857" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.8i7bkh726zno@gmail.com", "password": "NoNumbers!!"}' 
+ </msg>
+<msg time="2026-09-24T15:37:06.032028" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:05 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::dmqb4-1790235425746-157325bd50ea', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Password must contain at least one number."} 
+ </msg>
+<msg time="2026-09-24T15:37:06.032220" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:05.727051" elapsed="0.305214"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:06.032373" elapsed="0.000063"/>
+</return>
+<msg time="2026-09-24T15:37:06.032645" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<status status="PASS" start="2026-09-24T15:37:05.726736" elapsed="0.305953"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.032931" elapsed="0.000278"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>${expected_error}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.033453" elapsed="0.000710"/>
+</kw>
+<arg>NoNumbers!!</arg>
+<arg>Password must contain at least one number.</arg>
+<status status="PASS" start="2026-09-24T15:37:05.725616" elapsed="0.308663"/>
+</kw>
+<kw name="Signup Rejects Weak Password">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:06.035953" level="INFO">${local} = 96y2c10390t3</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.035674" elapsed="0.000327"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:06.036085" elapsed="0.000052"/>
+</return>
+<msg time="2026-09-24T15:37:06.036333" level="INFO">${email} = robot.96y2c10390t3@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:06.035281" elapsed="0.001090"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:06.344955" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '90', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.96y2c10390t3@gmail.com", "password": "NoSpecial123"}' 
+ </msg>
+<msg time="2026-09-24T15:37:06.345054" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:06 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235426056-91bd954e5b6f', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Password must contain at least one special character."} 
+ </msg>
+<msg time="2026-09-24T15:37:06.345214" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.037140" elapsed="0.308105"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:06.345322" elapsed="0.000048"/>
+</return>
+<msg time="2026-09-24T15:37:06.345535" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${password}</arg>
+<status status="PASS" start="2026-09-24T15:37:06.036584" elapsed="0.308981"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.345714" elapsed="0.000171"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>${expected_error}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.346031" elapsed="0.000468"/>
+</kw>
+<arg>NoSpecial123</arg>
+<arg>Password must contain at least one special character.</arg>
+<status status="PASS" start="2026-09-24T15:37:06.034754" elapsed="0.311813"/>
+</kw>
+<tag>password</tag>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:04.822847" elapsed="1.524072"/>
+</test>
+<test id="s1-t13" name="Password Of Exactly Eight Characters Is Accepted" line="119">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:06.348495" level="INFO">${local} = 8nbyqppu45m8</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.348305" elapsed="0.000221"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:06.348584" elapsed="0.000035"/>
+</return>
+<msg time="2026-09-24T15:37:06.348726" level="INFO">${email} = robot.8nbyqppu45m8@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:06.347982" elapsed="0.000768"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:07.112608" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIwYjQ3NTI5NWMwOTI3YTMyMSIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InF0cGRiMjZjQGdtYWlsLmNvbSIsInJvbGUiOiJ1c2VyIiwicHJvZmlsZUltYWdlIjoiIn0sImlhdCI6MTc5MDIzNTQyNCwiZXhwIjoxNzkwODQwMjI0fQ.0AWFZuf0YkLUq37V0dS7y0UdU55Y7qAOsg38L2pMrrk', 'Content-Length': '86', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.8nbyqppu45m8@gmail.com", "password": "Abcde1!x"}' 
+ </msg>
+<msg time="2026-09-24T15:37:07.112690" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:06 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIyYjQ3NTI5NWMwOTI3YTMyMiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LjhuYnlxcHB1NDVtOEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjYsImV4cCI6MTc5MDg0MDIyNn0.7lX2_ZtME3CmxOG2SAwzPc51btugL04MPGEeatjZ98w; Path=/; Expires=Thu, 01 Oct 2026 07:37:06 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235426368-fcc803abaf63', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:07.112813" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:06.349462" elapsed="0.763374"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:07.112897" elapsed="0.000036"/>
+</return>
+<msg time="2026-09-24T15:37:07.113036" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=Abcde1!x</arg>
+<status status="PASS" start="2026-09-24T15:37:06.349105" elapsed="0.763952"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:07.113408" elapsed="0.000295"/>
+</kw>
+<tag>boundary</tag>
+<tag>password</tag>
+<tag>validation</tag>
+<status status="PASS" start="2026-09-24T15:37:06.347441" elapsed="0.766549"/>
+</test>
+<test id="s1-t14" name="Duplicate Signup Returns 400" line="126">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:07.115426" level="INFO">${local} = f22d6rhy4zwh</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:07.115253" elapsed="0.000198"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:07.115495" elapsed="0.000027"/>
+</return>
+<msg time="2026-09-24T15:37:07.115623" level="INFO">${email} = robot.f22d6rhy4zwh@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:07.115004" elapsed="0.000640"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:07.857182" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIyYjQ3NTI5NWMwOTI3YTMyMiIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LjhuYnlxcHB1NDVtOEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjYsImV4cCI6MTc5MDg0MDIyNn0.7lX2_ZtME3CmxOG2SAwzPc51btugL04MPGEeatjZ98w', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.f22d6rhy4zwh@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:07.857368" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:07 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIzYjQ3NTI5NWMwOTI3YTMyMyIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmYyMmQ2cmh5NHp3aEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjcsImV4cCI6MTc5MDg0MDIyN30.MoC4ct3wfBd9Q02Nw-qunjYi_HgWBdAoSkss_Xv0sIc; Path=/; Expires=Thu, 01 Oct 2026 07:37:07 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235427135-dbf68c5dcb40', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:07.857633" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:07.116586" elapsed="0.741110"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:07.857846" elapsed="0.000086"/>
+</return>
+<msg time="2026-09-24T15:37:07.858205" level="INFO">${first} = &lt;Response [201]&gt;</msg>
+<var>${first}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:07.116244" elapsed="0.742019"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<arg>${first}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:07.858935" elapsed="0.000421"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:08.353011" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIzYjQ3NTI5NWMwOTI3YTMyMyIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmYyMmQ2cmh5NHp3aEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjcsImV4cCI6MTc5MDg0MDIyN30.MoC4ct3wfBd9Q02Nw-qunjYi_HgWBdAoSkss_Xv0sIc', 'Content-Length': '90', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Other User", "email": "robot.f22d6rhy4zwh@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:08.353197" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:08 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235427881-b04ed97f2920', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"User already exists"} 
+ </msg>
+<msg time="2026-09-24T15:37:08.353442" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:07.860745" elapsed="0.492757"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:08.353666" elapsed="0.000087"/>
+</return>
+<msg time="2026-09-24T15:37:08.354094" level="INFO">${second} = &lt;Response [400]&gt;</msg>
+<var>${second}</var>
+<arg>name=Other User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:07.859894" elapsed="0.494318"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${second}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:08.355110" elapsed="0.000571"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${second.json()}[error]</arg>
+<arg>User already exists</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:08.356405" elapsed="0.001044"/>
+</kw>
+<tag>duplicate</tag>
+<status status="PASS" start="2026-09-24T15:37:07.114471" elapsed="1.243493"/>
+</test>
+<test id="s1-t15" name="Duplicate Signup Does Not Set A Cookie" line="135">
+<kw name="Unique Email">
+<kw name="Generate Random String" owner="String">
+<msg time="2026-09-24T15:37:08.361628" level="INFO">${local} = yj2gh6fpcwmb</msg>
+<var>${local}</var>
+<arg>12</arg>
+<arg>[LOWER][NUMBERS]</arg>
+<doc>Generates a string with a desired `length` from the given `chars`.</doc>
+<status status="PASS" start="2026-09-24T15:37:08.360775" elapsed="0.000977"/>
+</kw>
+<return>
+<value>robot.${local}@gmail.com</value>
+<status status="PASS" start="2026-09-24T15:37:08.361952" elapsed="0.000104"/>
+</return>
+<msg time="2026-09-24T15:37:08.362377" level="INFO">${email} = robot.yj2gh6fpcwmb@gmail.com</msg>
+<var>${email}</var>
+<status status="PASS" start="2026-09-24T15:37:08.359975" elapsed="0.002470"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:09.110204" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzIzYjQ3NTI5NWMwOTI3YTMyMyIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LmYyMmQ2cmh5NHp3aEBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjcsImV4cCI6MTc5MDg0MDIyN30.MoC4ct3wfBd9Q02Nw-qunjYi_HgWBdAoSkss_Xv0sIc', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.yj2gh6fpcwmb@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:09.110386" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=201, reason=Created 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:08 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzI0YjQ3NTI5NWMwOTI3YTMyNCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnlqMmdoNmZwY3dtYkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjgsImV4cCI6MTc5MDg0MDIyOH0.4zv1Rr-v0O-bve3OVJbcvHJUsyTYR0K95nbQ0kMJcjU; Path=/; Expires=Thu, 01 Oct 2026 07:37:08 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::xbbzn-1790235428384-ac65713b9066', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"User created successfully"} 
+ </msg>
+<msg time="2026-09-24T15:37:09.110639" level="INFO">${resp} = &lt;Response [201]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:08.363942" elapsed="0.746758"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:09.110852" elapsed="0.000083"/>
+</return>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:08.363074" elapsed="0.748067"/>
+</kw>
+<kw name="Signup Request">
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:09.605160" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzI0YjQ3NTI5NWMwOTI3YTMyNCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnlqMmdoNmZwY3dtYkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjgsImV4cCI6MTc5MDg0MDIyOH0.4zv1Rr-v0O-bve3OVJbcvHJUsyTYR0K95nbQ0kMJcjU', 'Content-Length': '89', 'Content-Type': 'application/json'} 
+ body=b'{"name": "Test User", "email": "robot.yj2gh6fpcwmb@gmail.com", "password": "Str0ng!Pass"}' 
+ </msg>
+<msg time="2026-09-24T15:37:09.605386" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=400, reason=Bad Request 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:09 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::wxd92-1790235429133-8e645a0af97a', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"User already exists"} 
+ </msg>
+<msg time="2026-09-24T15:37:09.605633" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.112701" elapsed="0.493004"/>
+</kw>
+<return>
+<value>${resp}</value>
+<status status="PASS" start="2026-09-24T15:37:09.605860" elapsed="0.000086"/>
+</return>
+<msg time="2026-09-24T15:37:09.606237" level="INFO">${second} = &lt;Response [400]&gt;</msg>
+<var>${second}</var>
+<arg>name=Test User</arg>
+<arg>email=${email}</arg>
+<arg>password=${VALID_PASSWORD}</arg>
+<status status="PASS" start="2026-09-24T15:37:09.111839" elapsed="0.494456"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>400</arg>
+<arg>${second}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.606975" elapsed="0.000439"/>
+</kw>
+<kw name="Dictionary Should Not Contain Key" owner="Collections">
+<arg>${second.headers}</arg>
+<arg>Set-Cookie</arg>
+<doc>Fails if `key` is found from `dictionary`.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.607851" elapsed="0.000554"/>
+</kw>
+<tag>duplicate</tag>
+<tag>security</tag>
+<status status="PASS" start="2026-09-24T15:37:08.358926" elapsed="1.249859"/>
+</test>
+<test id="s1-t16" name="Signup With Invalid JSON Returns 500" line="144">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-09-24T15:37:09.612264" level="INFO">${headers} = {'Content-Type': 'application/json'}</msg>
+<var>${headers}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given `items`.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.611239" elapsed="0.001104"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2026-09-24T15:37:09.922578" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/signup 
+ path_url=/api/auth/signup 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Type': 'application/json', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjRkMzI0YjQ3NTI5NWMwOTI3YTMyNCIsIm5hbWUiOiJUZXN0IFVzZXIiLCJlbWFpbCI6InJvYm90LnlqMmdoNmZwY3dtYkBnbWFpbC5jb20iLCJyb2xlIjoidXNlciIsInByb2ZpbGVJbWFnZSI6IiJ9LCJpYXQiOjE3OTAyMzU0MjgsImV4cCI6MTc5MDg0MDIyOH0.4zv1Rr-v0O-bve3OVJbcvHJUsyTYR0K95nbQ0kMJcjU', 'Content-Length': '15'} 
+ body={not valid json 
+ </msg>
+<msg time="2026-09-24T15:37:09.922758" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/signup 
+ status=500, reason=Internal Server Error 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Thu, 24 Sep 2026 07:37:09 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/signup', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::6c5xq-1790235429634-704726953922', 'Transfer-Encoding': 'chunked'} 
+ body={"error":"Something went wrong. Please try again."} 
+ </msg>
+<msg time="2026-09-24T15:37:09.923002" level="INFO">${resp} = &lt;Response [500]&gt;</msg>
+<var>${resp}</var>
+<arg>api</arg>
+<arg>${SIGNUP_ENDPOINT}</arg>
+<arg>data={not valid json</arg>
+<arg>headers=${headers}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.612838" elapsed="0.310224"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>500</arg>
+<arg>${resp}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.923766" elapsed="0.000480"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[error]</arg>
+<arg>Something went wrong. Please try again.</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-09-24T15:37:09.924764" elapsed="0.000986"/>
+</kw>
+<doc>request.json() throws inside the try block, so the route returns its generic 500.
+Consider returning 400 for malformed JSON instead.</doc>
+<tag>robustness</tag>
+<status status="PASS" start="2026-09-24T15:37:09.609775" elapsed="0.316360"/>
+</test>
+<kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
+<msg time="2026-09-24T15:37:09.928134" level="INFO">Deleting All Sessions</msg>
+<doc>Removes all the session objects </doc>
+<status status="PASS" start="2026-09-24T15:37:09.927903" elapsed="0.000442"/>
+</kw>
+<doc>Created a Signup TestSuite for the Team Payaman Cumminity Site
+that i am Building, made sure that every negative and positive cases are covered
+by this Test Suite.</doc>
+<status status="FAIL" start="2026-09-24T15:36:58.291405" elapsed="11.637035"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="2" skip="0">All Tests</stat>
+<stat pass="14" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">boundary</stat>
+<stat pass="2" fail="0" skip="0">duplicate</stat>
+<stat pass="2" fail="1" skip="0">email</stat>
+<stat pass="3" fail="0" skip="0">happy-path</stat>
+<stat pass="0" fail="2" skip="0">known-issue</stat>
+<stat pass="1" fail="0" skip="0">normalization</stat>
+<stat pass="2" fail="0" skip="0">password</stat>
+<stat pass="1" fail="0" skip="0">robustness</stat>
+<stat pass="3" fail="0" skip="0">security</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
+<stat pass="7" fail="2" skip="0">validation</stat>
 </tag>
 <suite>
-<stat name="TPSuite" id="s1" pass="2" fail="2" skip="0">TPSuite</stat>
+<stat name="TPApiSuite" id="s1" pass="14" fail="2" skip="0">TPApiSuite</stat>
 </suite>
 </statistics>
 <errors>
