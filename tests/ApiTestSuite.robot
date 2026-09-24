@@ -68,5 +68,5 @@ Verify Post Api
     ${res}=    Set Variable    ${response.json()}
     Dictionary Should Contain Key    ${res}    id
     Should Be Equal As Integers    ${res}[userId]    1
-    Should Be Equal As Strings    ${res}[title]    Sample Title 
+    Should Be Equal As Strings    ${res}[title]    Sample Title
     Should Be Equal As Strings    ${res}[body]    Sample body for this post
