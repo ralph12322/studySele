@@ -103,7 +103,7 @@ Signup With Gmail Domain As Substring Returns 400
     ...                "x@gmail.com.attacker.com". Use a strict regex or endsWith instead.
     [Tags]    validation    email    known-issue
     ${local}=    Generate Random String    8    [LOWER][NUMBERS]
-    ${resp}=    Signup Request    name=Test User    email=${local}@gmail.com    password=${VALID_PASSWORD}
+    ${resp}=    Signup Request    name=Test User    email=${local}@gmaiil.com    password=${VALID_PASSWORD}
     Status Should Be    400    ${resp}
 
 # Password rules
