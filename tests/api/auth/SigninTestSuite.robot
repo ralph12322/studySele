@@ -13,6 +13,7 @@ Suite Teardown  Delete All Sessions
 *** Variables ***
 ${BASE_URL}     https://teampayaman.vercel.app
 ${SIGNIN_PATH}      /api/auth/login
+${LOGOUT_PATH}      /api/auth/logout
 
 *** Keywords ***
 Signin Request
@@ -20,9 +21,22 @@ Signin Request
     ${res}      POST on Session     api     ${SIGNIN_PATH}      json=${body}    expected_status=any
     RETURN      ${res}
 
+Logout Request
+    ${res}      POST on Session     api     ${LOGOUT_PATH}      expected_status=200
+    RETURN      ${res}
+
 
 *** Test Cases ***
 
+# Logout Test Case
+Logout Test Case
+    [Tags]    smoke
+    ${resp}     Signin Request    email=ralphgeosantos.dev@gmail.com      password=qwer12322
+    Status Should Be    200     ${resp}
+    Should Be Equal     ${resp.json()}[message]     Login successful
+    ${resp}     Logout Request
+    Dictionary Should Not Contain Key    ${resp.headers}    Set-Cookie
+    
 #  Positive Test Cases Valid Path
 Login with Valid Credentials
     [Tags]  smoke   positive
