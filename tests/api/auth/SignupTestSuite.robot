@@ -15,8 +15,25 @@ ${SIGNUP_ENDPOINT}     /api/auth/signup
 ${VALID_PASSWORD}      Str0ng!Pass
 ${COOKIE_NAME}         authToken
 
+*** Keywords ***
+Signup Request
+    [Arguments]    &{body}
+    ${resp}=    POST On Session    api    ${SIGNUP_ENDPOINT}    json=${body}    expected_status=any
+    RETURN    ${resp}
+
+Unique Email
+    ${local}=    Generate Random String    12    [LOWER][NUMBERS]
+    RETURN    robot.${local}@gmail.com
+
+Signup Rejects Weak Password
+    [Arguments]    ${password}    ${expected_error}
+    ${email}=    Unique Email
+    ${resp}=    Signup Request    name=Test User    email=${email}    password=${password}
+    Status Should Be    400    ${resp}
+    Should Be Equal    ${resp.json()}[error]    ${expected_error}
+
 *** Test Cases ***
-# Happy path
+# Valid path
 Signup With Valid Data Returns 201
     [Tags]    smoke    happy-path
     ${email}=    Unique Email
@@ -150,20 +167,3 @@ Signup With Invalid JSON Returns 500
     ${resp}=    POST On Session    api    ${SIGNUP_ENDPOINT}    data={not valid json    headers=${headers}    expected_status=any
     Status Should Be    500    ${resp}
     Should Be Equal    ${resp.json()}[error]    Something went wrong. Please try again.
-
-*** Keywords ***
-Signup Request
-    [Arguments]    &{body}
-    ${resp}=    POST On Session    api    ${SIGNUP_ENDPOINT}    json=${body}    expected_status=any
-    RETURN    ${resp}
-
-Unique Email
-    ${local}=    Generate Random String    12    [LOWER][NUMBERS]
-    RETURN    robot.${local}@gmail.com
-
-Signup Rejects Weak Password
-    [Arguments]    ${password}    ${expected_error}
-    ${email}=    Unique Email
-    ${resp}=    Signup Request    name=Test User    email=${email}    password=${password}
-    Status Should Be    400    ${resp}
-    Should Be Equal    ${resp.json()}[error]    ${expected_error}
