@@ -13,9 +13,6 @@ class SignPage(BasePage):
     sign_up_tab = (By.XPATH, "//button[@type='button'][normalize-space()='Sign Up']")
     
 
-
-
-
     #Log in section:
 
     def _submit_credentials_for_signin(self, user_email, user_password):
@@ -42,7 +39,7 @@ class SignPage(BasePage):
 
     #Signup section:
 
-    def _submit_credentials_for_signup(self, user_email, user_password, user_name):
+    def _submit_credentials_for_signup(self, user_name, user_email, user_password):
             """Fill in the form and press Enter."""
 
             signup_button = self.wait_for_clickable(self.sign_up_tab)
@@ -63,7 +60,7 @@ class SignPage(BasePage):
 
             password_field = self.wait_for_clickable(self.confirm_password)
             password_field.clear()
-            password_field.send_keys(self.confirm_password)
+            password_field.send_keys(user_password)
             password_field.send_keys(Keys.ENTER)
 
     def valid_signup(self, user_name, user_email, user_password):

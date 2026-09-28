@@ -1,52 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-26T17:24:55.201367" rpa="false" schemaversion="5">
-<suite id="s1" name="ChannelinfoTest" source="C:\Users\Raffy Santos\studySele\tests\api\ChannelinfoTest.robot">
-<kw name="Create Session" owner="RequestsLibrary" type="SETUP">
-<msg time="2026-09-26T17:24:55.387453" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<arg>api</arg>
-<arg>${BASE_URL}</arg>
-<arg>disable_warnings=1</arg>
-<doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-09-26T17:24:55.387048" elapsed="0.000686"/>
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-28T13:36:44.653799" rpa="false" schemaversion="5">
+<suite id="s1" name="TPSuite" source="C:\Users\Raffy Santos\studySele\tests\ui\TPSuite.robot">
+<test id="s1-t1" name="Signup is Invalid The User Already Exist" line="31">
+<kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
+<arg>${URL}</arg>
+<doc>Navigates to the given URL using the shared driver.</doc>
+<status status="PASS" start="2026-09-28T13:36:45.035129" elapsed="2.492297"/>
 </kw>
-<test id="s1-t1" name="Get Channel Info Should Return status 200" line="23">
-<kw name="Info Get Request">
-<kw name="GET On Session" owner="RequestsLibrary">
-<msg time="2026-09-26T17:24:56.114369" level="INFO">GET Request : url=https://teampayaman.vercel.app/api/info 
- path_url=/api/info 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
- body=None 
- </msg>
-<msg time="2026-09-26T17:24:56.114706" level="INFO">GET Response : url=https://teampayaman.vercel.app/api/info 
- status=200, reason=OK 
- headers={'Age': '0', 'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Sat, 26 Sep 2026 09:24:55 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/info', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::vvj4k-1790414695139-a460604d48d3', 'Transfer-Encoding': 'chunked'} 
- body={"name":"Cong TV","thumbnail":"https://yt3.ggpht.com/ytc/AIdro_lU5D54Y0dz4mEx78Qqz_YL8UKoVehxhEl1PSFzJFKsK9E=s800-c-k-c0x00ffffff-no-rj","subscribers":12700000,"views":2156687250,"videos":618} 
- </msg>
-<msg time="2026-09-26T17:24:56.115080" level="INFO">${res} = &lt;Response [200]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${INFO_PATH}</arg>
-<doc>Sends a GET request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-26T17:24:55.389076" elapsed="0.726083"/>
+<kw name="Perform Invalid Signup" owner="CustomKeywords">
+<arg>${mock_fields}[name]</arg>
+<arg>${validMail}</arg>
+<arg>${mock_fields}[password]</arg>
+<status status="PASS" start="2026-09-28T13:36:47.528247" elapsed="6.631389"/>
 </kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-26T17:24:56.115355" elapsed="0.000179"/>
-</return>
-<msg time="2026-09-26T17:24:56.115932" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<status status="PASS" start="2026-09-26T17:24:55.388729" elapsed="0.727284"/>
+<kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
+<doc>Close the driver browser</doc>
+<status status="PASS" start="2026-09-28T13:36:54.160311" elapsed="2.404770"/>
 </kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>200</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-26T17:24:56.116813" elapsed="0.000887"/>
-</kw>
-<status status="PASS" start="2026-09-26T17:24:55.387892" elapsed="0.730392"/>
+<status status="PASS" start="2026-09-28T13:36:45.034206" elapsed="11.531454"/>
 </test>
-<doc>Created a simple Test for the Channel info of
-Cong Tv, to make sure it is working properly.</doc>
-<status status="PASS" start="2026-09-26T17:24:55.204090" elapsed="0.916504"/>
+<status status="PASS" start="2026-09-28T13:36:44.655913" elapsed="11.911767"/>
 </suite>
 <statistics>
 <total>
@@ -55,7 +28,7 @@ Cong Tv, to make sure it is working properly.</doc>
 <tag>
 </tag>
 <suite>
-<stat name="ChannelinfoTest" id="s1" pass="1" fail="0" skip="0">ChannelinfoTest</stat>
+<stat name="TPSuite" id="s1" pass="1" fail="0" skip="0">TPSuite</stat>
 </suite>
 </statistics>
 <errors>
