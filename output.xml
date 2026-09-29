@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-28T13:36:44.653799" rpa="false" schemaversion="5">
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-29T16:32:02.995062" rpa="false" schemaversion="5">
 <suite id="s1" name="TPSuite" source="C:\Users\Raffy Santos\studySele\tests\ui\TPSuite.robot">
-<test id="s1-t1" name="Signup is Invalid The User Already Exist" line="31">
+<test id="s1-t1" name="Login with Wrong Password and Email" line="31">
 <kw name="Open Portfolio" owner="CustomKeywords" type="SETUP">
 <arg>${URL}</arg>
 <doc>Navigates to the given URL using the shared driver.</doc>
-<status status="PASS" start="2026-09-28T13:36:45.035129" elapsed="2.492297"/>
+<status status="PASS" start="2026-09-29T16:32:03.509738" elapsed="2.489271"/>
 </kw>
-<kw name="Perform Invalid Signup" owner="CustomKeywords">
-<arg>${mock_fields}[name]</arg>
-<arg>${validMail}</arg>
-<arg>${mock_fields}[password]</arg>
-<status status="PASS" start="2026-09-28T13:36:47.528247" elapsed="6.631389"/>
+<kw name="Perform Invalid Login" owner="CustomKeywords">
+<arg>sampleinvalid@gmail.com</arg>
+<arg>invalidpassword</arg>
+<status status="PASS" start="2026-09-29T16:32:06.007977" elapsed="3.013530"/>
 </kw>
 <kw name="Close Browser" owner="CustomKeywords" type="TEARDOWN">
 <doc>Close the driver browser</doc>
-<status status="PASS" start="2026-09-28T13:36:54.160311" elapsed="2.404770"/>
+<status status="PASS" start="2026-09-29T16:32:09.022718" elapsed="2.364524"/>
 </kw>
-<status status="PASS" start="2026-09-28T13:36:45.034206" elapsed="11.531454"/>
+<status status="PASS" start="2026-09-29T16:32:03.507586" elapsed="7.880288"/>
 </test>
-<status status="PASS" start="2026-09-28T13:36:44.655913" elapsed="11.911767"/>
+<status status="PASS" start="2026-09-29T16:32:02.997548" elapsed="8.392524"/>
 </suite>
 <statistics>
 <total>

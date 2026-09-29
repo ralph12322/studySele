@@ -5,6 +5,7 @@ from driver_manager import get_driver, quit_driver
 from pages.home_page import HomePage
 from pages.sign_page import SignPage
 from robot.api.deco import keyword
+from robot.libraries.BuiltIn import BuiltIn
 import time
 
 
@@ -80,7 +81,8 @@ class CustomKeywords:
 
     @keyword("Perform Invalid Login")
     def perform_invalid_login(self, mail, pword):
-        self.sign_page.invalid_login(mail, pword)
+        error_text = self.sign_page.invalid_login(mail, pword)
+        BuiltIn().should_be_equal(error_text, "Invalid email or password")
         time.sleep(2)
 
     @keyword("Perform Valid Signup")

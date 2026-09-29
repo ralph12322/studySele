@@ -7,7 +7,7 @@ Test Teardown    Close Browser
 *** Keywords ***
 Generate Random Email
     ${local}=    Generate Random String    12    [LOWER][NUMBERS]
-    RETURN    robot.${local}@gmail.com
+    RETURN    ${local}@gmail.com
 
 
 *** Variables ***
@@ -21,8 +21,18 @@ ${validPass}    qwer12322
 Login is Valid
     Perform Valid Login    ${validMail}    ${validPass}
 
-Login is Invalid
-    Perform Invalid Login    sampleinvalid@gmail.com    12345
+Login with Wrong Email and Valid Password
+    Perform Invalid Login    sampleinvalid@gmail.com    ${validPass}
+
+
+Login with Wrong Password and Valid Email
+    Perform Invalid Login   ${validMail}    invalidpassword
+
+Login with Wrong Password and Email
+    Perform Invalid Login   sampleinvalid@gmail.com    invalidpassword
+
+# Negative test case for Login is also done by Manual testing since i made all the form fields required.
+# The test can be done by manual testing, if it involves submitting empty fields.
 
 Signup is Valid
     ${UNIQUE_MAIL}      Generate Random Email
@@ -31,4 +41,7 @@ Signup is Valid
 Signup is Invalid The User Already Exist
     Perform Invalid Signup      ${mock_fields}[name]     ${validMail}   ${mock_fields}[password]
 
-#Negative cases includes Empty fields done by manual testing since i made all the fields in form required
+# Negative cases includes Empty fields done by manual testing since i made all the 
+# fields in form required.
+# And also made the email field required to have @gmail.com so those test case 
+# involves invalid mails is done by manual testing as well.
