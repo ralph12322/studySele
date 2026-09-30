@@ -11,13 +11,14 @@ Suite Setup     Create Session  api     ${BASE_URL}     disable_warnings=1
 Suite Teardown  Delete All Sessions
 
 *** Variables ***
+&{VALID_CREDENTIALS}        email=ralphgeosantos.dev@gmail.com      password=qwer12322
 ${BASE_URL}     https://teampayaman.vercel.app
 ${SIGNIN_PATH}      /api/auth/login
 ${LOGOUT_PATH}      /api/auth/logout
 
 *** Keywords ***
 Signin Request
-    [Arguments]   &{body}
+    [Arguments]   ${body}
     ${res}      POST on Session     api     ${SIGNIN_PATH}      json=${body}    expected_status=any
     RETURN      ${res}
 
@@ -31,7 +32,7 @@ Logout Request
 # Logout Test Case
 Logout Test Case
     [Tags]    smoke
-    ${resp}     Signin Request    email=ralphgeosantos.dev@gmail.com      password=qwer12322
+    ${resp}     Signin Request    ${VALID_CREDENTIALS}
     Status Should Be    200     ${resp}
     Should Be Equal     ${resp.json()}[message]     Login successful
     ${resp}     Logout Request
@@ -40,13 +41,13 @@ Logout Test Case
 #  Positive Test Cases Valid Path
 Login with Valid Credentials
     [Tags]  smoke   positive
-    ${resp}     Signin Request    email=ralphgeosantos.dev@gmail.com      password=qwer12322
+    ${resp}     Signin Request    ${VALID_CREDENTIALS}
     Status Should Be    200     ${resp}
     Should Be Equal     ${resp.json()}[message]     Login successful
 
 Signin Sets HttpOnly Auth Cookie
     [Tags]    smoke  positive   security
-    ${resp}=    Signin Request    email=ralphgeosantos.dev@gmail.com    password=qwer12322
+    ${resp}=    Signin Request    ${VALID_CREDENTIALS}
     Status Should Be    200    ${resp}
     ${set_cookie}=    Get From Dictionary    ${resp.headers}    Set-Cookie
     Should Contain    ${set_cookie}    authToken
@@ -59,31 +60,36 @@ Signin Sets HttpOnly Auth Cookie
 #   Negative Test Cases
 Login with empty fields
     [Tags]  smoke   negative    all_empty
-    ${resp}     Signin Request    email=      password=
+    &{INVALID_CREDENTIALS}      Create Dictionary      email=          password=
+    ${resp}     Signin Request    ${INVALID_CREDENTIALS}
     Status Should Be    400     ${resp}
     Should Be Equal     ${resp.json()}[error]   Missing email or password
 
 Login With Empty Email
     [Tags]  smoke   negative    empty_email
-    ${resp}     Signin Request      email=      password=qwer12322
+    &{INVALID_CREDENTIALS}      Create Dictionary      email=      password=qwer12322
+    ${resp}     Signin Request      ${INVALID_CREDENTIALS}     
     Status Should Be    400     ${resp}
     Should Be Equal     ${resp.json()}[error]       Missing email or password
 
 Login With Empty Password
     [Tags]  smoke   negative    empty_email
-    ${resp}     Signin Request      email=ralphgeosantos.dev@gmail.com      password=
+    &{INVALID_CREDENTIALS}       Create Dictionary      email=ralphgeosantos.dev@gmail.com      password=
+    ${resp}     Signin Request      ${INVALID_CREDENTIALS}
     Status Should Be    400     ${resp}
     Should Be Equal     ${resp.json()}[error]       Missing email or password
 
 Login With Correct Email Incorrect Password
     [Tags]  smoke   negative    one_incorrect
-    ${resp}     Signin Request      email=ralphgeosantos.dev@gmail.com      password=incorrectpassword
+    &{INVALID_CREDENTIALS}          Create Dictionary        email=ralphgeosantos.dev@gmail.com      password=incorrectpassword
+    ${resp}     Signin Request      ${INVALID_CREDENTIALS}
     Status Should Be    401     ${resp}
     Should Be Equal     ${resp.json()}[error]       Invalid email or password
 
 Login With Correct Password Incorrect Email
     [Tags]  smoke   negative    one_incorrect
-    ${resp}     Signin Request      email=incorrectemail@gmail.com      password=qwer12322
+    &{INVALID_CREDENTIALS}      Create Dictionary       email=incorrectemail@gmail.com      password=qwer12322
+    ${resp}     Signin Request      ${INVALID_CREDENTIALS}
     Status Should Be    401     ${resp}
     Should Be Equal     ${resp.json()}[error]       Invalid email or password
 
