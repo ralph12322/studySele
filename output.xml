@@ -1,529 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-09-30T12:50:48.964538" rpa="false" schemaversion="5">
-<suite id="s1" name="SigninTestSuite" source="C:\Users\Raffy Santos\studySele\tests\api\auth\SigninTestSuite.robot">
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-10-01T16:43:03.051526" rpa="false" schemaversion="5">
+<suite id="s1" name="LikeTestSuite" source="C:\Users\Raffy Santos\studySele\tests\api\community\LikeTestSuite.robot">
 <kw name="Create Session" owner="RequestsLibrary" type="SETUP">
-<msg time="2026-09-30T12:50:49.117684" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2026-10-01T16:43:03.184079" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>api</arg>
 <arg>${BASE_URL}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-09-30T12:50:49.117384" elapsed="0.000515"/>
+<status status="PASS" start="2026-10-01T16:43:03.183790" elapsed="0.000606"/>
 </kw>
-<test id="s1-t1" name="Logout Test Case" line="33">
-<kw name="Signin Request">
+<test id="s1-t1" name="Like Test" line="14">
+<kw name="Signin Request" owner="api_keywords">
 <kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:49.885536" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
+<msg time="2026-10-01T16:43:03.826358" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
  path_url=/api/auth/login 
  headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
  body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "qwer12322"}' 
  </msg>
-<msg time="2026-09-30T12:50:49.885787" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
+<msg time="2026-10-01T16:43:03.826593" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
  status=200, reason=OK 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:49 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NDksImV4cCI6MTc5MTM0ODY0OX0.v7XI7sFEHDzu48SM4SKR7k0CAh455b90q1LQZsw6s3E; Path=/; Expires=Wed, 07 Oct 2026 04:50:49 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::djs42-1790743849313-adec4a30435b', 'Transfer-Encoding': 'chunked'} 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Thu, 01 Oct 2026 08:43:03 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA4NDQxODMsImV4cCI6MTc5MTQ0ODk4M30.0FSpYklxPFi9w8JAczOeUiniWOfFZS1GA4IlLZtNswM; Path=/; Expires=Thu, 08 Oct 2026 08:43:03 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::mrzft-1790844183308-02d4f8a81981', 'Transfer-Encoding': 'chunked'} 
  body={"message":"Login successful"} 
  </msg>
-<msg time="2026-09-30T12:50:49.886062" level="INFO">${res} = &lt;Response [200]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:49.119051" elapsed="0.767073"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:49.886293" elapsed="0.000098"/>
-</return>
-<msg time="2026-09-30T12:50:49.886732" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg time="2026-10-01T16:43:03.826746" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
 <var>${resp}</var>
-<arg>${VALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:49.118765" elapsed="0.768030"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>200</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:49.887503" elapsed="0.000530"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[message]</arg>
-<arg>Login successful</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:49.888698" elapsed="0.001096"/>
-</kw>
-<kw name="Logout Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:50.633207" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/logout (redirected) 
- path_url=/api/auth/logout 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NDksImV4cCI6MTc5MTM0ODY0OX0.v7XI7sFEHDzu48SM4SKR7k0CAh455b90q1LQZsw6s3E', 'Content-Length': '0'} 
- body=None 
- </msg>
-<msg time="2026-09-30T12:50:50.633729" level="INFO">POST Response : url=https://teampayaman.vercel.app/ 
- status=200, reason=OK 
- headers={'Cache-Control': 'private, no-cache, no-store, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'text/html; charset=utf-8', 'Date': 'Wed, 30 Sep 2026 04:50:50 GMT', 'Link': '&lt;/_next/static/immutable/media/83afe278b6a6bb3c-s.p.45535valc9rzk.woff2&gt;; rel=preload; as="font"; crossorigin=""; type="font/woff2", &lt;/_next/static/immutable/media/a85fe84266768609-s.p.00hx3ibfyf9qx.woff2&gt;; rel=preload; as="font"; crossorigin=""; type="font/woff2", &lt;/_next/static/immutable/media/fabcf92ba1ccea36-s.p.3jvga4rcv46fc.woff2&gt;; rel=preload; as="font"; crossorigin=""; type="font/woff2", &lt;/images/123.png&gt;; rel=preload; as="image", &lt;/images/hero2.jpg&gt;; rel=preload; as="image"', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'Vary': 'rsc, next-router-state-tree, next-router-prefetch, next-router-segment-prefetch', 'X-Matched-Path': '/', 'X-Powered-By': 'Next.js', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::7m4fr-1790743850264-28c261df4bf6', 'Transfer-Encoding': 'chunked'} 
- body=&lt;!DOCTYPE html&gt;&lt;html lang="en" class="bebas_neue_f142bbd3-module__iRKhaq__variable inter_ea55aed0-module__KujYLq__variable scroll-smooth"&gt;&lt;head&gt;&lt;meta charSet="utf-8"/&gt;&lt;meta name="viewport" content="width=device-width, initial-scale=1"/&gt;&lt;link rel="preload" href="/images/icon.jpg" as="image"/&gt;&lt;link rel="stylesheet" href="/_next/static/immutable/chunks/2zu7-x1eol726.css" data-precedence="next"/&gt;&lt;link rel="stylesheet" href="/_next/static/immutable/chunks/41um5bwm9j1z8.css" data-precedence="next"/&gt;&lt;link rel="preload" as="script" fetchPriority="low" href="/_next/static/immutable/chunks/1mlftcslf095m.js"/&gt;&lt;script src="/_next/static/immutable/chunks/14kaafygzo3zi.js" async=""&gt;&lt;/script&gt;&lt;script src="/_next/static/immutable/chunks/0agl_lndaso4a.js" async=""&gt;&lt;/script&gt;&lt;script src="/_next/static/immutable/chunks/18n7dos0zwm01.js" async=""&gt;&lt;/script&gt;&lt;script src="/_next/static/immutable/chunks/turbopack-1o9lhez1dqr3u.js" async=""&gt;&lt;/script&gt;&lt;script src="/_next/static/immutable/chunks/2corl6wyj4669.js" async=""&gt;&lt;/script&gt;&lt;script src="/_next/static/immutable/chunks/0wb_aw_sk39f-.js" async=""&gt;&lt;/script&gt;&lt;script src="/_next/static/immutable/chunks/304xdybizs4p0.js" async=""&gt;&lt;/script&gt;&lt;title&gt;Team Payaman&lt;/title&gt;&lt;meta name="description" content="CongTV is a creator, a culture, and a community. The story, the bulletin, the community, and the merch — all in one place."/&gt;&lt;link rel="icon" href="/favicon.ico?favicon.2isjseg68qocg.ico" sizes="272x299" type="image/x-icon"/&gt;&lt;meta name="next-size-adjust" content=""/&gt;&lt;script src="/_next/static/immutable/chunks/0c0hxoamwjsbw.js" noModule=""&gt;&lt;/script&gt;&lt;/head&gt;&lt;body class="bg-[#0B0B0A] text-black font-[family-name:var(--font-body)] antialiased"&gt;&lt;div hidden=""&gt;&lt;!--$--&gt;&lt;!--/$--&gt;&lt;/div&gt;&lt;section aria-label="Notifications alt+T" tabindex="-1" aria-live="polite" aria-relevant="additions text" aria-atomic="false" data-react-aria-top-layer="true"&gt;&lt;/section&gt;&lt;input type="checkbox" id="nav-toggle" class="peer hidden"/&gt;&lt;div class="group/nav fixed inset-x-0 top-0 z-50"&gt;&lt;header class="-translate-y-[calc(100%-8px)] bg-[#0B0B0A]/90 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.4)]
-                     backdrop-blur-md transition-transform duration-300 ease-out
-                     group-hover/nav:translate-y-0 peer-checked:translate-y-0"&gt;&lt;div class="mx-auto flex h-16 max-w-[1600px] items-center justify-between px-5 md:h-20 md:px-10"&gt;&lt;a href="/" class="font-[family-name:var(--font-display)] text-2xl tracking-wide md:text-3xl text-[#FF6B00]"&gt;&lt;img src="/images/icon.jpg" alt="CongTV" class="h-10 w-auto md:h-20"/&gt;&lt;/a&gt;&lt;nav class="hidden items-center gap-10 text-sm md:flex"&gt;&lt;a href="#home" class="text-[15px] font-medium tracking-wide text-[#ffffff]/70 transition-colors hover:text-[#FF6B00]"&gt;Home&lt;/a&gt;&lt;a href="#story" class="text-[15px] font-medium tracking-wide text-[#ffffff]/70 transition-colors hover:text-[#FF6B00]"&gt;About&lt;/a&gt;&lt;a href="#bulletin" class="text-[15px] font-medium tracking-wide text-[#ffffff]/70 transition-colors hover:text-[#FF6B00]"&gt;Bulletin&lt;/a&gt;&lt;a href="#community" class="text-[15px] font-medium tracking-wide text-[#ffffff]/70 transition-colors hover:text-[#FF6B00]"&gt;Community&lt;/a&gt;&lt;a href="#merch" class="text-[15px] font-medium tracking-wide text-[#ffffff]/70 transition-colors hover:text-[#FF6B00]"&gt;Shop&lt;/a&gt;&lt;/nav&gt;&lt;div class="flex items-center gap-5"&gt;&lt;div class="relative hidden h-[18px] w-[140px] items-center justify-end sm:flex"&gt;&lt;button type="button" aria-label="Search" class="absolute right-0 text-white/80 transition-opacity duration-150 hover:text-[#FF6B00] hover:cursor-pointer opacity-100"&gt;&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;circle cx="11" cy="11" r="7"&gt;&lt;/circle&gt;&lt;path d="m21 21-4.3-4.3"&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/button&gt;&lt;input type="text" placeholder="Search..." tabindex="-1" class="absolute right-0 w-full border-b border-white/40 bg-transparent text-sm text-white outline-none placeholder:text-white/40 transition-opacity duration-150 pointer-events-none opacity-0" value=""/&gt;&lt;/div&gt;&lt;a href="/sign" class="hidden text-[15px] font-medium text-[#ffffff]/80 transition-colors hover:text-[#FF6B00] sm:inline-flex"&gt;Log In&lt;/a&gt;&lt;a href="/sign" class="hidden items-center rounded-full bg-[#FF6B00] px-4 py-2 text-[13px] font-semibold text-black transition-colors hover:bg-[#ff8533] sm:inline-flex"&gt;Sign Up&lt;/a&gt;&lt;a href="#" aria-label="Cart" class="inline-flex text-[#ffffff]/80 transition-colors hover:text-[#FF6B00]"&gt;&lt;svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"&gt;&lt;path d="M3 4h2l2.4 12.2a2 2 0 0 0 2 1.6h7.2a2 2 0 0 0 2-1.6L20 8H6"&gt;&lt;/path&gt;&lt;circle cx="9.5" cy="20.5" r="1.2" fill="currentColor" stroke="none"&gt;&lt;/circle&gt;&lt;circle cx="17" cy="20.5" r="1.2" fill="currentColor" stroke="none"&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;/a&gt;&lt;label for="nav-toggle" aria-label="Open menu" class="group ml-1 flex cursor-pointer flex-col gap-1.5 p-1 md:hidden"&gt;&lt;span class="block h-px w-6 bg-[#ffffff]/80 transition-colors group-hover:bg-[#FF6B00]"&gt;&lt;/span&gt;&lt;span class="block h-px w-6 bg-[#ffffff]/80 transition-colors group-hover:bg-[#FF6B00]"&gt;&lt;/span&gt;&lt;/label&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="max-h-0 overflow-hidden border-t border-transparent transition-[max-height] duration-300 ease-in-out peer-checked:max-h-96 peer-checked:border-white/10 md:hidden"&gt;&lt;nav class="flex flex-col gap-5 px-5 py-6 text-lg"&gt;&lt;a href="#home" class="text-white/80"&gt;Home&lt;/a&gt;&lt;a href="#story" class="text-white/80"&gt;About&lt;/a&gt;&lt;a href="#bulletin" class="text-white/80"&gt;Bulletin&lt;/a&gt;&lt;a href="#community" class="text-white/80"&gt;Community&lt;/a&gt;&lt;a href="#merch" class="text-white/80"&gt;Shop&lt;/a&gt;&lt;div class="mt-2 flex flex-col gap-3 border-t border-white/10 pt-5"&gt;&lt;a href="/login" class="text-white/80"&gt;Log In&lt;/a&gt;&lt;a href="/signup" class="inline-flex w-fit items-center rounded-full bg-[#FF6B00] px-4 py-2 text-sm font-semibold text-black"&gt;Sign Up&lt;/a&gt;&lt;/div&gt;&lt;/nav&gt;&lt;/div&gt;&lt;/header&gt;&lt;/div&gt;&lt;label for="nav-toggle" aria-hidden="true" class="fixed inset-0 z-40 hidden bg-black/50 peer-checked:block md:!hidden"&gt;&lt;/label&gt;&lt;main&gt;&lt;section id="home" class="relative flex min-h-[100svh] flex-col justify-end overflow-hidden border-b border-[#000000]/10"&gt;&lt;div class="group absolute inset-0 cursor-pointer bg-[#0B0B0A]"&gt;&lt;video autoPlay="" muted="" loop="" playsInline="" preload="metadata" poster="/images/team-payaman-poster.jpg" title="Explore Team Payaman" class="absolute inset-0 h-full w-full object-cover"&gt;&lt;source src="/videos/playback.mp4" type="video/mp4"/&gt;&lt;/video&gt;&lt;div class="absolute inset-0 bg-[linear-gradient(180deg,rgba(11,11,10,0.75)_0%,rgba(11,11,10,0.15)_20%,rgba(11,11,10,0.2)_55%,rgba(11,11,10,0.92)_100%)]"&gt;&lt;/div&gt;&lt;div class="absolute inset-0 bg-black/10"&gt;&lt;/div&gt;&lt;div class="pointer-events-none absolute inset-0" style="background:radial-gradient(ellipse 700px 550px at 18% 78%, rgba(11,11,10,0.6) 0%, transparent 70%)"&gt;&lt;/div&gt;&lt;div class="pointer-events-none absolute bottom-[8%] left-[2%] h-[38vw] w-[38vw] max-h-[480px] max-w-[480px] opacity-55 blur-[90px] md:h-[26vw] md:w-[26vw]" style="background:radial-gradient(circle, rgba(237,108,44,0.55) 0%, rgba(184,64,18,0.22) 45%, transparent 70%)"&gt;&lt;/div&gt;&lt;div class="pointer-events-none absolute inset-0 flex items-center justify-center"&gt;&lt;div class="translate-y-3 bg-black/70 px-6 py-3 text-sm tracking-[0.2em] text-white opacity-0 backdrop-blur-sm transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"&gt;Go to the Video&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="relative z-10 mx-auto w-full max-w-[1600px] px-5 pb-16 md:px-10 md:pb-24"&gt;&lt;div class="flex flex-wrap items-end gap-6"&gt;&lt;h1 class="relative leading-none"&gt;&lt;div class="pointer-events-none absolute left-[10%] top-[92%] h-5 w-4/5 rounded-full opacity-50 blur-xl" style="background:radial-gradient(ellipse, rgba(0,0,0,0.65) 0%, transparent 75%)"&gt;&lt;/div&gt;&lt;img src="/images/123.png" alt="Team Payaman" class="relative h-[18vw] w-auto animate-[logo-in_0.7s_ease-out_forwards] object-contain opacity-0 [filter:drop-shadow(0_14px_28px_rgba(0,0,0,0.55))_drop-shadow(0_3px_6px_rgba(0,0,0,0.4))] md:h-[11vw] lg:h-[9vw]"/&gt;&lt;/h1&gt;&lt;div class="pb-2 sm:pb-4"&gt;&lt;button type="button" aria-expanded="false" class="caveat_1b234c35-module__jYh6Ta__className group relative -rotate-3 border-2 border-[#0B0B0A] bg-[#F4EEDD] px-3 py-1.5 text-base text-[#0B0B0A] shadow-[3px_3px_0_rgba(0,0,0,0.85)] transition-transform hover:-translate-y-0.5 hover:rotate-0 sm:px-4 sm:text-lg"&gt;&lt;span class="absolute -left-2 -top-2 h-4 w-8 -rotate-6 bg-white/70 shadow-sm"&gt;&lt;/span&gt;Meet the Team →&lt;/button&gt;&lt;/div&gt;&lt;/div&gt;&lt;p class="mt-6 max-w-xl font-[family-name:var(--font-display)] text-2xl tracking-wide text-white md:text-4xl"&gt;Positive Community&lt;/p&gt;&lt;div class="mt-10 flex flex-col gap-4 sm:flex-row"&gt;&lt;a href="#story" class="inline-flex items-center justify-center border border-white/60 px-8 py-4 text-sm tracking-wide text-white transition-colors hover:border-[#FF6B00] hover:bg-[#FF6B00] hover:text-[#000000]"&gt;Explore the Story&lt;/a&gt;&lt;a href="#merch" class="inline-flex items-center justify-center bg-[#E8502A] px-8 py-4 text-sm tracking-wide text-[#0B0B0A] transition-colors hover:bg-[#ff6238]"&gt;Shop Merch&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;&lt;/section&gt;&lt;section id="story" class="border-b border-[#000000]/10"&gt;&lt;div class="mx-auto grid max-w-[1600px] grid-cols-1 items-center gap-10 px-5 py-24 md:grid-cols-12 md:gap-16 md:px-10 md:py-36"&gt;&lt;div class="order-2 md:order-1 md:col-span-5 md:col-start-1"&gt;&lt;h2 class="font-[family-name:var(--font-display)] text-5xl leading-[0.95] tracking-wide md:text-6xl"&gt;WHO IS&lt;br/&gt;CONGTV?&lt;/h2&gt;&lt;p class="mt-8 max-w-md text-base leading-relaxed text-[#000000]/70 md:text-lg"&gt;CongTV is one creator&amp;#x27;s ongoing body of work — video, ideas, and the people who show up for it every week. This site is where the story, the projects, and the community around them come together in one place.&lt;/p&gt;&lt;a href="#journey" class="mt-8 inline-flex w-fit items-center gap-2 border-b border-[#000000]/40 pb-1 text-sm transition-colors hover:border-[#000000]"&gt;Explore the Story →&lt;/a&gt;&lt;/div&gt;&lt;div class="order-1 md:order-2 md:col-span-6 md:col-start-7"&gt;&lt;img src="/images/hero2.j... (set the log level to DEBUG or TRACE to see the full content) 
- </msg>
-<msg time="2026-09-30T12:50:50.634510" level="INFO">${res} = &lt;Response [200]&gt;</msg>
-<var>${res}</var>
 <arg>api</arg>
-<arg>${LOGOUT_PATH}</arg>
+<arg>${LOGIN_PATH}</arg>
+<arg>json=${body}</arg>
 <arg>expected_status=200</arg>
 <doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:49.890881" elapsed="0.743704"/>
+<status status="PASS" start="2026-10-01T16:43:03.185676" elapsed="0.641100"/>
 </kw>
 <return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:50.634768" elapsed="0.000121"/>
+<value>${resp}</value>
+<status status="PASS" start="2026-10-01T16:43:03.826867" elapsed="0.000050"/>
 </return>
-<msg time="2026-09-30T12:50:50.635234" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<status status="PASS" start="2026-09-30T12:50:49.890313" elapsed="0.745005"/>
-</kw>
-<kw name="Dictionary Should Not Contain Key" owner="Collections">
-<arg>${resp.headers}</arg>
-<arg>Set-Cookie</arg>
-<doc>Fails if `key` is found from `dictionary`.</doc>
-<status status="PASS" start="2026-09-30T12:50:50.635868" elapsed="0.000667"/>
-</kw>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:49.118037" elapsed="1.518917"/>
-</test>
-<test id="s1-t2" name="Login with Valid Credentials" line="42">
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:51.227098" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
- body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "qwer12322"}' 
- </msg>
-<msg time="2026-09-30T12:50:51.227286" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=200, reason=OK 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:51 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE; Path=/; Expires=Wed, 07 Oct 2026 04:50:51 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::cpdw7-1790743850676-4489beb8376d', 'Transfer-Encoding': 'chunked'} 
- body={"message":"Login successful"} 
- </msg>
-<msg time="2026-09-30T12:50:51.227543" level="INFO">${res} = &lt;Response [200]&gt;</msg>
+<msg time="2026-10-01T16:43:03.827051" level="INFO">${res} = &lt;Response [200]&gt;</msg>
 <var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:50.639783" elapsed="0.587826"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:51.227766" elapsed="0.000087"/>
-</return>
-<msg time="2026-09-30T12:50:51.228127" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
 <arg>${VALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:50.639051" elapsed="0.589135"/>
+<status status="PASS" start="2026-10-01T16:43:03.185353" elapsed="0.641723"/>
 </kw>
 <kw name="Status Should Be" owner="RequestsLibrary">
-<arg>200</arg>
-<arg>${resp}</arg>
+<msg time="2026-10-01T16:43:03.827925" level="FAIL">Url: https://teampayaman.vercel.app/api/auth/login Expected status: 200 != 204</msg>
+<arg>204</arg>
+<arg>${res}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.228742" elapsed="0.000396"/>
+<status status="FAIL" start="2026-10-01T16:43:03.827547" elapsed="0.007392">Url: https://teampayaman.vercel.app/api/auth/login Expected status: 200 != 204</status>
 </kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[message]</arg>
-<arg>Login successful</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.229638" elapsed="0.000973"/>
-</kw>
-<tag>positive</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:50.637929" elapsed="0.593125"/>
-</test>
-<test id="s1-t3" name="Signin Sets HttpOnly Auth Cookie" line="48">
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:51.804258" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE', 'Content-Length': '66', 'Content-Type': 'application/json'} 
- body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "qwer12322"}' 
- </msg>
-<msg time="2026-09-30T12:50:51.804353" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=200, reason=OK 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:51 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE; Path=/; Expires=Wed, 07 Oct 2026 04:50:51 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::cpdw7-1790743851250-c3fcf0730c39', 'Transfer-Encoding': 'chunked'} 
- body={"message":"Login successful"} 
- </msg>
-<msg time="2026-09-30T12:50:51.804521" level="INFO">${res} = &lt;Response [200]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.234101" elapsed="0.570451"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:51.804647" elapsed="0.000048"/>
-</return>
-<msg time="2026-09-30T12:50:51.804837" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
-<var>${resp}</var>
-<arg>${VALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:51.233301" elapsed="0.571565"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>200</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.805204" elapsed="0.000252"/>
-</kw>
-<kw name="Get From Dictionary" owner="Collections">
-<msg time="2026-09-30T12:50:51.805976" level="INFO">${set_cookie} = authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6I...</msg>
-<var>${set_cookie}</var>
-<arg>${resp.headers}</arg>
-<arg>Set-Cookie</arg>
-<doc>Returns a value from the given `dictionary` based on the given `key`.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.805673" elapsed="0.000339"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${set_cookie}</arg>
-<arg>authToken</arg>
-<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.806241" elapsed="0.000565"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${set_cookie}</arg>
-<arg>HttpOnly</arg>
-<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.807180" elapsed="0.000295"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${set_cookie}</arg>
-<arg>Path=/</arg>
-<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.807761" elapsed="0.000278"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${set_cookie}</arg>
-<arg>Max-Age=604800</arg>
-<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.808322" elapsed="0.000336"/>
-</kw>
-<kw name="Should Contain" owner="BuiltIn">
-<arg>${set_cookie}</arg>
-<arg>SameSite=lax</arg>
-<arg>ignore_case=True</arg>
-<doc>Fails if the `container` does not contain the `item` one or more times.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.808980" elapsed="0.000451"/>
-</kw>
-<tag>positive</tag>
-<tag>security</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:51.232218" elapsed="0.577486"/>
-</test>
-<test id="s1-t4" name="Login with empty fields" line="61">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-09-30T12:50:51.811860" level="INFO">&amp;{INVALID_CREDENTIALS} = { email= | password= }</msg>
-<var>&amp;{INVALID_CREDENTIALS}</var>
-<arg>email=</arg>
-<arg>password=</arg>
-<doc>Creates and returns a dictionary based on the given `items`.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.810986" elapsed="0.000991"/>
-</kw>
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:52.199918" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE', 'Content-Length': '29', 'Content-Type': 'application/json'} 
- body=b'{"email": "", "password": ""}' 
- </msg>
-<msg time="2026-09-30T12:50:52.200082" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:51 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::zkqtn-1790743851828-11810137373b', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Missing email or password"} 
- </msg>
-<msg time="2026-09-30T12:50:52.200223" level="INFO">${res} = &lt;Response [400]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:51.813162" elapsed="0.387088"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:52.200325" elapsed="0.000048"/>
-</return>
-<msg time="2026-09-30T12:50:52.200520" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>${INVALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:51.812537" elapsed="0.388008"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>400</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.200834" elapsed="0.000188"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[error]</arg>
-<arg>Missing email or password</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.201361" elapsed="0.000615"/>
-</kw>
-<tag>all_empty</tag>
-<tag>negative</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:51.810164" elapsed="0.392059"/>
-</test>
-<test id="s1-t5" name="Login With Empty Email" line="68">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-09-30T12:50:52.203576" level="INFO">&amp;{INVALID_CREDENTIALS} = { email= | password=qwer12322 }</msg>
-<var>&amp;{INVALID_CREDENTIALS}</var>
-<arg>email=</arg>
-<arg>password=qwer12322</arg>
-<doc>Creates and returns a dictionary based on the given `items`.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.203144" elapsed="0.000464"/>
-</kw>
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:52.564146" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE', 'Content-Length': '38', 'Content-Type': 'application/json'} 
- body=b'{"email": "", "password": "qwer12322"}' 
- </msg>
-<msg time="2026-09-30T12:50:52.564248" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:52 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::jxrb6-1790743852219-b4479ac729a3', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Missing email or password"} 
- </msg>
-<msg time="2026-09-30T12:50:52.564371" level="INFO">${res} = &lt;Response [400]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.204223" elapsed="0.360174"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:52.564471" elapsed="0.000040"/>
-</return>
-<msg time="2026-09-30T12:50:52.564629" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>${INVALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:52.203924" elapsed="0.360727"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>400</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.564917" elapsed="0.000184"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[error]</arg>
-<arg>Missing email or password</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.565310" elapsed="0.000406"/>
-</kw>
-<tag>empty_email</tag>
-<tag>negative</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:52.202642" elapsed="0.363344"/>
-</test>
-<test id="s1-t6" name="Login With Empty Password" line="75">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-09-30T12:50:52.567327" level="INFO">&amp;{INVALID_CREDENTIALS} = { email=ralphgeosantos.dev@gmail.com | password= }</msg>
-<var>&amp;{INVALID_CREDENTIALS}</var>
-<arg>email=ralphgeosantos.dev@gmail.com</arg>
-<arg>password=</arg>
-<doc>Creates and returns a dictionary based on the given `items`.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.566784" elapsed="0.000570"/>
-</kw>
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:52.921999" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE', 'Content-Length': '57', 'Content-Type': 'application/json'} 
- body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": ""}' 
- </msg>
-<msg time="2026-09-30T12:50:52.922149" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=400, reason=Bad Request 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:52 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::9xxtq-1790743852583-7ccaeabd606b', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Missing email or password"} 
- </msg>
-<msg time="2026-09-30T12:50:52.922247" level="INFO">${res} = &lt;Response [400]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.567882" elapsed="0.354387"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:52.922331" elapsed="0.000035"/>
-</return>
-<msg time="2026-09-30T12:50:52.922469" level="INFO">${resp} = &lt;Response [400]&gt;</msg>
-<var>${resp}</var>
-<arg>${INVALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:52.567609" elapsed="0.354882"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>400</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.922977" elapsed="0.000251"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[error]</arg>
-<arg>Missing email or password</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.923677" elapsed="0.000382"/>
-</kw>
-<tag>empty_email</tag>
-<tag>negative</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:52.566386" elapsed="0.357871"/>
-</test>
-<test id="s1-t7" name="Login With Correct Email Incorrect Password" line="82">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-09-30T12:50:52.925838" level="INFO">&amp;{INVALID_CREDENTIALS} = { email=ralphgeosantos.dev@gmail.com | password=incorrectpassword }</msg>
-<var>&amp;{INVALID_CREDENTIALS}</var>
-<arg>email=ralphgeosantos.dev@gmail.com</arg>
-<arg>password=incorrectpassword</arg>
-<doc>Creates and returns a dictionary based on the given `items`.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.925328" elapsed="0.000547"/>
-</kw>
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:53.513357" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE', 'Content-Length': '74', 'Content-Type': 'application/json'} 
- body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "incorrectpassword"}' 
- </msg>
-<msg time="2026-09-30T12:50:53.513452" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=401, reason=Unauthorized 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:53 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::wlq29-1790743852941-510d769c7979', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Invalid email or password"} 
- </msg>
-<msg time="2026-09-30T12:50:53.513565" level="INFO">${res} = &lt;Response [401]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:52.926581" elapsed="0.587007"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:53.513672" elapsed="0.000040"/>
-</return>
-<msg time="2026-09-30T12:50:53.513826" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<arg>${INVALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:52.926230" elapsed="0.587619"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>401</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:53.514308" elapsed="0.000252"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[error]</arg>
-<arg>Invalid email or password</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:53.515108" elapsed="0.000620"/>
-</kw>
-<tag>negative</tag>
-<tag>one_incorrect</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:52.924730" elapsed="0.591274"/>
-</test>
-<test id="s1-t8" name="Login With Correct Password Incorrect Email" line="89">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2026-09-30T12:50:53.517587" level="INFO">&amp;{INVALID_CREDENTIALS} = { email=incorrectemail@gmail.com | password=qwer12322 }</msg>
-<var>&amp;{INVALID_CREDENTIALS}</var>
-<arg>email=incorrectemail@gmail.com</arg>
-<arg>password=qwer12322</arg>
-<doc>Creates and returns a dictionary based on the given `items`.</doc>
-<status status="PASS" start="2026-09-30T12:50:53.517188" elapsed="0.000429"/>
-</kw>
-<kw name="Signin Request">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-09-30T12:50:54.040124" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA3NDM4NTEsImV4cCI6MTc5MTM0ODY1MX0.yFmt_-QLoCmI2k2JJeU-kmjUXIi7T7hDUWUA4fsjOrE', 'Content-Length': '62', 'Content-Type': 'application/json'} 
- body=b'{"email": "incorrectemail@gmail.com", "password": "qwer12322"}' 
- </msg>
-<msg time="2026-09-30T12:50:54.040422" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=401, reason=Unauthorized 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Wed, 30 Sep 2026 04:50:53 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::nm6wj-1790743853552-9b0db88d5494', 'Transfer-Encoding': 'chunked'} 
- body={"error":"Invalid email or password"} 
- </msg>
-<msg time="2026-09-30T12:50:54.040698" level="INFO">${res} = &lt;Response [401]&gt;</msg>
-<var>${res}</var>
-<arg>api</arg>
-<arg>${SIGNIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=any</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-09-30T12:50:53.518229" elapsed="0.522538"/>
-</kw>
-<return>
-<value>${res}</value>
-<status status="PASS" start="2026-09-30T12:50:54.041001" elapsed="0.000131"/>
-</return>
-<msg time="2026-09-30T12:50:54.041442" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
-<var>${resp}</var>
-<arg>${INVALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-09-30T12:50:53.517896" elapsed="0.523618"/>
-</kw>
-<kw name="Status Should Be" owner="RequestsLibrary">
-<arg>401</arg>
-<arg>${resp}</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" start="2026-09-30T12:50:54.042055" elapsed="0.000403"/>
-</kw>
-<kw name="Should Be Equal" owner="BuiltIn">
-<arg>${resp.json()}[error]</arg>
-<arg>Invalid email or password</arg>
-<doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2026-09-30T12:50:54.043026" elapsed="0.000967"/>
-</kw>
-<tag>negative</tag>
-<tag>one_incorrect</tag>
-<tag>smoke</tag>
-<status status="PASS" start="2026-09-30T12:50:53.516500" elapsed="0.527912"/>
+<status status="FAIL" start="2026-10-01T16:43:03.184533" elapsed="0.650914">Url: https://teampayaman.vercel.app/api/auth/login Expected status: 200 != 204</status>
 </test>
 <kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
-<msg time="2026-09-30T12:50:54.046073" level="INFO">Deleting All Sessions</msg>
+<msg time="2026-10-01T16:43:03.836618" level="INFO">Deleting All Sessions</msg>
 <doc>Removes all the session objects </doc>
-<status status="PASS" start="2026-09-30T12:50:54.045867" elapsed="0.000382"/>
+<status status="PASS" start="2026-10-01T16:43:03.836500" elapsed="0.000215"/>
 </kw>
-<doc>Created a Signin TestSuite for the Team Payaman Cumminity Site
-that i am Building, made sure that every negative and positive cases are covered
-by this Test Suite.</doc>
-<status status="PASS" start="2026-09-30T12:50:48.966367" elapsed="5.079981"/>
+<status status="FAIL" start="2026-10-01T16:43:03.053762" elapsed="0.782995"/>
 </suite>
 <statistics>
 <total>
-<stat pass="8" fail="0" skip="0">All Tests</stat>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">all_empty</stat>
-<stat pass="2" fail="0" skip="0">empty_email</stat>
-<stat pass="5" fail="0" skip="0">negative</stat>
-<stat pass="2" fail="0" skip="0">one_incorrect</stat>
-<stat pass="2" fail="0" skip="0">positive</stat>
-<stat pass="1" fail="0" skip="0">security</stat>
-<stat pass="8" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="SigninTestSuite" id="s1" pass="8" fail="0" skip="0">SigninTestSuite</stat>
+<stat name="LikeTestSuite" id="s1" pass="0" fail="1" skip="0">LikeTestSuite</stat>
 </suite>
 </statistics>
 <errors>
