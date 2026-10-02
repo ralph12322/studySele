@@ -1,4 +1,8 @@
 ***Settings***
+Documentation       Basic Test Suite for the Like path, every edge cases, positive
+...                 and negative cases, will be test here. Used Resource file as well
+...                 to act like a global Keywords.
+
 Resource         ../../../resources/api_keywords.resource
 Suite Setup     Create Session  api     ${BASE_URL}     disable_warnings=1
 Suite Teardown  Delete All Sessions
