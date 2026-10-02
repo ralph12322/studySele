@@ -31,8 +31,87 @@ Made a Field Checker; Makes Sure that every Data possess the Necessary Fields
 It is really heartbreaking for me, I am hoping to get the job since someone is helping me out even though i'm new to the position.
 
 
-# Day 6: Have almost the MVP of the site, polished the sign page and some minor details. sign page almost ready for testing. 
+# Day 6: polished the sign page and some minor details. sign page almost ready for testing. 
 
 Tomorrow  i will polish everything in Sign module, i put frontend validation and backend validation, so i have to test both api and the frontend validations.
 
 # Currently Done with my Robust Login and Signup Feature for the TEAM PAYAMAN COMMUNITY SITE and already made a Test Suite for it 
+
+
+
+### Checklist
+
+##  UIs:
+Test Suites Checklist for all the Test via UI by categories:
+
+#   Log in
+- Positive Test Cases
+
+- Negative Test Cases
+
+#   Sign up
+- Positive Test Cases
+
+- Negative Test Cases
+
+
+
+##  APIs:
+Test Checklist for all the Test for Apis by categories:
+
+#   Log in
+- Positive Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+- Negative Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+#   Sign up
+- Positive Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+- Negative Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+
+#   Like Path
+- Positive Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+
+- Negative Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+
+#   Comment Path
+- Positive Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+
+
+- Negative Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    - [x] Login With Valid Credentials
+    

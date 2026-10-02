@@ -1,69 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-10-01T16:43:03.051526" rpa="false" schemaversion="5">
+<robot generator="Robot 7.5 (Python 3.14.3 on win32)" generated="2026-10-02T11:49:03.083496" rpa="false" schemaversion="5">
 <suite id="s1" name="LikeTestSuite" source="C:\Users\Raffy Santos\studySele\tests\api\community\LikeTestSuite.robot">
 <kw name="Create Session" owner="RequestsLibrary" type="SETUP">
-<msg time="2026-10-01T16:43:03.184079" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg time="2026-10-02T11:49:03.213578" level="INFO">Creating Session using : alias=api, url=https://teampayaman.vercel.app, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
 <arg>api</arg>
 <arg>${BASE_URL}</arg>
 <arg>disable_warnings=1</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<status status="PASS" start="2026-10-01T16:43:03.183790" elapsed="0.000606"/>
+<status status="PASS" start="2026-10-02T11:49:03.213223" elapsed="0.000604"/>
 </kw>
-<test id="s1-t1" name="Like Test" line="14">
-<kw name="Signin Request" owner="api_keywords">
-<kw name="POST On Session" owner="RequestsLibrary">
-<msg time="2026-10-01T16:43:03.826358" level="INFO">POST Request : url=https://teampayaman.vercel.app/api/auth/login 
- path_url=/api/auth/login 
- headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '66', 'Content-Type': 'application/json'} 
- body=b'{"email": "ralphgeosantos.dev@gmail.com", "password": "qwer12322"}' 
+<test id="s1-t1" name="Dislike Test Without Loggedin User" line="48">
+<kw name="Dislike Request">
+<kw name="DELETE On Session" owner="RequestsLibrary">
+<msg time="2026-10-02T11:49:03.735756" level="INFO">DELETE Request : url=https://teampayaman.vercel.app/api/community/posts/6abe1d55400ad962e6ff708d/like 
+ path_url=/api/community/posts/6abe1d55400ad962e6ff708d/like 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
  </msg>
-<msg time="2026-10-01T16:43:03.826593" level="INFO">POST Response : url=https://teampayaman.vercel.app/api/auth/login 
- status=200, reason=OK 
- headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Encoding': 'gzip', 'Content-Type': 'application/json', 'Date': 'Thu, 01 Oct 2026 08:43:03 GMT', 'Server': 'Vercel', 'Set-Cookie': 'authToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7Il9pZCI6IjZhYjFlZjRkNmM0ZTk1MmE0MTgzYzExZSIsIm5hbWUiOiJSYWxwaCBHZW8gU2FudG9zIiwiZW1haWwiOiJyYWxwaGdlb3NhbnRvcy5kZXZAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJwcm9maWxlSW1hZ2UiOiJodHRwczovL3Jlcy5jbG91ZGluYXJ5LmNvbS9kZXRya2NsYngvaW1hZ2UvdXBsb2FkL3YxNzkwMDQ2MDM4L3NvY2lhbC1hcHAvcHJvZmlsZS1pbWFnZXMvNmFiMWVmNGQ2YzRlOTUyYTQxODNjMTFlLmpwZyJ9LCJpYXQiOjE3OTA4NDQxODMsImV4cCI6MTc5MTQ0ODk4M30.0FSpYklxPFi9w8JAczOeUiniWOfFZS1GA4IlLZtNswM; Path=/; Expires=Thu, 08 Oct 2026 08:43:03 GMT; Max-Age=604800; Secure; HttpOnly; SameSite=lax', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/auth/login', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::mrzft-1790844183308-02d4f8a81981', 'Transfer-Encoding': 'chunked'} 
- body={"message":"Login successful"} 
+<msg time="2026-10-02T11:49:03.735928" level="INFO">DELETE Response : url=https://teampayaman.vercel.app/api/community/posts/6abe1d55400ad962e6ff708d/like 
+ status=401, reason=Unauthorized 
+ headers={'Cache-Control': 'public, max-age=0, must-revalidate', 'Content-Type': 'application/json', 'Date': 'Fri, 02 Oct 2026 03:49:03 GMT', 'Server': 'Vercel', 'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload', 'X-Matched-Path': '/api/community/posts/[postID]/like', 'X-Vercel-Cache': 'MISS', 'X-Vercel-Id': 'sin1::iad1::2lqst-1790912943511-b5235b91e642', 'Transfer-Encoding': 'chunked'} 
+ body={"message":"Not logged in"} 
  </msg>
-<msg time="2026-10-01T16:43:03.826746" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<msg time="2026-10-02T11:49:03.736102" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
 <var>${resp}</var>
 <arg>api</arg>
-<arg>${LOGIN_PATH}</arg>
-<arg>json=${body}</arg>
-<arg>expected_status=200</arg>
-<doc>Sends a POST request on a previously created HTTP Session.</doc>
-<status status="PASS" start="2026-10-01T16:43:03.185676" elapsed="0.641100"/>
+<arg>${LIKE_PATH}</arg>
+<arg>expected_status=any</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2026-10-02T11:49:03.215205" elapsed="0.520930"/>
 </kw>
 <return>
 <value>${resp}</value>
-<status status="PASS" start="2026-10-01T16:43:03.826867" elapsed="0.000050"/>
+<status status="PASS" start="2026-10-02T11:49:03.736233" elapsed="0.000062"/>
 </return>
-<msg time="2026-10-01T16:43:03.827051" level="INFO">${res} = &lt;Response [200]&gt;</msg>
-<var>${res}</var>
-<arg>${VALID_CREDENTIALS}</arg>
-<status status="PASS" start="2026-10-01T16:43:03.185353" elapsed="0.641723"/>
+<msg time="2026-10-02T11:49:03.736488" level="INFO">${resp} = &lt;Response [401]&gt;</msg>
+<var>${resp}</var>
+<status status="PASS" start="2026-10-02T11:49:03.214775" elapsed="0.521741"/>
 </kw>
 <kw name="Status Should Be" owner="RequestsLibrary">
-<msg time="2026-10-01T16:43:03.827925" level="FAIL">Url: https://teampayaman.vercel.app/api/auth/login Expected status: 200 != 204</msg>
-<arg>204</arg>
-<arg>${res}</arg>
+<arg>401</arg>
+<arg>${resp}</arg>
 <doc>Fails if response status code is different than the expected.</doc>
-<status status="FAIL" start="2026-10-01T16:43:03.827547" elapsed="0.007392">Url: https://teampayaman.vercel.app/api/auth/login Expected status: 200 != 204</status>
+<status status="PASS" start="2026-10-02T11:49:03.736904" elapsed="0.000389"/>
 </kw>
-<status status="FAIL" start="2026-10-01T16:43:03.184533" elapsed="0.650914">Url: https://teampayaman.vercel.app/api/auth/login Expected status: 200 != 204</status>
+<tag>negative</tag>
+<tag>smoke</tag>
+<status status="PASS" start="2026-10-02T11:49:03.213992" elapsed="0.523659"/>
 </test>
 <kw name="Delete All Sessions" owner="RequestsLibrary" type="TEARDOWN">
-<msg time="2026-10-01T16:43:03.836618" level="INFO">Deleting All Sessions</msg>
+<msg time="2026-10-02T11:49:03.738975" level="INFO">Deleting All Sessions</msg>
 <doc>Removes all the session objects </doc>
-<status status="PASS" start="2026-10-01T16:43:03.836500" elapsed="0.000215"/>
+<status status="PASS" start="2026-10-02T11:49:03.738779" elapsed="0.000326"/>
 </kw>
-<status status="FAIL" start="2026-10-01T16:43:03.053762" elapsed="0.782995"/>
+<status status="PASS" start="2026-10-02T11:49:03.085671" elapsed="0.653501"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">negative</stat>
+<stat pass="1" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat name="LikeTestSuite" id="s1" pass="0" fail="1" skip="0">LikeTestSuite</stat>
+<stat name="LikeTestSuite" id="s1" pass="1" fail="0" skip="0">LikeTestSuite</stat>
 </suite>
 </statistics>
 <errors>
