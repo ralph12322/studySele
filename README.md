@@ -62,45 +62,41 @@ Test Checklist for all the Test for Apis by categories:
 ###   Log in
 - Positive Test Cases
     - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
 
 - Negative Test Cases
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Login with empty fields
+    - [x] Login With Empty Email
+    - [x] Login With Empty Password
+    - [x] Login With Correct Email Incorrect Password
+    - [x] Login With Correct Password Incorrect Email
 
 ###   Sign up
 - Positive Test Cases
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Signup With Valid Data Returns 201
+    - [x] Signup Sets HttpOnly Auth Cookie
+    - [x] Signup Response Does Not Leak Password Or Token
+    - [x] Signup Trims And Lowercases Email
 
 - Negative Test Cases
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Signup Without Name Returns 400
+    - [x] Signup Without Email Returns 400
+    - [x] Signup With Empty Name Returns 400
+    - [x] Signup Without Password Returns 400
+    - [x] Signup With Non Gmail Email Returns 400
+    - [x] Signup With Email Missing At Sign Returns 400
+    - [x] Signup With Gmail Domain As Substring Returns 400
 
 
 ###   Like Path
 - Positive Test Cases
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Like Test with Loggedin User
+    - [x] Dislike Test with Loggedin User
 
 
 - Negative Test Cases
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Like Test Without Loggedin User
+    - [x] Dislike Test Without Loggedin User
 
 
 ###   Comment Path
