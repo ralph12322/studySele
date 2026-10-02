@@ -35,9 +35,9 @@ It is really heartbreaking for me, I am hoping to get the job since someone is h
 
 Tomorrow  i will polish everything in Sign module, i put frontend validation and backend validation, so i have to test both api and the frontend validations.
 
-# Currently Done with my Robust Login and Signup Feature for the TEAM PAYAMAN COMMUNITY SITE and already made a Test Suite for it 
+### Stopped Counting the days, since sometimes i am not able to code due to Church and School Proctoring and Teachings. Currently Done with my Robust Login and Signup Feature for the TEAM PAYAMAN COMMUNITY SITE and already made a Test Suite for it 
 
-
+--------------------------------------------------------------------------------------------
 
 # Checklist
 
