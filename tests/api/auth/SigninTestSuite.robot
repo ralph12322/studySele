@@ -59,6 +59,8 @@ Signin Sets HttpOnly Auth Cookie
 
 #   Negative Test Cases
 Login with empty fields
+    [Documentation]     Signs in With All the fields Empty, which falls under the first validation
+    ...                 regarding truthiness of all fields (should not be empty)
     [Tags]  smoke   negative    all_empty
     &{INVALID_CREDENTIALS}      Create Dictionary      email=          password=
     ${resp}     Signin Request    ${INVALID_CREDENTIALS}
