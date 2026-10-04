@@ -37,7 +37,7 @@ Tomorrow  i will polish everything in Sign module, i put frontend validation and
 
 ### Stopped Counting the days, since sometimes i am not able to code due to Church and School Proctoring and Teachings. Currently Done with my Robust Login and Signup Feature for the TEAM PAYAMAN COMMUNITY SITE and already made a Test Suite for it 
 
---------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Checklist
 
@@ -46,13 +46,25 @@ Test Suites Checklist for all the Test via UI by categories:
 
 ###   Log in
 - Positive Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
+    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
 
 - Negative Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
+    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
 
 ###   Sign up
 - Positive Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
 
 - Negative Test Cases
+    - [x] Login With Valid Credentials
+    - [x] Signin Sets HttpOnly Auth Cookie
 
 
 

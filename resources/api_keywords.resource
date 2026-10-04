@@ -1,4 +1,6 @@
 ***Settings***
+Documentation            Created a resource file for keywords that i will use across other files.
+
 Library         RequestsLibrary
 
 

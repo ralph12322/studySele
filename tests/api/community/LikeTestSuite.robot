@@ -62,6 +62,9 @@ Dislike Test Without Loggedin User Returns 401
     Status Should Be        401        ${resp}
 
 Like Test With Invalid ObjectID for Post Returns 400
+    [Documentation]        Should return 400 since it doesn't satisfy the condition as a Object Id
+    ...                    in MongoDB. And always remember for Tests regarding non 200 status should always
+    ...                    include expected_status.
     [Tags]  edge    negative
     ${res}      Signin Request     ${VALID_CREDENTIALS}
     Status Should Be    200     ${res}
@@ -70,6 +73,7 @@ Like Test With Invalid ObjectID for Post Returns 400
     Status Should Be        400         ${resp}
 
 Like Test With Non Existing Post Id Returns 404
+    [Documentation]        Should return 404 since the Object Id passed is not found in Database.
     [Tags]  edge    negative
     ${res}      Signin Request     ${VALID_CREDENTIALS}
     Status Should Be    200     ${res}
