@@ -40,6 +40,7 @@ Tomorrow  i will polish everything in Sign module, i put frontend validation and
 
 Sometimes i am not able to code due to Church and School Proctoring and Teachings. Currently Done with my Robust Login and Signup Feature for the TEAM PAYAMAN COMMUNITY SITE and already made a Test Suite for it
 
+### little anxious about me being jobless for sometime, i hope i can get the job that i am waiting
 ---
 
 # Checklist
