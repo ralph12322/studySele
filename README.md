@@ -83,6 +83,10 @@ Test Checklist for all the Test for Apis by categories:
     - [x] Login With Correct Email Incorrect Password
     - [x] Login With Correct Password Incorrect Email
 
+#### Manual Test Case
+
+- 
+
 ###   Sign up
 - Positive Test Cases
     - [x] Signup With Valid Data Returns 201
@@ -113,9 +117,9 @@ Test Checklist for all the Test for Apis by categories:
 
 ###   Comment Path
 - Positive Test Cases
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
-    - [x] Login With Valid Credentials
+    - [x] Valid Comment With Valid Post Id and User
+    - [] Login With Valid Credentials
+    - [] Login With Valid Credentials
 
 
 - Negative Test Cases
