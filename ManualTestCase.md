@@ -19,7 +19,7 @@
         - Status: Passed
         - Remarks: 
 
-    [] Login With Empty Password and a Valid Email
+    - [] Login With Empty Password and a Valid Email
         - Test Case Id: TC-002
         - Test Case Name: Login With Empty Email
         - Requirement: The field requires email address to Login
@@ -37,7 +37,7 @@
         - Status: Passed
         - Remarks: 
 
-    [] Login With Empty Email and Password
+    - [] Login With Empty Email and Password
         - Test Case Id: TC-003
         - Test Case Name: Login With Empty Email
         - Requirement: The field requires email address to Login
