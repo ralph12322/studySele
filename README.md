@@ -122,7 +122,7 @@ Test Checklist for all the Test for Apis by categories:
 ### Comment Path
 
 #### Positive Test Cases
-- [ ] Add a comment with valid text
+- [ ] Add Valid Comment With Valid Post Id and User
 - [ ] Add a comment with the maximum allowed length
 - [ ] Add a comment containing emojis or special characters
 - [ ] Add multiple comments on the same post
